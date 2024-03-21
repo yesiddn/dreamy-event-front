@@ -1,4 +1,4 @@
-import '../css/hero.css';
+import '../styles/hero.css';
 
 export default function Hero() {
   const heroContainer = document.createElement('div');
