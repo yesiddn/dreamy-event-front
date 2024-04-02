@@ -1,0 +1,100 @@
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px var(--primary);
+  background-color: transparent;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.card button {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  background-color: transparent;
+  background-image: url('../svg/heart.svg');
+  border: none;
+  /* z-index: 10; */
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-image: url('../svg/heart-fill.svg');
+}
+
+.card .favorite--active {
+  background-image: url('../svg/heart-fill.svg');
+}
+
+.card img {
+  width: 100%;
+  height: 12rem;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+}
+
+.card__content {
+  padding: 1rem;
+}
+
+
+.card__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.card__title h2 {
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1.2rem;
+}
+
+.card__title span {
+  margin-top: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.card__content p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1rem;
+}
+
+.card__content p:last-child {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--primary);
+}
+
+.price__card {
+  color: var(--primary);
+}
+
+.ubication__card {
+  color: var(--secondary);
+}
+
+.card i {
+  color: var(--primary);
+  float: right;
+}
+
+.card p.price {
+  color: #333;
+  font-size: 24px;
+}
