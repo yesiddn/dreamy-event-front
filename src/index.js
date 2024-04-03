@@ -1,7 +1,7 @@
 import './styles/normalize.css';
 import './styles/global.css';
-import Home from './pages/Home';
+import router from './routes/router';
 
 const API = 'http://localhost:3000/api/v1';
 
-Home(API);
+router(API);
