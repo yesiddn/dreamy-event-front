@@ -18,7 +18,7 @@ export default async function SupplierServices(API) {
 
   console.log(services);
   services.forEach((service) => {
-    const card = CardService(service);
+    const card = CardService(service, 'card-supplier');
     recommendedServicesList.appendChild(card);
   });
 
