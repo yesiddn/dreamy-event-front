@@ -6,13 +6,7 @@ export default function CardService(serviceDetails, typecard = 'card-user') {
   cardContainer.classList.add('card');
 
   //boton favoritos
-  const cardButton = document.createElement('button');
-  if(typecard == 'card-supplier'){
-    cardButton.classList.add('icon-ellipsis');
-    cardButton.classList.add('icon-ellipsis--bg-white')
-  } else {
-    cardButton.classList.add('icon-heart');
-  }
+  const cardButton = CardButton(typecard);
   cardContainer.appendChild(cardButton);
 
   const cardImage = document.createElement('img');
@@ -46,4 +40,24 @@ export default function CardService(serviceDetails, typecard = 'card-user') {
   cardContent.appendChild(price);
 
   return cardContainer;
+}
+
+function CardButton(typecard){
+  const cardButton = document.createElement('button');
+  cardButton.type = 'button';
+  if(typecard == 'card-supplier'){
+    cardButton.classList.add('icon-ellipsis');
+    cardButton.classList.add('icon-ellipsis--bg-white')
+    cardButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('boton de opciones')});
+  } else {
+    cardButton.classList.add('icon-heart');
+    cardButton.addEventListener('click',() => {
+      e.preventDefault();
+      console.log('boton de favoritos')} );
+  }
+
+
+  return cardButton;
 }
