@@ -81,7 +81,7 @@ function NavLinks() {
       typeUser: 'user-verfied',
     },
     {
-      href: 'hola',
+      href: 'my-services',
       text: 'Mis servicios',
       typeUser: 'supplier-veryfied',
     },

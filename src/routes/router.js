@@ -1,10 +1,10 @@
 import Home from "../pages/Home";
-import SupplierEventList from "../pages/SupplierEventList.js";
+import MyServices from "../pages/MyServices.js";
 
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/hola', component: SupplierEventList },
+  { path: '/my-services', component: MyServices },
 ];
 
 export default function router(API) {

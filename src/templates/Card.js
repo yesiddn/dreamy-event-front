@@ -5,8 +5,11 @@ export default function CardService(serviceDetails) {
   cardContainer.href = 'service/' + serviceDetails.serviceId;
   cardContainer.classList.add('card');
 
+  //boton favoritos
   const cardButton = document.createElement('button');
   cardContainer.appendChild(cardButton);
+
+  
 
   const cardImage = document.createElement('img');
   cardImage.src = `http://localhost:3000/api/v1/${serviceDetails.images[0].url}`;

@@ -1,17 +1,17 @@
 import getServices from '../utils/get-services';
 import CardService from './Card';
-import '../styles/list-of-services.css';
 
-export default async function RecommendedServices(API) {
+export default async function SupplierServices(API) {
+
   const recommendedServicesContainer = document.createElement('section');
-  recommendedServicesContainer.classList.add('recommended-services-container');
+  recommendedServicesContainer.classList.add('my-services-container');
 
   const recommendedServicesTitle = document.createElement('h2');
-  recommendedServicesTitle.innerHTML = 'Servicios recomendados';
+  recommendedServicesTitle.innerHTML = 'Mis Servicios';
   recommendedServicesContainer.appendChild(recommendedServicesTitle);
 
   const recommendedServicesList = document.createElement('div');
-  recommendedServicesList.classList.add('recommended-services__list');
+  recommendedServicesList.classList.add('my-services__list');
   recommendedServicesContainer.appendChild(recommendedServicesList);
 
   const services = await getServices(API);
