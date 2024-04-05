@@ -1,7 +1,7 @@
-import form from '../templates/CreateServiceForm.js';
+import CreateServiceSection from '../templates/CreateServiceSection.js';
 
 const CreateService = (API) => {
-    form (API);
-  };
-  
-  export default CreateService;
+  CreateServiceSection(API);
+};
+
+export default CreateService;
