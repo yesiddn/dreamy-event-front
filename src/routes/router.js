@@ -1,6 +1,7 @@
 import Home from '../pages/Home.js';
 import MyServices from "../pages/MyServices.js";
 import CreateServiceSection from '../pages/CreateService.js';
+import editServiceForm from "../templates/EditServices.js";
 import LoginForm from '../templates/login-form.js';
 
 const routes = [
@@ -8,6 +9,7 @@ const routes = [
   { path: '/create-service', component: CreateServiceSection },
   { path: '/my-services', component: MyServices },
   { path: '/login-form', component: LoginForm },
+    { path: '/edit-service', component: editServiceForm },
 ];
 
 export default function router(API) {
