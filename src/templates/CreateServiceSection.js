@@ -24,20 +24,27 @@ export default async function CreateServiceSection(API) {
   createService.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const formData = new FormData(CreateServiceForm);
+    const formData = new FormData(createService);
     const serviceData = {
       name: formData.get('name-service'),
       description: formData.get('description-service'),
-      price: formData.get('price-service'),
-      location: formData.get('location-service'),
+      price: Number(formData.get('price-service')),
+      address: formData.get('location-service'),
       city: formData.get('city-service'),
       country: formData.get('country-service'),
-      amountPeople: formData.get('peopleAmount-service'),
-      characteristics: formData.get('characteristics.service'),
+      amountPeople: Number(formData.get('peopleAmount-service')),
+      characteristics: formData.get('characterisitcs-service'),
+      images: [
+        {
+          url: 'files/98c6e683-8985-48a5-ae41-8f00b0d69130-chisato-y-takina.jpg',
+        },
+      ],
     };
 
+    const serviceDataString = JSON.stringify(serviceData);
+
     try {
-      await saveServices(API, serviceData);
+      await saveServices(API,  serviceDataString);
       console.log('Servicio registrado');
     } catch (error) {
       console.log('Error al registrar el servicio:', error);
