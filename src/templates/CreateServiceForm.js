@@ -113,7 +113,7 @@ export default function CreateServiceForm() {
   const labelCharacteristics = document.createElement('label');
   labelCharacteristics.htmlFor = 'characterisitcs-service';
   labelCharacteristics.classList.add('form__input');
-  labelCharacteristics.textContent = 'Aforo:';
+  labelCharacteristics.textContent = 'Características:';
   form.appendChild(labelCharacteristics);
 
   const textareaCharacteristics = document.createElement('textarea');
