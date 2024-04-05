@@ -1,18 +1,7 @@
 import "../styles/createServiceForm.css";
-const labelClass = 'form__input';
 
 
-export default function CreateService(){
-    const serviceContainer = document.createElement('div');
-    serviceContainer = classList.add('form_container');
-    
-    const title = document.createElement('h2');
-    title.innerHTML = 'Registrar Servicio';
-    serviceContainer.appendChild(title);
-
-    const square = document.createElement('div');
-    square.classList.add('square');
-    serviceContainer.appendChild(square);
+export default function CreateServiceForm(){
 
     const form = document.createElement('form');
     form.classList.add('form');
@@ -22,7 +11,7 @@ export default function CreateService(){
 
     const labelName = document.createElement('label');
     labelName.htmlFor = 'name-service';
-    labelName.classList.add(labelClass);
+    labelName.classList.add('form__input');
     labelName.textContent = 'Nombre Servicio:';
     form.appendChild(labelName);
 
@@ -43,7 +32,7 @@ export default function CreateService(){
 
     const labelDescription = document.createElement('label');
     labelDescription.htmlFor = 'description-service';
-    labelDescription.classList.add(labelClass);
+    labelDescription.classList.add('form__input');
     labelDescription.textContent = 'Descripción:';
     form.appendChild(labelDescription);
 
@@ -64,7 +53,7 @@ export default function CreateService(){
 
     const labelPrice = document.createElement('label');
     labelPrice.htmlFor = 'price-service';
-    labelPrice.classList.add(labelClass);
+    labelPrice.classList.add('form__input');
     labelPrice.textContent = 'Precio:';
     form.appendChild(labelPrice);
 
@@ -79,7 +68,7 @@ export default function CreateService(){
 
     const labelLocation = document.createElement('label');
     labelLocation.htmlFor = 'location-service';
-    labelLocation.classList.add(labelClass);
+    labelLocation.classList.add('form__input');
     labelLocation.textContent = 'Ubicación:';
     form.appendChild(labelLocation);
 
@@ -94,7 +83,7 @@ export default function CreateService(){
 
     const labelCity = document.createElement('label');
     labelCity.htmlFor = 'city-service';
-    labelCity.classList.add(labelClass);
+    labelCity.classList.add('form__input');
     labelCity.textContent = 'Ciudad:';
     form.appendChild(labelCity);
 
@@ -109,7 +98,7 @@ export default function CreateService(){
 
     const labelCountry = document.createElement('label');
     labelCountry.htmlFor = 'country-service';
-    labelCountry.classList.add(labelClass);
+    labelCountry.classList.add('form__input');
     labelCountry.textContent = 'País:';
     form.appendChild(labelCountry);
 
@@ -122,10 +111,9 @@ export default function CreateService(){
 
 
 
-    
     const labelPeopleAmount = document.createElement('label');
     labelPeopleAmount.htmlFor = 'peopleAmount-service';
-    labelPeopleAmount.classList.add(labelClass);
+    labelPeopleAmount.classList.add('form__input');
     labelPeopleAmount.textContent = 'Aforo:';
     form.appendChild(labelPeopleAmount);
 
@@ -140,7 +128,7 @@ export default function CreateService(){
 
     const labelCharacteristics = document.createElement('label');
     labelCharacteristics.htmlFor = 'characterisitcs-service';
-    labelCharacteristics.classList.add(labelClass);
+    labelCharacteristics.classList.add('form__input');
     labelCharacteristics.textContent = 'Aforo:';
     form.appendChild(labelCharacteristics);
 
@@ -156,35 +144,28 @@ export default function CreateService(){
 
     const labelFiles = document.createElement('label');
     labelFiles.htmlFor = 'pictures-service';
-    labelFiles.classList.add(labelClass);
+    labelFiles.classList.add('form__input');
     labelFiles.textContent = 'Sube una o varias imagenes:';
     form.appendChild(labelFiles);
 
     const inputFiles = document.createElement('input');
     inputFiles.id = 'file-service';
-    inputFiles.type = 'number';
-    inputFiles.setAttribute('multiple');
+    inputFiles.type = 'file';
+    inputFiles.setAttribute('multiple', true);
     labelFiles.appendChild(inputFiles);
 
 
 
     const labelTypeService = document.createElement('label');
     labelTypeService.htmlFor = 'type-service';
-    labelTypeService.classList.add(labelClass);
+    labelTypeService.classList.add('form__input');
     labelTypeService.textContent = 'Tipo de Servicio:';
     form.appendChild(labelTypeService);
 
-    const inputTypeService = document.createElement('select');
-    inputTypeService.id = 'type-service';
-    inputTypeService.type = 'number';
-    inputTypeService.name = 'type-service';
-    labelTypeService.appendChild(inputTypeService);
-
-    const inputTypeServiceOptions = document.createElement('option');
-    inputTypeServiceOptions.id = 'type-service';
-    inputTypeServiceOptions.type = 'number';
-    inputTypeServiceOptions.name = 'type-service';
-    inputTypeService.appendChild(inputTypeServiceOptions);
+    const selectTypeService = document.createElement('select');
+    selectTypeService.id = 'type-service';
+    selectTypeService.name = 'type-service';
+    labelTypeService.appendChild(selectTypeService);
 
     const optionValues = [
         { value: '1', text: 'Lugar' },
@@ -196,10 +177,21 @@ export default function CreateService(){
         { value: '7', text: 'Fotografía y video' }
     ];
 
-   const buttonService = document.createElement('button');
-   buttonService.id = 'service-button';
-   buttonService.type = 'submit'; 
-   buttonService.textContent = 'Registrar';
-   form.appendChild(buttonService);
-    return serviceContainer;
+    optionValues.forEach(optionData => {
+        const option = document.createElement('option');
+        option.value = optionData.value;
+        option.textContent = optionData.text;
+        selectTypeService.appendChild(option);
+    });
+
+
+
+     const buttonService = document.createElement('button');
+     buttonService.id = 'service-button';
+     buttonService.type = 'submit'; 
+     buttonService.textContent = 'Registrar';
+     form.appendChild(buttonService);
+
+
+     return form;
 }

@@ -1,7 +1,7 @@
 import form from '../templates/CreateServiceForm.js';
 
-const HomeServicesSupplier = (API) => {
+const CreateService = (API) => {
     form (API);
   };
   
-  export default HomeServicesSupplier;
+  export default CreateService;
