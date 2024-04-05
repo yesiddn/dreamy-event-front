@@ -17,8 +17,7 @@ export default function Header() {
 
 function Logo() {
   const logo = document.createElement('a');
-  logo.href = 'home';
-  logo.target = '_blank';
+  logo.href = '/';
   logo.classList.add('logo');
   logo.innerHTML = '<img src="../../public/svg/logo.svg" class="logo" alt="Dreamy Event logo" />';
 
