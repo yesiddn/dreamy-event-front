@@ -149,9 +149,9 @@ function alertLayout(){
   alertPopUp.id = 'alert';
   var p = document.createElement('p');
   p.textContent = 'Error: La contraseña no coincide.';
-  var button = document.createElement('button');
-  button.className = "btn-close";
-  button.onclick = closeAlert;
+  var closeAlrtButton = document.createElement('button');
+  closeAlrtButton.className = "btn-close";
+  closeAlrtButton.onclick = closeAlert;
   alertPopUp.appendChild(button);
   alertPopUp.appendChild(p);
 }
