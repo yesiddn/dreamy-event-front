@@ -1,3 +1,6 @@
+import '../styles/alerts.css';
+
+
 function showAlert(typeAlert) {
   const alerts = {
     'user-exists': {
@@ -127,6 +130,22 @@ function showAlert(typeAlert) {
       color: '#ADFFC7',
     }
   };
+  
+  // Alert body
+  var alertPopUp = document.createElement('div');
+  alertPopUp.className = 'alert';
+  alertPopUp.id = 'alert';
+  var p = document.createElement('p');
+  alertPopUp.appendChild(p);
+  
+
+  // close button
+  var closeButton = document.createElement('button');
+  closeButton.className = 'closebtn'; 
+  closeButton.textContent = 'Cerrar';
+
+  document.body.appendChild(alertPopUp);
+  document.body.appendChild(closeButton);
 
   let alert = document.getElementById('alert');
   let alertText = alert.querySelector('#alert p');
@@ -141,21 +160,23 @@ function closeAlert() {
   alert.style.display = 'none';
 }
 
-// la funcion showAlert invoca la alerta en cualquier sitio, el parametro la personaliza
 
-function alertLayout(){
-  var alertPopUp = document.createElement('div');
-  alertPopUp.className = 'alert';
-  alertPopUp.id = 'alert';
-  var p = document.createElement('p');
-  p.textContent = 'Error: La contraseña no coincide.';
-  var closeAlrtButton = document.createElement('button');
-  closeAlrtButton.className = "btn-close";
-  closeAlrtButton.onclick = closeAlert;
-  alertPopUp.appendChild(button);
-  alertPopUp.appendChild(p);
+export default function Hola() {
+  showAlert('user-exists');
+  // showAlert('comment-exists');
+  
 }
 
+// la funcion showAlert invoca la alerta en cualquier sitio, el parametro la personaliza
+
+// esto tiene "alerts.php"
+/*  <div class="alert" id="alert">
+  <p>Error: La contraseña no coincide.</p>
+  <button class="btn-close" onclick="closeAlert()">
+  </button>
+</div>
+
+<script src="./views/assets/js/alert.js"></script> */
 
 
 
