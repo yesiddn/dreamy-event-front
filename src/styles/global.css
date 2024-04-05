@@ -27,3 +27,8 @@ h2 {
 .inactive {
   display: none;
 }
+
+.primary {
+  text-shadow: 0 2px 10px var(--primary);
+  color: var(--primary);
+}
