@@ -1,5 +1,5 @@
-import getServices from '../utils/get-services';
-import CardService from './Card';
+import getServices from '../utils/get-services.js';
+import CardService from './Card.js';
 import '../styles/recommended-services.css';
 
 export default async function RecommendedServices(API) {

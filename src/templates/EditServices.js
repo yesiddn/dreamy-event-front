@@ -1,4 +1,5 @@
-function editServiceForm() {
+import '../styles/edit-service.css';
+export default async function editServiceForm(API) {
     const formSection = document.createElement('section');
     formSection.classList.add('form-section');
 
@@ -98,7 +99,7 @@ function editServiceForm() {
     formContainer.appendChild(form);
     formSection.appendChild(formContainer);
 
-    return formSection;
+    document.querySelector('#app').appendChild(formSection);
 }
 
 function getServiceTypeName(id) {
@@ -123,6 +124,3 @@ function getServiceTypeName(id) {
             return '';
     }
 }
-
-const formTemplate = editServiceForm();
-document.querySelector('.form-section').appendChild(formTemplate);

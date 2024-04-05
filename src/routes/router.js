@@ -1,8 +1,9 @@
 import Home from "../pages/Home";
-
+import editServiceForm from "../templates/EditServices.js";
 
 const routes = [
   { path: '/', component: Home },
+  { path: '/edit-service', component: editServiceForm },
 ];
 
 export default function router(API) {
