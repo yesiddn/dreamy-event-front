@@ -9,6 +9,9 @@ export default function CardService(serviceDetails, typecard = 'card-user') {
   const cardButton = CardButton(typecard);
   cardContainer.appendChild(cardButton);
 
+  const menuOptions = MenuOptions();
+  cardContainer.appendChild(menuOptions);
+
   const cardImage = document.createElement('img');
   cardImage.src = `http://localhost:3000/api/v1/${serviceDetails.images[0].url}`;
   cardImage.alt = serviceDetails.name;
@@ -42,22 +45,62 @@ export default function CardService(serviceDetails, typecard = 'card-user') {
   return cardContainer;
 }
 
-function CardButton(typecard){
+function CardButton(typecard) {
   const cardButton = document.createElement('button');
   cardButton.type = 'button';
-  if(typecard == 'card-supplier'){
+  if (typecard == 'card-supplier') {
     cardButton.classList.add('icon-ellipsis');
     cardButton.classList.add('icon-ellipsis--bg-white')
     cardButton.addEventListener('click', (e) => {
       e.preventDefault();
-      console.log('boton de opciones')});
+      const menuOptions = document.querySelector('.service__options');
+      menuOptions.classList.toggle('inactive')
+    });
   } else {
     cardButton.classList.add('icon-heart');
-    cardButton.addEventListener('click',() => {
+    cardButton.addEventListener('click', () => {
       e.preventDefault();
-      console.log('boton de favoritos')} );
+
+    });
   }
-
-
   return cardButton;
 }
+
+function MenuOptions(){
+  console.log('menu buton clicked');
+  // service options
+  const options = document.createElement('div');
+  options.classList.add('service__options');
+  options.classList.add('inactive');
+
+  // service options -> editar
+  const serviceEdit = document.createElement('a');
+  serviceEdit.href = '/edit-service';
+  serviceEdit.classList.add('service__options__edit');
+  options.appendChild(serviceEdit);
+
+  const serviceEditIcon = document.createElement('span');
+  serviceEditIcon.classList.add('icon-pencil');
+
+  serviceEdit.textContent = 'Editar';
+  serviceEdit.appendChild(serviceEditIcon);
+
+  // service options -> eliminar
+  const serviceDelete = document.createElement('button');
+  serviceDelete.setAttribute('type', 'button');
+  serviceDelete.classList.add('service__options__delete');
+  serviceDelete.textContent = 'Eliminar'
+  options.appendChild(serviceDelete);
+
+  const serviceDeleteIcon = document.createElement('span');
+  serviceEditIcon.classList.add('icon-tash');
+  serviceDelete.appendChild(serviceDeleteIcon);
+
+  serviceDelete.addEventListener('click', async (e) => {
+    e.preventDefault();
+  });
+
+  return options;
+}
+
+
