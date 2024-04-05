@@ -1,11 +1,9 @@
-import Home from "../pages/Home";
-import CreateService from "../pages/CreateService.js";
-
+import Home from '../pages/Home.js';
+import CreateServiceSection from '../pages/CreateService.js';
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/create-service', component:  CreateService},
-
+  { path: '/create-service', component: CreateServiceSection },
 ];
 
 export default function router(API) {
