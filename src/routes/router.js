@@ -6,10 +6,10 @@ import LoginForm from '../templates/login-form.js';
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/create-service', component: CreateServiceSection },
-  { path: '/my-services', component: MyServices },
   { path: '/login-form', component: LoginForm },
-    { path: '/edit-service', component: editServiceForm },
+  { path: '/my-services', component: MyServices },
+  { path: '/create-service', component: CreateServiceSection },
+  { path: '/edit-service', component: editServiceForm },
 ];
 
 export default function router(API) {
