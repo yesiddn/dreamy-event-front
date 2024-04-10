@@ -1,7 +1,5 @@
-function validateInputData(inputId) {
-    console.log("Validando datos de entrada para el campo: " + inputId);
-}
 
+export default async function NewEventForm(API) {
 const formSection = document.createElement('section');
 formSection.classList.add('form-section');
 
@@ -80,3 +78,4 @@ formContainer.appendChild(form);
 formSection.appendChild(formContainer);
 
 document.body.appendChild(formSection);
+}

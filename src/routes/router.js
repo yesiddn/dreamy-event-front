@@ -1,9 +1,11 @@
 import Home from '../pages/Home.js';
 import CreateServiceSection from '../pages/CreateService.js';
+import NewEventForm from '../templates/new-event-form.js';
 
 const routes = [
   { path: '/', component: Home },
   { path: '/create-service', component: CreateServiceSection },
+  { path: '/new-event', component: NewEventForm },
 ];
 
 export default function router(API) {
