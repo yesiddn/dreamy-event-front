@@ -1,3 +1,4 @@
+export default async function SignUpSupplierForm(API) {
 const section = document.createElement('section');
 section.classList.add('form-section');
 
@@ -77,3 +78,4 @@ divContainer.appendChild(divSquare);
 divContainer.appendChild(form);
 section.appendChild(divContainer);
 document.body.appendChild(section);
+}
