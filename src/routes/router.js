@@ -3,6 +3,7 @@ import MyServices from "../pages/MyServices.js";
 import CreateServiceSection from '../pages/CreateService.js';
 import editServiceForm from "../templates/EditServices.js";
 import LoginForm from '../templates/login-form.js';
+import CreateUser from '../pages/CreateUser.js';
 
 const routes = [
   { path: '/', component: Home },
@@ -10,6 +11,7 @@ const routes = [
   { path: '/my-services', component: MyServices },
   { path: '/create-service', component: CreateServiceSection },
   { path: '/edit-service', component: editServiceForm },
+  { path: '/create-user', component: CreateUser}
 ];
 
 export default function router(API) {
