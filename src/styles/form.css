@@ -22,7 +22,7 @@
 
 input,
 select {
-  margin-bottom: 0.5rem;
+  margin: 0.5rem;
   padding: 0.5rem;
   background-color: transparent;
   border: 1px solid var(--secondary);
@@ -37,9 +37,8 @@ select:focus {
 
 .form__input input[type="file"] {
   width: 100%;
-  margin-top: 0.5rem;
   padding: 0;
-  border: none !important;
+  border: none;
   outline: none;
   border-radius: 10px;
   background-color: transparent;

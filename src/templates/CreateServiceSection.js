@@ -1,4 +1,4 @@
-import '../styles/create-service.css'
+import '../styles/form-section.css'
 import CreateServiceForm from './CreateServiceForm.js';
 import saveServices from '../utils/save-service.js';
 import Alert from './Alert.js';

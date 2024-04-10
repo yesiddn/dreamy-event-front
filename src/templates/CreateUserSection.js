@@ -1,4 +1,4 @@
-import '../styles/login-form.css';
+import '../styles/form-section.css';
 import CreateUserForm from './CreateUserForm.js';
 import saveUser from '../utils/save-user.js';
 
