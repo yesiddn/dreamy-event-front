@@ -1,7 +1,15 @@
 const alerts = {
-  'service created': {
+  'service-created': {
     message: 'El servicio se ha creado correctamente.',
     color: '#ADFFC7',
+  },
+  'service-error': {
+    message: 'Error al crear el servicio. Inténtalo de nuevo.',
+    color: '#F02D3A',
+  },
+  'something-went-wrong': {
+    message: 'Algo salió mal. Inténtalo de nuevo.',
+    color: '#F02D3A',
   },
   'user-exists': {
     message: 'El usuario ya existe.',
@@ -70,10 +78,6 @@ const alerts = {
   'event updated': {
     message: 'Evento editado correctamente.',
     color: '#ADFFC7',
-  },
-  'something went wrong': {
-    message: 'Algo salió mal.',
-    color: '#F02D3A',
   },
   'service removed from event': {
     message: 'Servicio eliminado del evento.',
