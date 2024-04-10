@@ -2,16 +2,17 @@ import '../styles/card.css';
 
 export default function CardService(serviceDetails, typecard = 'card-user') {
   const cardContainer = document.createElement('a');
-  cardContainer.href = 'service/' + serviceDetails.serviceId;
+  cardContainer.href = '/service/' + serviceDetails.serviceId;
   cardContainer.classList.add('card');
 
-  //boton favoritos
-  const cardButton = CardButton(typecard);
-  cardContainer.appendChild(cardButton);
-
+  // action buttons
   const menuOptions = MenuOptions();
   cardContainer.appendChild(menuOptions);
+  
+  const cardButton = CardButton(typecard, menuOptions);
+  cardContainer.appendChild(cardButton);
 
+  // card content
   const cardImage = document.createElement('img');
   cardImage.src = `http://localhost:3000/api/v1/${serviceDetails.images[0].url}`;
   cardImage.alt = serviceDetails.name;
@@ -45,29 +46,29 @@ export default function CardService(serviceDetails, typecard = 'card-user') {
   return cardContainer;
 }
 
-function CardButton(typecard) {
+function CardButton(typecard, menuOptions) {
   const cardButton = document.createElement('button');
   cardButton.type = 'button';
   if (typecard == 'card-supplier') {
     cardButton.classList.add('icon-ellipsis');
     cardButton.classList.add('icon-ellipsis--bg-white')
+
     cardButton.addEventListener('click', (e) => {
       e.preventDefault();
-      const menuOptions = document.querySelector('.service__options');
       menuOptions.classList.toggle('inactive')
     });
   } else {
     cardButton.classList.add('icon-heart');
+    
     cardButton.addEventListener('click', () => {
       e.preventDefault();
-
+      // TODO: Implementar lógica para agregar a favoritos
     });
   }
   return cardButton;
 }
 
 function MenuOptions(){
-  console.log('menu buton clicked');
   // service options
   const options = document.createElement('div');
   options.classList.add('service__options');
