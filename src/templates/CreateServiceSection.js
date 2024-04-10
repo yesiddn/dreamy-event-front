@@ -1,6 +1,7 @@
 import '../styles/create-service.css'
 import CreateServiceForm from './CreateServiceForm.js';
 import saveServices from '../utils/save-service.js';
+import Alert from './Alert.js';
 
 export default async function CreateServiceSection(API) {
   const createServiceContainer = document.createElement('section');
@@ -54,8 +55,13 @@ export default async function CreateServiceSection(API) {
     const serviceDataString = JSON.stringify(serviceData);
 
     try {
-      await saveServices(API,  serviceDataString);
-      console.log('Servicio registrado');
+      const resposne = await saveServices(API, serviceDataString);
+
+      if (!resposne) {
+        return;
+      }
+      
+      Alert('service-created', '/my-services');
     } catch (error) {
       console.log('Error al registrar el servicio:', error);
     }

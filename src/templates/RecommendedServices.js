@@ -16,7 +16,10 @@ export default async function RecommendedServices(API) {
 
   const services = await getServices(API);
 
-  console.log(services);
+  if (!services) {
+    return;
+  }
+
   services.forEach((service) => {
     const card = CardService(service);
     recommendedServicesList.appendChild(card);
