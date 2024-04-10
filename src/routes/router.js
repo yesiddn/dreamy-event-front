@@ -1,9 +1,11 @@
 import Home from '../pages/Home.js';
 import CreateServiceSection from '../pages/CreateService.js';
+import SignUpCustomerForm from '../templates/sign-up-customer-form.js';
 
 const routes = [
   { path: '/', component: Home },
   { path: '/create-service', component: CreateServiceSection },
+  { path: '/sign-up', component: SignUpCustomerForm },
 ];
 
 export default function router(API) {

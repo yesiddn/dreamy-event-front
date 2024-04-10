@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", function() {
 
+export default async function SignUpCustomerForm(API) {
     const formSection = document.createElement('section');
     formSection.classList.add('form-section');
     formSection.id = 'signup-section';
@@ -97,5 +97,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     document.body.appendChild(formSection);
-
-});
+}
