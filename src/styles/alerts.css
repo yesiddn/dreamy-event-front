@@ -1,0 +1,38 @@
+.alert {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  padding: 20px;
+  color: var(--black);
+  z-index: 1000;
+}
+
+.alert p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.close-button {
+  width: 32px;
+  height: 32px;
+  margin-left: 15px;
+  background: url(../../public/svg/close.svg) no-repeat center/cover;
+  border: none;
+  color: var(--white);
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: black;
+}
+
+.close-button span {
+  display: none;
+}

@@ -17,16 +17,34 @@
   top: 0;
   right: 0;
   margin: 1rem;
-  background-color: transparent;
-  background-image: url('../svg/heart.svg');
   border: none;
-  /* z-index: 10; */
   cursor: pointer;
 }
 
-.card button:hover {
-  background-image: url('../svg/heart-fill.svg');
+.icon-ellipsis {
+  position: absolute;
+  display: inline-block;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  background: url('../svg/elipsis.svg') no-repeat center/cover;
 }
+
+.icon-ellipsis--bg-white {
+  background-color: var(--white);
+  border-radius: 50%;
+}
+
+.icon-heart {
+  background-color: transparent;
+  background-image:url('../svg/heart.svg');
+}
+
+.icon-heart:hover {
+  background-image:url('../svg/heart-fill.svg');
+}
+
 
 .card .favorite--active {
   background-image: url('../svg/heart-fill.svg');
@@ -97,4 +115,89 @@
 .card p.price {
   color: #333;
   font-size: 24px;
+}
+
+
+/* minidrop down menu to edit 'supplier services' */
+
+.event__options,
+.service__options {
+  position: absolute;
+  /* display: flex; */
+  top: 0.5rem;
+  right: 3rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white);
+  box-shadow: 0 5px 15px var(--primary);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.event__options__edit,
+.event__options__delete,
+.service__options__edit,
+.service__options__delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  text-decoration: none;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.card .service__options__delete,
+.card .service__options__delete:hover {
+  position: static;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  background-image: none;
+  z-index: inherit;
+}
+
+.event__options__edit:hover,
+.event__options__delete:hover,
+.service__options__edit:hover,
+.service__options__delete:hover {
+  background-color: rgba(118, 112, 230, 0.4);
+}
+
+.event__options__edit span,
+.event__options__delete span,
+.service__options__edit span,
+.service__options__delete span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.event__options__edit span,
+.service__options__edit span {
+  background: url('../../public/svg/pencil.svg') no-repeat center/cover;
+}
+
+.event__options__delete span,
+.service__options__delete span {
+  background: url('../../public/svg/trash.svg') no-repeat center/cover;
+}
+
+.icon-ellipsis {
+  position: absolute;
+  display: inline-block;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  background: url('../../public/svg/elipsis.svg') no-repeat center/cover;
+}
+
+.icon-ellipsis--bg-white {
+  background-color: var(--white);
+  border-radius: 50%;
 }
