@@ -6,6 +6,8 @@ import LoginForm from '../templates/login-form.js';
 import CreateUser from '../pages/CreateUser.js';
 import NewEventForm from '../templates/new-event-form.js';
 import SignUpCustomerForm from '../templates/sign-up-customer-form.js';
+import SignUpSupplierForm from '../templates/sign-up-supplier-form.js';
+
 
 const routes = [
   { path: '/', component: Home },
@@ -16,6 +18,7 @@ const routes = [
   { path: '/create-user', component: CreateUser},
   { path: '/new-event', component: NewEventForm },
   { path: '/sign-up', component: SignUpCustomerForm },
+  { path: '/sign-up-supplier', component:SignUpSupplierForm  },
 ];
 
 export default function router(API) {
