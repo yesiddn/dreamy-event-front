@@ -1,4 +1,6 @@
 import '../styles/form.css';
+import login from '../utils/login';
+import saveLogin from '../utils/save-login';
 
 export default function LoginForm(API) {
   const form = document.createElement('form');
@@ -28,7 +30,7 @@ export default function LoginForm(API) {
 
   const inputPass = document.createElement('input');
   inputPass.id = 'password';
-  inputPass.type = 'text';
+  inputPass.type = 'password';
   inputPass.name = 'password';
   inputPass.placeholder = 'Password';
   inputPass.addEventListener('keyup', function () {
@@ -36,17 +38,8 @@ export default function LoginForm(API) {
   });
   labelPass.appendChild(inputPass);
 
-  const button = document.createElement('button');
-  button.id = 'button';
-  button.type = 'button';
-  button.textContent = 'Ingresar';
+  const button = Button(API, inputEmail, inputPass);
   form.appendChild(button);
-
-  button.addEventListener('click', async (event) => {
-    event.preventDefault();
-
-    // TODO: Implement login functionality
-  });
 
   const anchor = document.createElement('a');
   anchor.href = 'reset-password';
@@ -54,4 +47,32 @@ export default function LoginForm(API) {
   form.appendChild(anchor);
 
   return form;
+}
+
+function Button(API, inputEmail, inputPass) {
+  const button = document.createElement('button');
+  button.id = 'button';
+  button.type = 'button';
+  button.textContent = 'Ingresar';
+
+  button.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const data = {
+      email: inputEmail.value,
+      password: inputPass.value,
+    };
+
+    loginProcess(API, JSON.stringify(data));
+  });
+
+  return button;
+}
+
+async function loginProcess(API, data) {
+  const response = await login(API, data);
+
+  if (response) {
+    saveLogin(response);
+  }
 }
