@@ -8,8 +8,8 @@ export default async function fetchData({API, method, data}) {
   };
 
   try {
-    const response = await fetch(API, options);  
-    return await response.json();
+    const response = await fetch(API, options);
+    return response;
   } catch (error) {
     return error;
   }

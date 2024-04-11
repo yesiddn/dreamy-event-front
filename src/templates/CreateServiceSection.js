@@ -1,6 +1,7 @@
 import '../styles/create-service.css'
 import CreateServiceForm from './CreateServiceForm.js';
 import saveServices from '../utils/save-service.js';
+import Alert from './Alert.js';
 
 export default async function CreateServiceSection(API) {
   const createServiceContainer = document.createElement('section');
@@ -25,6 +26,20 @@ export default async function CreateServiceSection(API) {
     event.preventDefault();
 
     const formData = new FormData(createService);
+    const files = createService.querySelector('#file-service').files;
+    console.log(files);
+    let images = [];
+
+    for (let i = 0; i < files.length; i++) {
+      try {
+        const imageData = await saveImages(files[i]);
+        const image = { url: imageData.location };
+        images.push(image);
+      } catch (error) {
+        console.log('Error al guardar la imagen:', error);
+      }
+    }
+
     const serviceData = {
       name: formData.get('name-service'),
       description: formData.get('description-service'),
@@ -34,22 +49,36 @@ export default async function CreateServiceSection(API) {
       country: formData.get('country-service'),
       amountPeople: Number(formData.get('peopleAmount-service')),
       characteristics: formData.get('characterisitcs-service'),
-      images: [
-        {
-          url: 'files/98c6e683-8985-48a5-ae41-8f00b0d69130-chisato-y-takina.jpg',
-        },
-      ],
+      images,
     };
 
     const serviceDataString = JSON.stringify(serviceData);
 
     try {
-      await saveServices(API,  serviceDataString);
-      console.log('Servicio registrado');
+      const resposne = await saveServices(API, serviceDataString);
+
+      if (!resposne) {
+        return;
+      }
+      
+      Alert('service-created', '/my-services');
     } catch (error) {
       console.log('Error al registrar el servicio:', error);
     }
   });
 
   document.querySelector('#app').appendChild(createServiceContainer);
+}
+
+async function saveImages(image) {
+  const formData = new FormData();
+  formData.append('file', image);
+
+  const response = await fetch('http://localhost:3000/api/v1/files', {
+    method: 'POST',
+    body: formData,
+  });
+
+  const data = await response.json();
+  return data;
 }
