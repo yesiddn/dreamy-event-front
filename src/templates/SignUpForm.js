@@ -1,6 +1,9 @@
 import validateInputData from '../utils/validate-input-data';
 import '../styles/form.css';
 import validateForm from '../utils/validate-form';
+import saveFile from '../utils/save-file';
+import saveUser from '../utils/save-user';
+import saveLogin from '../utils/save-login';
 
 const inputs = [
   {
@@ -84,7 +87,7 @@ export default function SignUpForm(API) {
   const button = document.createElement('button');
 
   inputs.forEach((input) => {
-    const label = createInput(input);
+    const label = createInput(input, button);
     form.appendChild(label);
   });
 
@@ -94,7 +97,7 @@ export default function SignUpForm(API) {
   button.disabled = true;
 
   button.addEventListener('click', () => {
-    handleRegistration(API);
+    handleRegistration(API, inputs);
   });
 
   form.appendChild(button);
@@ -102,7 +105,7 @@ export default function SignUpForm(API) {
   return form;
 }
 
-function createInput(input) {
+function createInput(input, button) {
   const label = document.createElement('label');
   label.htmlFor = input.id;
   label.classList.add('form__input');
@@ -143,11 +146,43 @@ function validateProcess(input, inputElement, spanError, button) {
     ? (input.validate = true)
     : (input.validate = false);
 
-  validateForm(inputs)
-    ? (button.disabled = false)
-    : (button.disabled = true);
+  validateForm(inputs) ? (button.disabled = false) : (button.disabled = true);
 }
 
-function handleRegistration(API) {
-  // TODO: Implement registration logic
+async function handleRegistration(API, inputs) {
+  const data = {
+    customer: {},
+  };
+
+  for (let input of inputs) {
+    const inputValue = document.getElementById(input.id).value;
+
+    if (input.name === 'email' || input.name === 'password') {
+      data[input.name] = inputValue;
+    } else {
+      if (input.type === 'file') {
+        const file = document.getElementById(input.id).files[0];
+        const image = await saveImage(API, file);
+
+        if (!image) return
+
+        data.customer[input.name] = image.location;
+      } else {
+        data.customer[input.name] = inputValue;
+      }
+    }
+  }
+
+  const response = await saveUser(API, JSON.stringify(data));
+
+  if (response) {
+    saveLogin(response, 'user-created');
+  }
+}
+
+function saveImage(API, image) {
+  const formData = new FormData();
+  formData.append('file', image);
+
+  return saveFile(API, formData);
 }
