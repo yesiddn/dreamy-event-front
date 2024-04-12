@@ -1,4 +1,4 @@
-import '../styles/edit-service.css';
+// import '../styles/edit-service.css';
 export default async function editServiceForm(API) {
     const formSection = document.createElement('section');
     formSection.classList.add('form-section');
