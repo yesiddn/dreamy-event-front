@@ -1,0 +1,31 @@
+.my-services__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+}
+
+.my-services__header__create {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  background-color: var(--primary);
+  text-decoration: none;
+  color: var(--white);
+}
+
+.my-services__header__create:hover {
+  background-color: var(--black);
+  box-shadow: 0 5px 15px var(--primary);
+}
+
+.my-services__header__create span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('../../public/svg/plus-white.svg') no-repeat center/cover;
+}

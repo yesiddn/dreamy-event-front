@@ -1,4 +1,4 @@
-import '../styles/login-form.css';
+import '../styles/form.css';
 
 
 export default function CreateUser (){

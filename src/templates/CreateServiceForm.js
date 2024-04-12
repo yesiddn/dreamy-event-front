@@ -1,4 +1,4 @@
-import '../styles/create-service-form.css';
+import '../styles/form.css';
 
 export default function CreateServiceForm() {
   const form = document.createElement('form');
