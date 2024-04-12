@@ -1,14 +1,22 @@
 const alerts = {
+  welcome: {
+    message: 'Bienvenido a la plataforma.',
+    color: '#ADFFC7',
+  },
+  'login-error': {
+    message: 'Usuario o contraseña incorrecto.',
+    color: '#F02D3A',
+  },
+  'something-went-wrong': {
+    message: 'Algo salió mal. Inténtalo de nuevo.',
+    color: '#F02D3A',
+  },
   'service-created': {
     message: 'El servicio se ha creado correctamente.',
     color: '#ADFFC7',
   },
   'service-error': {
     message: 'Error al crear el servicio. Inténtalo de nuevo.',
-    color: '#F02D3A',
-  },
-  'something-went-wrong': {
-    message: 'Algo salió mal. Inténtalo de nuevo.',
     color: '#F02D3A',
   },
   'user-exists': {
@@ -18,14 +26,6 @@ const alerts = {
   'user-not-exists': {
     message: 'El usuario no existe.',
     color: '#F02D3A',
-  },
-  'wrong-user': {
-    message: 'Usuario o contraseña incorrecto.',
-    color: '#F02D3A',
-  },
-  welcome: {
-    message: 'Bienvenido a la plataforma.',
-    color: '#ADFFC7',
   },
   'user-created': {
     message: 'Usuario creado correctamente.',
