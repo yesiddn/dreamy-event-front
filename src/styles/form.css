@@ -15,14 +15,14 @@
 .form__input {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 80%;
   margin: 0.5rem 0;
   color: var(--secondary);
 }
 
 input,
 select {
-  margin: 0.5rem;
+  margin-top: 0.5rem;
   padding: 0.5rem;
   background-color: transparent;
   border: 1px solid var(--secondary);
@@ -77,4 +77,24 @@ select:focus {
 .form button:hover {
   background-color: var(--black);
   box-shadow: 0 5px 15px var(--primary);
+}
+
+.form button:disabled {
+  background-color: var(--secondary);
+  cursor: default;
+}
+
+/* validacion de input */
+.is-invalid {
+  border: 2px dashed red;
+}
+
+input:invalid,
+select:invalid {
+  border: 2px dashed red;
+}
+
+input:invalid:focus,
+select:invalid:focus {
+  border: 2px dashed red;
 }
