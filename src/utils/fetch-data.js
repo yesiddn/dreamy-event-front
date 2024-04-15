@@ -1,9 +1,12 @@
-export default async function fetchData({API, method, data}) {
+export default async function fetchData({
+  API,
+  method,
+  data,
+  headers = { 'Content-Type': 'application/json' },
+}) {
   const options = {
     method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: headers,
     body: data ? data : null,
   };
 

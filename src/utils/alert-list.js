@@ -3,22 +3,6 @@ const alerts = {
     message: 'Bienvenido a la plataforma.',
     color: '#ADFFC7',
   },
-  'login-error': {
-    message: 'Usuario o contraseña incorrecto.',
-    color: '#F02D3A',
-  },
-  'something-went-wrong': {
-    message: 'Algo salió mal. Inténtalo de nuevo.',
-    color: '#F02D3A',
-  },
-  'service-created': {
-    message: 'El servicio se ha creado correctamente.',
-    color: '#ADFFC7',
-  },
-  'service-error': {
-    message: 'Error al crear el servicio. Inténtalo de nuevo.',
-    color: '#F02D3A',
-  },
   'user-exists': {
     message: 'El usuario ya existe.',
     color: '#ADBDFF',
@@ -30,6 +14,27 @@ const alerts = {
   'user-created': {
     message: 'Usuario creado correctamente.',
     color: '#ADFFC7',
+  },
+  'login-error': {
+    message: 'Usuario o contraseña incorrecto.',
+    color: '#F02D3A',
+  },
+  'something-went-wrong': {
+    message: 'Algo salió mal. Inténtalo de nuevo.',
+    color: '#F02D3A',
+  },
+  'file-too-large': {
+    message:
+      'El archivo es demasiado grande. Inténtalo de nuevo con un archivo más pequeño.',
+    color: '#F02D3A',
+  },
+  'service-created': {
+    message: 'El servicio se ha creado correctamente.',
+    color: '#ADFFC7',
+  },
+  'service-error': {
+    message: 'Error al crear el servicio. Inténtalo de nuevo.',
+    color: '#F02D3A',
   },
   'favorite-added': {
     message: 'Servicio agregado a favoritos.',

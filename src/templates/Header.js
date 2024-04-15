@@ -1,4 +1,5 @@
 import '../styles/header.css';
+import getUserData from '../utils/get-user-data';
 
 export default function Header() {
   const header = document.createElement('header');
@@ -19,7 +20,8 @@ function Logo() {
   const logo = document.createElement('a');
   logo.href = '/';
   logo.classList.add('logo');
-  logo.innerHTML = '<img src="../../public/svg/logo.svg" class="logo" alt="Dreamy Event logo" />';
+  logo.innerHTML =
+    '<img src="../../public/svg/logo.svg" class="logo" alt="Dreamy Event logo" />';
 
   return logo;
 }
@@ -51,10 +53,17 @@ function HamburguerBtn(navLinks) {
   const hamburguerBtn = document.createElement('button');
   hamburguerBtn.type = 'button';
   hamburguerBtn.classList.add('hamburguer-menu');
-  hamburguerBtn.innerHTML = `
-    <span></span>
-    <span id="user-profile-img"></span>
-  `;
+
+  const userImg = getUserData()?.customer.image;
+
+  const hamburguerIcon = document.createElement('span');
+  hamburguerBtn.appendChild(hamburguerIcon);
+
+  const userProfileImg = document.createElement('span');
+  userProfileImg.id = 'user-profile-img';
+  if (userImg)
+    userProfileImg.style.backgroundImage = `url(http://localhost:3000/api/v1/${userImg})`;
+  hamburguerBtn.appendChild(userProfileImg);
 
   hamburguerBtn.addEventListener('click', (e) => {
     const isClickInsideButton =

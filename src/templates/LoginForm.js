@@ -73,6 +73,6 @@ async function loginProcess(API, data) {
   const response = await login(API, data);
 
   if (response) {
-    saveLogin(response);
+    saveLogin(response, 'welcome');
   }
 }
