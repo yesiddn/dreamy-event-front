@@ -7,6 +7,7 @@ import Login from '../pages/Login.js';
 import NewEventForm from '../templates/new-event-form.js';
 import SignUpSupplierForm from '../templates/sign-up-supplier-form.js';
 import Signup from '../pages/Signup.js';
+import MyEvents from '../pages/MyEvents.js';
 
 const routes = [
   { path: '/', component: Home },
@@ -18,6 +19,7 @@ const routes = [
   { path: '/new-event', component: NewEventForm },
   { path: '/sign-up', component: Signup },
   { path: '/sign-up-supplier', component: SignUpSupplierForm },
+  { path: '/my-events', component:MyEvents }
 ];
 
 export default function router(API) {
