@@ -64,6 +64,10 @@ const alerts = {
     message: 'Evento creado correctamente.',
     color: '#ADFFC7',
   },
+  'event-error': {
+    message: 'Error al crear el evento. Inténtalo de nuevo.',
+    color: '#F02D3A',
+  },
   'service added to event': {
     message: 'Servicio agregado al evento.',
     color: '#ADFFC7',

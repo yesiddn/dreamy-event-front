@@ -1,17 +1,6 @@
-
-export default async function NewEventForm(API) {
-const formSection = document.createElement('section');
-formSection.classList.add('form-section');
-
-const formContainer = document.createElement('div');
-formContainer.classList.add('form__container');
-
-const h2 = document.createElement('h2');
-h2.innerHTML = 'Crear <span class="primary">Evento</span>';
-
-const square = document.createElement('div');
-square.classList.add('square');
-
+import '../styles/new-event-form.css'
+import '../styles/form-section.css'
+export default function NewEventForm(API) {
 const form = document.createElement('form');
 form.classList.add('form');
 form.setAttribute('id', 'form');
@@ -71,11 +60,5 @@ submitButton.innerHTML = 'Crear';
 
 form.appendChild(submitButton);
 
-formContainer.appendChild(h2);
-formContainer.appendChild(square);
-formContainer.appendChild(form);
-
-formSection.appendChild(formContainer);
-
-document.body.appendChild(formSection);
+return form;
 }

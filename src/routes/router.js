@@ -4,10 +4,11 @@ import CreateServiceSection from '../pages/CreateService.js';
 import editServiceForm from '../templates/EditServices.js';
 import CreateUser from '../pages/CreateUser.js';
 import Login from '../pages/Login.js';
-import NewEventForm from '../templates/new-event-form.js';
 import SignUpSupplierForm from '../templates/sign-up-supplier-form.js';
 import Signup from '../pages/Signup.js';
 import MyEvents from '../pages/MyEvents.js';
+import CreateEvent from '../pages/CreateEvent.js'; 
+import NewEventForm from '../templates/new-event-form.js';
 
 const routes = [
   { path: '/', component: Home },
@@ -16,10 +17,10 @@ const routes = [
   { path: '/create-service', component: CreateServiceSection },
   { path: '/edit-service', component: editServiceForm },
   { path: '/create-user', component: CreateUser },
-  { path: '/new-event', component: NewEventForm },
   { path: '/sign-up', component: Signup },
   { path: '/sign-up-supplier', component: SignUpSupplierForm },
-  { path: '/my-events', component:MyEvents }
+  { path: '/my-events', component:MyEvents },
+  { path: '/new-event', component: NewEventForm },
 ];
 
 export default function router(API) {
