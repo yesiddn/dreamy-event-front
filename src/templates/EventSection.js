@@ -1,6 +1,7 @@
 import showEvents from './Events.js';
 import '../styles/my-events.css';
 import getEvents from '../utils/get-event.js';
+import deleteEvents from '../utils/delete-event.js';
 
 export default async function EventSection(API){
     const listEventContainer = document.createElement('section');
@@ -34,7 +35,22 @@ export default async function EventSection(API){
    events.forEach(eventDetail => {
     const eventCard = showEvents(eventDetail);
     showMyEvents.appendChild(eventCard);
-});
+
+    const eventDelete = eventCard.querySelector('.event__options__delete');
+    eventDelete.addEventListener('click', async (e) =>{
+        e.preventDefault();
+
+        const eventId = eventDetail.eventId;
+        const response = await deleteEvents(API, eventId);
+        if (response) {
+            console.log('Evento eliminado');
+            eventCard.remove();
+        }else {
+            console.log('Error al eliminar el evento');
+        }
+    })
+    });
+
 
 document.body.appendChild(listEventContainer);
 }
