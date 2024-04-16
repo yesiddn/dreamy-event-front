@@ -19,6 +19,14 @@ const alerts = {
     message: 'Usuario o contraseña incorrecto.',
     color: '#F02D3A',
   },
+  'page-not-found': {
+    message: 'Página no encontrada.',
+    color: '#F02D3A',
+  },
+  'unauthorized-access': {
+    message: 'Acceso no autorizado.',
+    color: '#F02D3A',
+  },
   'something-went-wrong': {
     message: 'Algo salió mal. Inténtalo de nuevo.',
     color: '#F02D3A',
