@@ -8,7 +8,6 @@ import SignUpSupplierForm from '../templates/sign-up-supplier-form.js';
 import Signup from '../pages/Signup.js';
 import MyEvents from '../pages/MyEvents.js';
 import CreateEvent from '../pages/CreateEvent.js'; 
-import NewEventForm from '../templates/new-event-form.js';
 
 const routes = [
   { path: '/', component: Home },
@@ -20,7 +19,7 @@ const routes = [
   { path: '/sign-up', component: Signup },
   { path: '/sign-up-supplier', component: SignUpSupplierForm },
   { path: '/my-events', component:MyEvents },
-  { path: '/new-event', component: NewEventForm },
+  { path: '/new-event', component: CreateEvent },
 ];
 
 export default function router(API) {
