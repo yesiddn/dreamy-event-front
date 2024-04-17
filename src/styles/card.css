@@ -1,0 +1,203 @@
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px var(--primary);
+  background-color: transparent;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.card button {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.icon-ellipsis {
+  position: absolute;
+  display: inline-block;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  background: url('../svg/elipsis.svg') no-repeat center/cover;
+}
+
+.icon-ellipsis--bg-white {
+  background-color: var(--white);
+  border-radius: 50%;
+}
+
+.icon-heart {
+  background-color: transparent;
+  background-image:url('../svg/heart.svg');
+}
+
+.icon-heart:hover {
+  background-image:url('../svg/heart-fill.svg');
+}
+
+
+.card .favorite--active {
+  background-image: url('../svg/heart-fill.svg');
+}
+
+.card img {
+  width: 100%;
+  height: 12rem;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+}
+
+.card__content {
+  padding: 1rem;
+}
+
+
+.card__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.card__title h2 {
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1.2rem;
+}
+
+.card__title span {
+  margin-top: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.card__content p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1rem;
+}
+
+.card__content p:last-child {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--primary);
+}
+
+.price__card {
+  color: var(--primary);
+}
+
+.ubication__card {
+  color: var(--secondary);
+}
+
+.card i {
+  color: var(--primary);
+  float: right;
+}
+
+.card p.price {
+  color: #333;
+  font-size: 24px;
+}
+
+
+/* minidrop down menu to edit 'supplier services' */
+
+.event__options,
+.service__options {
+  position: absolute;
+  /* display: flex; */
+  top: 0.5rem;
+  right: 3rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white);
+  box-shadow: 0 5px 15px var(--primary);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.event__options__edit,
+.event__options__delete,
+.service__options__edit,
+.service__options__delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  text-decoration: none;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.card .service__options__delete,
+.card .service__options__delete:hover {
+  position: static;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  background-image: none;
+  z-index: inherit;
+}
+
+.event__options__edit:hover,
+.event__options__delete:hover,
+.service__options__edit:hover,
+.service__options__delete:hover {
+  background-color: rgba(118, 112, 230, 0.4);
+}
+
+.event__options__edit span,
+.event__options__delete span,
+.service__options__edit span,
+.service__options__delete span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.event__options__edit span,
+.service__options__edit span {
+  background: url('../../public/svg/pencil.svg') no-repeat center/cover;
+}
+
+.event__options__delete span,
+.service__options__delete span {
+  background: url('../../public/svg/trash.svg') no-repeat center/cover;
+}
+
+.icon-ellipsis {
+  position: absolute;
+  display: inline-block;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  background: url('../../public/svg/elipsis.svg') no-repeat center/cover;
+}
+
+.icon-ellipsis--bg-white {
+  background-color: var(--white);
+  border-radius: 50%;
+}
