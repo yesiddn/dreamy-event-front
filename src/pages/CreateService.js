@@ -1,8 +1,8 @@
 import CreateServiceSection from '../templates/CreateServiceSection.js';
 import Header from '../templates/Header.js';
 
-const CreateService = (API) => {
-  Header();
+const CreateService = (API, USER) => {
+  Header(USER);
   CreateServiceSection(API);
 };
 

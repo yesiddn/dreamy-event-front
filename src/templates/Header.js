@@ -1,12 +1,31 @@
 import '../styles/header.css';
 import getUserData from '../utils/get-user-data';
 
-export default function Header() {
+const links = [
+  { href: 'profile', text: 'Mi perfil', typeUser: 'customer' },
+  { href: 'my-events', text: 'Mis eventos', typeUser: 'customer' },
+  { href: 'my-favorites', text: 'Mis favoritos', typeUser: 'customer' },
+  {
+    href: 'sign-up-supplier',
+    text: 'Registrar mi comercio',
+    typeUser: '!supplier',
+  },
+  {
+    href: 'my-services',
+    text: 'Mis servicios',
+    typeUser: 'supplier',
+  },
+  { href: 'log-in', text: 'Iniciar sesión', typeUser: 'public' },
+  { href: 'sign-up', text: 'Registrarse', typeUser: 'public' },
+  { href: 'log-out', text: 'Cerrar sesión', typeUser: 'customer' },
+];
+
+export default function Header(USER) {
   const header = document.createElement('header');
   const headerDiv = document.createElement('div');
   const logo = Logo();
   const searchBar = SearchBar();
-  const navBar = NavBar();
+  const navBar = NavBar(USER);
 
   headerDiv.appendChild(logo);
   headerDiv.innerHTML += searchBar;
@@ -37,11 +56,11 @@ function SearchBar() {
   return form;
 }
 
-function NavBar() {
+function NavBar(USER) {
   const navBar = document.createElement('nav');
   navBar.classList.add('nav-bar');
 
-  const navLinks = NavLinks();
+  const navLinks = NavLinks(USER);
   const hamburgerBtn = HamburguerBtn(navLinks);
   navBar.appendChild(hamburgerBtn);
   navBar.appendChild(navLinks);
@@ -78,39 +97,37 @@ function HamburguerBtn(navLinks) {
   return hamburguerBtn;
 }
 
-function NavLinks() {
-  const links = [
-    { href: 'profile', text: 'Mi perfil', typeUser: 'user-veryfied' },
-    { href: 'my-events', text: 'Mis eventos', typeUser: 'user-veryfied' },
-    { href: 'my-favorites', text: 'Mis favoritos', typeUser: 'user-verified' },
-    {
-      href: 'sign-up-supplier',
-      text: 'Registrar mi comercio',
-      typeUser: 'user-verfied',
-    },
-    {
-      href: 'my-services',
-      text: 'Mis servicios',
-      typeUser: 'supplier-veryfied',
-    },
-    { href: 'log-in', text: 'Iniciar sesión', typeUser: 'anonymous' },
-    { href: 'sign-up', text: 'Registrarse', typeUser: 'anonymous' },
-    { href: 'log-out', text: 'Cerrar sesión', typeUser: 'user-veryfied' },
-  ];
-
+function NavLinks(USER) {
   const navLinks = document.createElement('ul');
   navLinks.classList.add('nav-bar');
   navLinks.classList.add('inactive');
 
   links.forEach((link) => {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = link.href;
-    a.textContent = link.text;
-
-    li.appendChild(a);
-    navLinks.appendChild(li);
+    if (!USER && link.typeUser === 'public') {
+      const li = Link(link);
+      navLinks.appendChild(li);
+    } else if (USER && link.typeUser === 'customer') {
+      const li = Link(link);
+      navLinks.appendChild(li);
+    } else if (USER && !USER.supplier && link.typeUser === '!supplier') {
+      const li = Link(link);
+      navLinks.appendChild(li);
+    } else if (USER && USER.supplier && link.typeUser === 'supplier') {
+      const li = Link(link);
+      navLinks.appendChild(li);
+    }
   });
 
   return navLinks;
+}
+
+function Link(link) {
+  const li = document.createElement('li');
+  const a = document.createElement('a');
+  a.href = link.href;
+  a.textContent = link.text;
+
+  li.appendChild(a);
+
+  return li;
 }
