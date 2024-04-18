@@ -28,7 +28,6 @@ export default function router(API, USER) {
   const route = routes.find((route) => route.path === path);
 
   if (!route) {
-    // Alert('page-not-found', '/');
     Error404();
     return;
   }
