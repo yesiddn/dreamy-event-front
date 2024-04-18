@@ -6,8 +6,8 @@ import FilterBar from '../templates/filter-bar.js';
 const Home = (API) => {
   Header();
   Hero();
-  FilterBar();
   RecommendedServices(API);
+  FilterBar();
 };
 
 export default Home;

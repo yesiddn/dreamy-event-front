@@ -38,5 +38,5 @@ export default async function FilterBar() {
     });
 
     section.appendChild(ul);
-    body.appendChild(section);
+    document.querySelector('#app').appendChild(section);
 };
