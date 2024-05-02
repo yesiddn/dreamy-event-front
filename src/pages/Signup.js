@@ -1,8 +1,8 @@
 import Header from "../templates/Header.js"
 import SignUpSection from "../templates/SignUpSection.js";
 
-const Signup = (API) => {
-  Header();
+const Signup = (API, USER) => {
+  Header(USER);
   SignUpSection(API);
 };
 

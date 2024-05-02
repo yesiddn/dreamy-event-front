@@ -6,8 +6,9 @@ import Login from '../pages/Login.js';
 import SignUpSupplierForm from '../templates/sign-up-supplier-form.js';
 import Signup from '../pages/Signup.js';
 import MyEvents from '../pages/MyEvents.js';
-import CreateEvent from '../pages/CreateEvent.js';
+import CreateEvent from '../pages/CreateEvent.js'; 
 import Alert from '../templates/Alert.js';
+import Error404 from '../templates/error-404.js';
 import EditEvents from '../pages/EditEvent.js';
 
 const routes = [
@@ -41,12 +42,12 @@ export default function router(API, USER) {
   const route = routes.find((route) => route.path === path);
 
   if (!route) {
-    Alert('page-not-found', '/');
+    Error404();
     return;
   }
 
   if (route.typeUser === 'public' || (USER && USER[route.typeUser])) {
-    route.component(API);
+    route.component(API, USER);
   } else {
     Alert('unauthorized-access', '/');
   }
