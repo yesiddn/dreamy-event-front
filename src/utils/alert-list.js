@@ -76,6 +76,14 @@ const alerts = {
     message: 'Error al crear el evento. Inténtalo de nuevo.',
     color: '#F02D3A',
   },
+  'event-edit-successfully': {
+    message: 'Evento editado',
+    color: '#ADFFC7',
+  },
+  'editEvent-error': {
+    message: 'Error al editar el evento. Inténtalo de nuevo',
+    color: '#F02D3A',
+  },
   'service added to event': {
     message: 'Servicio agregado al evento.',
     color: '#ADFFC7',
