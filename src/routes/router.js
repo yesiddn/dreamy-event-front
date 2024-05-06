@@ -6,34 +6,25 @@ import Login from '../pages/Login.js';
 import SignUpSupplierForm from '../templates/sign-up-supplier-form.js';
 import Signup from '../pages/Signup.js';
 import MyEvents from '../pages/MyEvents.js';
-import CreateEvent from '../pages/CreateEvent.js'; 
+import CreateEvent from '../pages/CreateEvent.js';
 import Alert from '../templates/Alert.js';
 import Error404 from '../templates/error-404.js';
 import EditEvents from '../pages/EditEvent.js';
+import UserProfile from '../pages/UserProfile.js';
 
 const routes = [
   { path: '', component: Home, typeUser: 'public' },
   { path: 'log-in', component: Login, typeUser: 'public' },
   { path: 'sign-up', component: Signup, typeUser: 'public' },
-  {
-    path: 'sign-up-supplier',
-    component: SignUpSupplierForm,
-    typeUser: 'customer',
-  },
+  { path: 'sign-up-supplier', component: SignUpSupplierForm, typeUser: 'customer', },
   { path: 'my-services', component: MyServices, typeUser: 'supplier' },
-  {
-    path: 'create-service',
-    component: CreateServiceSection,
-    typeUser: 'supplier',
-  },
-  {
-    path: 'edit-service',
-    component: editServiceForm,
-    typeUser: 'supplier',
-  },
+  { path: 'create-service', component: CreateServiceSection, typeUser: 'supplier', },
+  { path: 'edit-service', component: editServiceForm, typeUser: 'supplier', },
   { path: 'my-events', component: MyEvents, typeUser: 'customer' },
   { path: 'new-event', component: CreateEvent, typeUser: 'customer' },
-  { path: 'edit-event', component: EditEvents, typeUser: 'customer'}
+  { path: 'edit-event', component: EditEvents, typeUser: 'customer' },
+  { path: 'profile', component: UserProfile, typeUser: 'customer' }
+
 ];
 
 export default function router(API, USER) {
