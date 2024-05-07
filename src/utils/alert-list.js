@@ -7,12 +7,20 @@ const alerts = {
     message: 'El usuario ya existe.',
     color: '#ADBDFF',
   },
+  'user-not-found': {
+    message: 'Usuario no encontrado.',
+    color: '#F02D3A',
+  },
   'user-not-exists': {
     message: 'El usuario no existe.',
     color: '#F02D3A',
   },
   'user-created': {
     message: 'Usuario creado correctamente.',
+    color: '#ADFFC7',
+  },
+  'supplier-created': {
+    message: 'Proveedor creado correctamente.',
     color: '#ADFFC7',
   },
   'login-error': {

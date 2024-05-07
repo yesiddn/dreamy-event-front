@@ -3,13 +3,13 @@ import MyServices from '../pages/MyServices.js';
 import CreateServiceSection from '../pages/CreateService.js';
 import editServiceForm from '../templates/EditServices.js';
 import Login from '../pages/Login.js';
-import SignUpSupplierForm from '../templates/sign-up-supplier-form.js';
 import Signup from '../pages/Signup.js';
 import MyEvents from '../pages/MyEvents.js';
 import CreateEvent from '../pages/CreateEvent.js'; 
 import Alert from '../templates/Alert.js';
 import Error404 from '../templates/error-404.js';
 import EditEvents from '../pages/EditEvent.js';
+import SignUpSupplier from '../pages/SignUpSupplier.js';
 
 const routes = [
   { path: '', component: Home, typeUser: 'public' },
@@ -17,7 +17,7 @@ const routes = [
   { path: 'sign-up', component: Signup, typeUser: 'public' },
   {
     path: 'sign-up-supplier',
-    component: SignUpSupplierForm,
+    component: SignUpSupplier,
     typeUser: 'customer',
   },
   { path: 'my-services', component: MyServices, typeUser: 'supplier' },
