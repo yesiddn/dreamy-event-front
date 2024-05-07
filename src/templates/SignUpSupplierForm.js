@@ -2,8 +2,8 @@ import validateInputData from '../utils/validate-input-data';
 import '../styles/form.css';
 import validateForm from '../utils/validate-form';
 import saveFile from '../utils/save-file';
-import saveUser from '../utils/save-user';
 import saveLogin from '../utils/save-login';
+import saveSupplier from '../utils/save-supplier';
 
 const inputs = [
   {
@@ -140,20 +140,28 @@ function validateProcess(input, inputElement, spanError, button) {
 }
 
 async function handleRegistration(API, inputs) {
-  const data = {
-    customer: {},
-  };
+  const data = JSON.parse(localStorage.getItem('user'));
+  data.supplier = {};
 
   for (let input of inputs) {
     const inputValue = document.getElementById(input.id).value;
 
-    // TODO
+    if (input.type === 'file') {
+      const file = document.getElementById(input.id).files[0];
+      const image = await saveImage(API, file);
+
+      if (!image) return;
+
+      data.supplier[input.name] = image.location;
+    } else {
+      data.supplier[input.name] = inputValue;
+    }
   }
 
-  const response = await saveUser(API, JSON.stringify(data));
+  const response = await saveSupplier(API, JSON.stringify(data));
 
   if (response) {
-    saveLogin(response, 'user-created');
+    saveLogin(response, 'supplier-created');
   }
 }
 
