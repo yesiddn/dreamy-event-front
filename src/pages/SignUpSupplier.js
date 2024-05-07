@@ -3,7 +3,7 @@ import SignUpSupplierSection from "../templates/SignUpSupplierSection.js";
 
 const SignUpSupplier = (API, USER) => {
   Header(USER);
-  SignUpSupplierSection(API);
+  SignUpSupplierSection(API, USER);
 };
 
 export default SignUpSupplier;
