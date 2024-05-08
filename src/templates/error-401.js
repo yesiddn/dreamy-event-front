@@ -1,6 +1,6 @@
 import '../styles/error-page.css';
 import Header from './Header';
-export default async function Error404()  {
+export default async function Error401() {
     Header();
     var errorContainer = document.createElement("section");
     errorContainer.className = "error-page-container";
@@ -10,11 +10,11 @@ export default async function Error404()  {
     header.classList.add('error-header');
 
     var title = document.createElement("h2");
-    title.textContent = "Error 404";
+    title.textContent = "Error 401";
     header.appendChild(title);
     var image = document.createElement("img");
-    image.src = "../public/svg/404.svg";
-    image.alt = "Error 404";
+    image.src = "../public/svg/401.svg";
+    image.alt = "Error 401";
     header.appendChild(image);
     errorContainer.appendChild(header);
 
@@ -25,7 +25,7 @@ export default async function Error404()  {
     subtitle.textContent = "Vaya, tenemos un problema";
     content.appendChild(subtitle);
     var paragraph = document.createElement("p");
-    paragraph.textContent = "Parece que no encontramos lo que buscas. ¿Te importa si volvemos a la página de inicio?";
+    paragraph.textContent = "Lo siento, no estás autorizado para acceder a esta página. Por favor, asegúrate de tener las credenciales adecuadas e inténtalo de nuevo. Si crees que esto es un error, ponte en contacto con el administrador del sitio.";
     content.appendChild(paragraph);
     var link = document.createElement("a");
     link.href = "/";

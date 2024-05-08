@@ -8,6 +8,7 @@ import MyEvents from '../pages/MyEvents.js';
 import CreateEvent from '../pages/CreateEvent.js'; 
 import Alert from '../templates/Alert.js';
 import Error404 from '../templates/error-404.js';
+import Error401 from '../templates/error-401.js';
 import EditEvents from '../pages/EditEvent.js';
 import SignUpSupplier from '../pages/SignUpSupplier.js';
 
@@ -49,6 +50,6 @@ export default function router(API, USER) {
   if (route.typeUser === 'public' || (USER && USER[route.typeUser])) {
     route.component(API, USER);
   } else {
-    Alert('unauthorized-access', '/');
+    Error401();
   }
 }
