@@ -3,6 +3,14 @@ const alerts = {
     message: 'Bienvenido a la plataforma.',
     color: '#ADFFC7',
   },
+  'login-error': {
+    message: 'Usuario o contraseña incorrecto.',
+    color: '#F02D3A',
+  },
+  'log-out': {
+    message: 'Te esperamos pronto.',
+    color: '#ADFFC7',
+  },
   'user-exists': {
     message: 'El usuario ya existe.',
     color: '#ADBDFF',
@@ -22,10 +30,6 @@ const alerts = {
   'supplier-created': {
     message: 'Proveedor creado correctamente.',
     color: '#ADFFC7',
-  },
-  'login-error': {
-    message: 'Usuario o contraseña incorrecto.',
-    color: '#F02D3A',
   },
   'page-not-found': {
     message: 'Página no encontrada.',
