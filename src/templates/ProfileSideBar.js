@@ -3,8 +3,8 @@ import '../styles/profile-side-bar.css'
 function ProfileSideBar() {
 
     const linkList = {
-        perfil: ['../public/svg/info.svg', 'test'],
-        contraseña: ['../public/svg/password.svg', 'test'],
+        perfil: ['../public/svg/info.svg', 'href'],
+        contraseña: ['../public/svg/password.svg', 'href'],
     };
 
     const container = document.createElement('div');
@@ -37,9 +37,7 @@ function ProfileSideBar() {
         }
     }
 
-
     document.body.appendChild(container);
-
 
 };
 
