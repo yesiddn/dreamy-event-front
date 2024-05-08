@@ -1,6 +1,6 @@
 import '../styles/profile-overview.css'
 
-function profileOverview(USER) {
+function profileOverview(USER,API) {
     const container = document.createElement('div');
     container.classList.add('user-profile');
 
@@ -9,7 +9,7 @@ function profileOverview(USER) {
     userPicLabel.classList.add('user-profile-label')
 
     const userImg = document.createElement('img');
-    userImg.src = 'http://localhost:5173/'+ USER.customer.image;
+    userImg.src = API+'/'+USER.customer.image;
 
     const userFirstName = document.createElement('h1');
     userFirstName.textContent = USER.customer.name;
@@ -19,9 +19,6 @@ function profileOverview(USER) {
     userEmailAddress.textContent = USER.email;
     userEmailAddress.classList.add('user-email');
 
-
-
-    console.log(USER);
     userPicLabel.appendChild(userImg);
     container.appendChild(userPicLabel);
     container.appendChild(userFirstName);
