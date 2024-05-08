@@ -11,7 +11,7 @@ export default async function Footer() {
     leftDiv.className = "footer-left";
     
     var logoImg = document.createElement("img");
-    logoImg.src = "../public/svg/dreamy 2.svg";
+    logoImg.src = "../public/svg/logo-white.svg";
     logoImg.alt = "Logo Dreamy Event";
     leftDiv.appendChild(logoImg);
     
@@ -58,7 +58,7 @@ export default async function Footer() {
         a.href = "#";
         a.className = network;
         var img = document.createElement("img");
-        img.src = "../public/svg/bxl-" + network + ".svg";
+        img.src = "../public/svg/" + network + ".svg";
         img.alt = "";
         a.appendChild(img);
         socialLinks.appendChild(a);
