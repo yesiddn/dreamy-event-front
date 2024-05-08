@@ -24,6 +24,8 @@ function profileOverview(USER,API) {
     container.appendChild(userFirstName);
     container.appendChild(userEmailAddress);
     document.body.appendChild(container);
+
+    console.log(API+'/'+USER.customer.image)
   }
   
   export default profileOverview;
