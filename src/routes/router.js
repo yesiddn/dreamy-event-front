@@ -1,16 +1,15 @@
 import Home from '../pages/Home.js';
 import MyServices from '../pages/MyServices.js';
 import CreateServiceSection from '../pages/CreateService.js';
-import editServiceForm from '../templates/EditServices.js';
 import Login from '../pages/Login.js';
 import Signup from '../pages/Signup.js';
 import MyEvents from '../pages/MyEvents.js';
-import CreateEvent from '../pages/CreateEvent.js'; 
-import Alert from '../templates/Alert.js';
+import CreateEvent from '../pages/CreateEvent.js';
 import Error404 from '../templates/error-404.js';
 import Error401 from '../templates/error-401.js';
 import EditEvents from '../pages/EditEvent.js';
 import SignUpSupplier from '../pages/SignUpSupplier.js';
+import EditServiceSection from '../templates/EditServiceSection.js';
 
 const routes = [
   { path: '', component: Home, typeUser: 'public' },
@@ -29,7 +28,7 @@ const routes = [
   },
   {
     path: 'edit-service',
-    component: editServiceForm,
+    component: EditServiceSection,
     typeUser: 'supplier',
   },
   { path: 'my-events', component: MyEvents, typeUser: 'customer' },

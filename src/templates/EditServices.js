@@ -1,126 +1,174 @@
-// import '../styles/edit-service.css';
-export default async function editServiceForm(API) {
-    const formSection = document.createElement('section');
-    formSection.classList.add('form-section');
+import '../styles/form.css';
 
-    const formContainer = document.createElement('div');
-    formContainer.classList.add('form__container');
+export default function EditServiceForm() {
+  const form = document.createElement('form');
+  form.classList.add('form');
+  form.id = 'new-Service-Form';
 
-    const formTitle = document.createElement('h2');
-    formTitle.textContent = 'Editar ';
-    const primarySpan = document.createElement('span');
-    primarySpan.classList.add('primary');
-    primarySpan.textContent = 'servicio';
-    formTitle.appendChild(primarySpan);
-    formContainer.appendChild(formTitle);
+  const labelName = document.createElement('label');
+  labelName.htmlFor = 'name-service';
+  labelName.classList.add('form__input');
+  labelName.textContent = 'Nombre Servicio:';
+  form.appendChild(labelName);
 
-    const squareDiv = document.createElement('div');
-    squareDiv.classList.add('square');
-    formContainer.appendChild(squareDiv);
+  const inputName = document.createElement('input');
+  inputName.id = 'name-service';
+  inputName.type = 'text';
+  inputName.name = 'name-service';
+  inputName.placeholder = 'Nombre Servicio';
+  inputName.addEventListener('keyup', function () {
+    validateInputData('name-service');
+  });
+  labelName.appendChild(inputName);
 
-    const form = document.createElement('form');
-    form.classList.add('form');
-    form.id = 'form';
-    form.method = 'post';
+  const alertName = document.createElement('span');
+  alertName.classList.add('inactive');
+  alert.textContent = 'Ingrese un valor válido.';
+  labelName.appendChild(alertName);
 
-    const formElements = [
-        { labelFor: 'name-service', labelText: 'Nombre Servicio:', inputType: 'text', inputName: 'name-service', placeholder: 'Nombre Servicio', onkeyup: "validateInputData('name-service')" },
-        { labelFor: 'description-service', labelText: 'Descripción:', inputType: 'textarea', inputName: 'description-service', cols: '3', rows: '5' },
-        { labelFor: 'price-service', labelText: 'Precio:', inputType: 'number', inputName: 'price-service', placeholder: 'Precio', onkeyup: "validateInputData('price-service')" },
-        { labelFor: 'location-service', labelText: 'Ubicación:', inputType: 'text', inputName: 'location-service', placeholder: 'Ubicación', onkeyup: "validateInputData('location-service')" },
-        { labelFor: 'city-service', labelText: 'Ciudad:', inputType: 'text', inputName: 'city-service', placeholder: 'Ciudad', onkeyup: "validateInputData('city-service')" },
-        { labelFor: 'country-service', labelText: 'País:', inputType: 'text', inputName: 'country-service', placeholder: 'País', onkeyup: "validateInputData('country-service')" },
-        { labelFor: 'peopleAmount-service', labelText: 'Cantidad de personas:', inputType: 'number', inputName: 'peopleAmount-service', placeholder: 'Cantidad de personas', onkeyup: "validateInputData('peopleAmount-service')" },
-        { labelFor: 'characteristics-service', labelText: 'Características:', inputType: 'textarea', inputName: 'characteristics-service', cols: '3', rows: '5', onkeyup: "validateInputData('characteristics-service')" },
-        { labelFor: 'pictures-service-files', labelText: 'Sube una o varias imagenes:', inputType: 'file', inputName: 'pictures-service-files', multiple: 'multiple' },
-        { labelFor: 'type-service', labelText: 'Tipo de servicio:', inputType: 'select', inputName: 'type-service', onchange: "validateInputData('type-service')" }
-    ];
+  const labelDescription = document.createElement('label');
+  labelDescription.htmlFor = 'description-service';
+  labelDescription.classList.add('form__input');
+  labelDescription.textContent = 'Descripción:';
+  form.appendChild(labelDescription);
 
-    formElements.forEach(element => {
-        const label = document.createElement('label');
-        label.htmlFor = element.labelFor;
-        label.classList.add('form__input');
-        label.textContent = element.labelText;
+  const textareaDescription = document.createElement('textarea');
+  textareaDescription.classList.add('txtArea');
+  textareaDescription.id = 'description-service';
+  textareaDescription.name = 'description-service';
+  textareaDescription.cols = '3';
+  textareaDescription.rows = '5';
+  labelDescription.appendChild(textareaDescription);
 
-        if (element.inputType === 'select') {
-            const select = document.createElement('select');
-            select.name = element.inputName;
-            select.id = element.labelFor;
-            select.onchange = () => eval(element.onchange);
+  const alertDescription = document.createElement('span');
+  alertDescription.classList.add('inactive');
+  alertDescription.textContent = 'Ingrese un valor válido.';
+  labelDescription.appendChild(alertDescription);
 
-            const option = document.createElement('option');
-            option.value = '';
-            option.textContent = 'Seleccione un tipo de servicio';
-            option.hidden = true;
-            select.appendChild(option);
+  const labelPrice = document.createElement('label');
+  labelPrice.htmlFor = 'price-service';
+  labelPrice.classList.add('form__input');
+  labelPrice.textContent = 'Precio:';
+  form.appendChild(labelPrice);
 
-            for (let i = 1; i <= 8; i++) {
-                const option = document.createElement('option');
-                option.value = i;
-                option.textContent = getServiceTypeName(i);
-                select.appendChild(option);
-            }
+  const inputPrice = document.createElement('input');
+  inputPrice.id = 'price-service';
+  inputPrice.type = 'number';
+  inputPrice.name = 'price-service';
+  inputPrice.placeholder = 'Precio';
+  labelPrice.appendChild(inputPrice);
 
-            label.appendChild(select);
-        } else {
-            const input = document.createElement('input');
-            input.type = element.inputType;
-            input.name = element.inputName;
-            input.placeholder = element.placeholder;
-            if (element.inputType === 'textarea') {
-                input.cols = element.cols;
-                input.rows = element.rows;
-            }
-            if (element.onkeyup) {
-                input.onkeyup = () => eval(element.onkeyup);
-            }
-            if (element.multiple) {
-                input.multiple = true;
-            }
+  const labelLocation = document.createElement('label');
+  labelLocation.htmlFor = 'location-service';
+  labelLocation.classList.add('form__input');
+  labelLocation.textContent = 'Ubicación:';
+  form.appendChild(labelLocation);
 
-            label.appendChild(input);
-        }
+  const inputLocation = document.createElement('input');
+  inputLocation.id = 'location-service';
+  inputLocation.type = 'text';
+  inputLocation.name = 'location-service';
+  inputLocation.placeholder = 'Ubicación';
+  labelLocation.appendChild(inputLocation);
 
-        const errorMessage = document.createElement('span');
-        errorMessage.classList.add('inactive');
-        errorMessage.textContent = 'Ingrese un valor válido.';
-        label.appendChild(errorMessage);
+  const labelCity = document.createElement('label');
+  labelCity.htmlFor = 'city-service';
+  labelCity.classList.add('form__input');
+  labelCity.textContent = 'Ciudad:';
+  form.appendChild(labelCity);
 
-        form.appendChild(label);
-    });
+  const inputCity = document.createElement('input');
+  inputCity.id = 'city-service';
+  inputCity.type = 'text';
+  inputCity.name = 'city-service';
+  inputCity.placeholder = 'Ciudad';
+  labelCity.appendChild(inputCity);
 
-    const submitButton = document.createElement('button');
-    submitButton.type = 'submit';
-    submitButton.id = 'service-form-button';
-    submitButton.textContent = 'Editar';
+  const labelCountry = document.createElement('label');
+  labelCountry.htmlFor = 'country-service';
+  labelCountry.classList.add('form__input');
+  labelCountry.textContent = 'País:';
+  form.appendChild(labelCountry);
 
-    form.appendChild(submitButton);
+  const inputCountry = document.createElement('input');
+  inputCountry.id = 'country-service';
+  inputCountry.type = 'text';
+  inputCountry.name = 'country-service';
+  inputCountry.placeholder = 'País';
+  labelCountry.appendChild(inputCountry);
 
-    formContainer.appendChild(form);
-    formSection.appendChild(formContainer);
+  const labelPeopleAmount = document.createElement('label');
+  labelPeopleAmount.htmlFor = 'peopleAmount-service';
+  labelPeopleAmount.classList.add('form__input');
+  labelPeopleAmount.textContent = 'Aforo:';
+  form.appendChild(labelPeopleAmount);
 
-    document.querySelector('#app').appendChild(formSection);
-}
+  const inputPeopleAmount = document.createElement('input');
+  inputPeopleAmount.id = 'peopleAmount-service';
+  inputPeopleAmount.type = 'number';
+  inputPeopleAmount.name = 'peopleAmount-service';
+  inputPeopleAmount.placeholder = 'Aforo';
+  labelPeopleAmount.appendChild(inputPeopleAmount);
 
-function getServiceTypeName(id) {
-    switch (id) {
-        case 1:
-            return 'Alojamiento';
-        case 2:
-            return 'Decoración';
-        case 3:
-            return 'Música';
-        case 4:
-            return 'Catering';
-        case 5:
-            return 'Comida';
-        case 6:
-            return 'Logística';
-        case 7:
-            return 'Audiovisual';
-        case 8:
-            return 'Marketing';
-        default:
-            return '';
-    }
+  const labelCharacteristics = document.createElement('label');
+  labelCharacteristics.htmlFor = 'characterisitcs-service';
+  labelCharacteristics.classList.add('form__input');
+  labelCharacteristics.textContent = 'Características:';
+  form.appendChild(labelCharacteristics);
+
+  const textareaCharacteristics = document.createElement('textarea');
+  textareaCharacteristics.classList.add('txtArea');
+  textareaCharacteristics.id = 'characterisitcs-service';
+  textareaCharacteristics.name = 'characterisitcs-service';
+  textareaCharacteristics.cols = '3';
+  textareaCharacteristics.rows = '5';
+  labelCharacteristics.appendChild(textareaCharacteristics);
+
+  const labelFiles = document.createElement('label');
+  labelFiles.htmlFor = 'pictures-service';
+  labelFiles.classList.add('form__input');
+  labelFiles.textContent = 'Sube una o varias imagenes:';
+  form.appendChild(labelFiles);
+
+  const inputFiles = document.createElement('input');
+  inputFiles.id = 'file-service';
+  inputFiles.type = 'file';
+  inputFiles.setAttribute('multiple', true);
+  labelFiles.appendChild(inputFiles);
+
+  const labelTypeService = document.createElement('label');
+  labelTypeService.htmlFor = 'type-service';
+  labelTypeService.classList.add('form__input');
+  labelTypeService.textContent = 'Tipo de Servicio:';
+  form.appendChild(labelTypeService);
+
+  const selectTypeService = document.createElement('select');
+  selectTypeService.id = 'type-service';
+  selectTypeService.name = 'type-service';
+  labelTypeService.appendChild(selectTypeService);
+
+  const optionValues = [
+    { value: '1', text: 'Lugar' },
+    { value: '2', text: 'Pastelería' },
+    { value: '3', text: 'Transporte' },
+    { value: '4', text: 'Comida' },
+    { value: '5', text: 'Ambientación' },
+    { value: '6', text: 'Decoración' },
+    { value: '7', text: 'Fotografía y video' },
+  ];
+
+  optionValues.forEach((optionData) => {
+    const option = document.createElement('option');
+    option.value = optionData.value;
+    option.textContent = optionData.text;
+    selectTypeService.appendChild(option);
+  });
+
+  const buttonService = document.createElement('button');
+  buttonService.id = 'service-button';
+  buttonService.type = 'submit';
+  buttonService.textContent = 'Registrar';
+  form.appendChild(buttonService);
+
+  return form;
 }
