@@ -1,7 +1,7 @@
 import Header from '../templates/Header.js';
-import ProfileOverview from '../templates/ProfileOverview.js'
-import ProfileSideBar from '../templates/ProfileSideBar.js'
-import UserInformation from '../templates/UserInformation.js'
+import ProfileOverview from '../components/userProfile/ProfileOverview.js'
+import ProfileSideBar from '../components/userProfile/ProfileSideBar.js'
+import UserInformation from '../components/userProfile/UserInformation.js'
 import '../styles/user-profile.css'
 
 const UserProfile = (API,USER) => {

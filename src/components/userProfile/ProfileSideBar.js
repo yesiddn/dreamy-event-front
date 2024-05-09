@@ -1,4 +1,4 @@
-import '../styles/profile-side-bar.css'
+import '../../styles/profile-side-bar.css'
 
 function ProfileSideBar() {
 

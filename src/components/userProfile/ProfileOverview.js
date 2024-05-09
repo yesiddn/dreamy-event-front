@@ -1,4 +1,4 @@
-import '../styles/profile-overview.css'
+import '../../styles/profile-overview.css'
 
 function profileOverview(USER,API) {
     const container = document.createElement('div');
