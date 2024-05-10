@@ -21,7 +21,7 @@
 }
 
 .form__input input,
-select {
+.form__input select, .form__input textarea {
   margin-top: 0.5rem;
   padding: 0.5rem;
   background-color: transparent;
@@ -30,8 +30,13 @@ select {
   outline: none;
 }
 
+.form__input textarea {
+  resize: vertical;
+  min-height: 36px;
+}
+
 .form__input input:focus,
-select:focus {
+.form__input select:focus, .form__input textarea:focus {
   border: 2px solid var(--black);
 }
 
