@@ -9,7 +9,7 @@ import Error404 from '../templates/error-404.js';
 import Error401 from '../templates/error-401.js';
 import EditEvents from '../pages/EditEvent.js';
 import SignUpSupplier from '../pages/SignUpSupplier.js';
-import EditServiceSection from '../templates/EditServiceSection.js';
+import EditService from '../pages/EditService.js';
 
 const routes = [
   { path: '', component: Home, typeUser: 'public' },
@@ -28,7 +28,7 @@ const routes = [
   },
   {
     path: 'edit-service',
-    component: EditServiceSection,
+    component: EditService,
     typeUser: 'supplier',
   },
   { path: 'my-events', component: MyEvents, typeUser: 'customer' },
