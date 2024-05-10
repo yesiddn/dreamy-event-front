@@ -2,6 +2,7 @@ export default async function fetchData({
   API,
   method,
   data,
+  params,
   headers = { 'Content-Type': 'application/json' },
 }) {
   const options = {
@@ -10,6 +11,13 @@ export default async function fetchData({
     body: data ? data : null,
   };
 
+  if (params) {
+    const queryString = new URLSearchParams(params).toString();
+    if (queryString) {
+      API += `?${queryString ?? ''}`; 
+    }
+  }
+  
   try {
     const response = await fetch(API, options);
     return response;
