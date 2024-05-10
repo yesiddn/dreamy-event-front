@@ -1,9 +1,8 @@
-import validateInputData from '../utils/validate-input-data';
 import '../styles/form.css';
-import validateForm from '../utils/validate-form';
 import saveFile from '../utils/save-file';
 import saveLogin from '../utils/save-login';
 import saveSupplier from '../utils/save-supplier';
+import createForm from '../utils/create-form';
 
 const inputs = [
   {
@@ -82,74 +81,14 @@ const inputs = [
 ];
 
 export default function EditServiceForm(API) {
-  const form = document.createElement('form');
-  form.classList.add('form');
-  form.id = 'form';
-
-  const button = document.createElement('button');
-
-  inputs.forEach((input) => {
-    const label = createInput(input, button);
-    form.appendChild(label);
+  const form = createForm({
+    API,
+    inputs,
+    buttons: ['save', 'cancel'],
+    callback: handleRegistration,
   });
-
-  button.type = 'button';
-  button.id = 'form-button';
-  button.textContent = 'Registrarse';
-  button.disabled = true;
-
-  button.addEventListener('click', () => {
-    handleRegistration(API, inputs);
-  });
-
-  form.appendChild(button);
 
   return form;
-}
-
-function createInput(input, button) {
-  const label = document.createElement('label');
-  label.htmlFor = input.id;
-  label.classList.add('form__input');
-  label.textContent = `${input.label}:`;
-
-  const inputElement = input.element ? document.createElement(input.element) : document.createElement('input');
-  inputElement.id = input.id;
-  input.element ? null : inputElement.type = input.type;
-  inputElement.name = input.name;
-  inputElement.placeholder = input.placeholder;
-
-  if (input.minLength) inputElement.minLength = input.minLength;
-  if (input.id === 'rut') inputElement.min = 10000000;
-  if (input.id === 'phone') inputElement.min = 1000000000;
-  if (input.type === 'file') {
-    inputElement.accept = input.accept;
-
-    inputElement.addEventListener('change', () => {
-      validateProcess(input, inputElement, spanError, button);
-    });
-  }
-
-  const spanError = document.createElement('span');
-  spanError.classList.add('inactive');
-  spanError.textContent = input.errorMesage;
-
-  inputElement.addEventListener('keyup', () => {
-    validateProcess(input, inputElement, spanError, button);
-  });
-
-  label.appendChild(inputElement);
-  label.appendChild(spanError);
-
-  return label;
-}
-
-function validateProcess(input, inputElement, spanError, button) {
-  validateInputData(inputElement, spanError)
-    ? (input.validate = true)
-    : (input.validate = false);
-
-  validateForm(inputs) ? (button.disabled = false) : (button.disabled = true);
 }
 
 async function handleRegistration(API, inputs) {
