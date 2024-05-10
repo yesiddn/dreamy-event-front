@@ -1,7 +1,7 @@
 import '../styles/form-section.css'
 import saveServices from '../utils/save-service.js';
 import Alert from './Alert.js';
-import EditServiceForm from './EditServices.js';
+import EditServiceForm from './EditServiceForm.js';
 
 export default async function EditServiceSection(API) {
   const createServiceContainer = document.createElement('section');
@@ -16,7 +16,7 @@ export default async function EditServiceSection(API) {
     serviceContainer.appendChild(square);
 
   const title = document.createElement('h2');
-  title.innerHTML = 'Registrar nuevo <span class="primary">servicio</span>';
+  title.innerHTML = 'Editar <span class="primary">servicio</span>';
   serviceContainer.appendChild(title);
 
   const createService = EditServiceForm();
