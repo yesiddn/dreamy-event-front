@@ -129,8 +129,32 @@ const alerts = {
     message: 'Cambio de contraseña realizado.',
     color: '#ADFFC7',
   },
+  'code sent': {
+    message: 'El código de verificación ha sido enviado',
+    color: '#ADFFC7',
+  },
+  'email empty': {
+    message: 'Por favor ingrese un correo electrónico',
+    color: '#F02D3A',
+  },
+  'email not Found': {
+    message: 'El correo ingresado no esta registrado',
+    color: '#F02D3A',
+  },
+  'code correct': {
+    message: 'Código correcto',
+    color: '#ADFFC7',
+  },
+  'password not valid': {
+    message: 'La contraseña no cumple la longitud solicitada',
+    color: '#F02D3A',
+  },
+  'password empty': {
+    message: 'Por favor ingrese una contraseña.',
+    color: '#F02D3A',
+  },
   'wrong verification code': {
-    message: 'codigo incorrecto, Intentalo de nuevo.',
+    message: 'Codigo incorrecto, Intentalo de nuevo.',
     color: '#F02D3A',
   },
   'password mismatch Validator': {
