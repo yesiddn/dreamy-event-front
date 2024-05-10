@@ -9,6 +9,9 @@ import MyEvents from '../pages/MyEvents.js';
 import CreateEvent from '../pages/CreateEvent.js'; 
 import Alert from '../templates/Alert.js';
 import Error404 from '../templates/error-404.js';
+import RecoverPassword from '../pages/RecoverPassword.js';
+import CodeVerification from '../pages/CodeVerification.js';
+import ChangePassword from '../pages/ChangePassword.js';
 
 const routes = [
   { path: '/', component: Home, typeUser: 'public'},
@@ -20,6 +23,10 @@ const routes = [
   { path: '/sign-up-supplier', component: SignUpSupplierForm, typeUser: 'customer'},
   { path: '/my-events', component:MyEvents, typeUser: 'customer'},
   { path: '/new-event', component: CreateEvent, typeUser: 'customer'},
+  { path: '/reset-password', component: RecoverPassword, typeUser: 'public'},
+  { path: '/verify-code', component: CodeVerification, typeUser: 'public'},
+  { path: '/change-password', component: ChangePassword, typeUser: 'public'},
+
 ];
 
 export default function router(API, USER) {
