@@ -1,8 +1,70 @@
-body {
-    position: relative;
-    height: 100%;
+.user-information-container {
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: rgba(149, 157, 165, 0.2) 30px 30px 30px;
+  }
+  
+
+  .user-profile {
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.containers{
-    background-color: aliceblue;
+.user-profile-label {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    display: flex;
+    cursor: pointer;
+    margin-top: -85px;
+    outline: 10px solid white;
+}
+.user-profile-label img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.user-first-name {
+    font-size: 1.3rem;
+    font-weight: bolder;
+}
+.user-email {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgb(164, 161, 161);
+}
+
+.profile-sidebar {
+    border-radius: 30px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
+    margin-top: 1rem;
+    background-color: #ffffff;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+.separator {
+    height: 15px;
+}
+
+li {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }

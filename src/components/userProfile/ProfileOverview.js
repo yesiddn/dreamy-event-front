@@ -1,8 +1,8 @@
-import '../../styles/profile-overview.css'
 
-function profileOverview(USER,API) {
-    const container = document.createElement('div');
-    container.classList.add('user-profile');
+
+function ProfileOverview(API, USER) {
+    const overviewContainer = document.createElement('div');
+    overviewContainer.classList.add('user-profile');
 
 
     const userPicLabel = document.createElement('label');
@@ -20,12 +20,13 @@ function profileOverview(USER,API) {
     userEmailAddress.classList.add('user-email');
 
     userPicLabel.appendChild(userImg);
-    container.appendChild(userPicLabel);
-    container.appendChild(userFirstName);
-    container.appendChild(userEmailAddress);
-    document.body.appendChild(container);
+    overviewContainer.appendChild(userPicLabel);
+    overviewContainer.appendChild(userFirstName);
+    overviewContainer.appendChild(userEmailAddress);
+    
+    return overviewContainer;
 
     console.log(API+'/'+USER.customer.image)
   }
   
-  export default profileOverview;
+  export default ProfileOverview;

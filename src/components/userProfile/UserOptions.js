@@ -1,17 +1,17 @@
-import '../../styles/profile-side-bar.css'
 
-function ProfileSideBar() {
+function UserOptions() {
 
     const linkList = {
-        perfil: ['../public/svg/info.svg', 'href'],
+        informacion: ['../public/svg/info.svg', 'href'],
         contraseña: ['../public/svg/password.svg', 'href'],
+        'cerrar sesion': ['../public/svg/log-out.svg', 'href'],
     };
 
-    const container = document.createElement('div');
-    container.classList.add('profile-sidebar');
+    const optionsContainer = document.createElement('div');
+    optionsContainer.classList.add('profile-sidebar');
 
     const ul = document.createElement('ul');
-    container.appendChild(ul);
+    optionsContainer.appendChild(ul);
 
     for (let key in linkList) {
         const li = document.createElement('li');
@@ -37,8 +37,8 @@ function ProfileSideBar() {
         }
     }
 
-    document.body.appendChild(container);
+    return optionsContainer;
 
 };
 
-export default ProfileSideBar;
+export default UserOptions;
