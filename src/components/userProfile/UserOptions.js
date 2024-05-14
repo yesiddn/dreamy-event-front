@@ -8,7 +8,7 @@ function UserOptions() {
     };
 
     const optionsContainer = document.createElement('div');
-    optionsContainer.classList.add('profile-sidebar');
+    optionsContainer.classList.add('user-options');
 
     const ul = document.createElement('ul');
     optionsContainer.appendChild(ul);

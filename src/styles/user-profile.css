@@ -1,11 +1,30 @@
-.user-information-container {
-    padding: 20px;
-    border-radius: 30px;
-    box-shadow: rgba(149, 157, 165, 0.2) 30px 30px 30px;
-  }
-  
+/* contenedor principal */
 
-  .user-profile {
+.user-profile {
+    padding: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media (max-width: 768px) {
+    .user-profile {
+        flex-direction: column;
+        align-items: center; 
+    }
+}
+
+/* contenedor izquierdo */
+
+.user-sidebar{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   width: 30%;
+
+}
+
+/* solo mini contenedor con foto, nombre e email */
+.user-profile-overview {
     padding: 20px;
     border-radius: 30px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
@@ -13,22 +32,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.user-profile-label {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    border-radius: 100%;
-    display: flex;
-    cursor: pointer;
-    margin-top: -85px;
-    outline: 10px solid white;
-}
-.user-profile-label img {
-    width: 100%;
-    object-fit: cover;
-    border-radius: 100%;
 }
 
 .user-first-name {
@@ -41,7 +44,25 @@
     color: rgb(164, 161, 161);
 }
 
-.profile-sidebar {
+.user-profile-overview-pic {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    display: flex;
+    cursor: pointer;
+    margin-top: -85px;
+    outline: 10px solid white;
+}
+.user-profile-overview-pic img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+/* mini menu principal en la pagina de perfil */
+
+.user-options {
     border-radius: 30px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
     margin-top: 1rem;
@@ -52,7 +73,7 @@
     padding-bottom: 1rem;
 }
 
-ul {
+.user-options ul {
     margin: 0;
     padding: 0;
 }
@@ -60,11 +81,35 @@ ul {
     height: 15px;
 }
 
-li {
+.user-options li {
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+
+/* user panel */
+
+.user-panel {
+    padding: 20px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 30px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
+}
+
+.user-panel form input {
+    border: none !important;
+    background-color: aliceblue;
+    padding-left: 20px;
+    
+}
+
+.user-panel form input:focus {
+    border: solid 1px var(--primary) !important;
 }

@@ -1,66 +1,69 @@
-const inputs = [
-  {
-    id: 'name',
-    type: 'text',
-    name: 'name',
-    placeholder: 'Nombre',
-    errorMesage: 'El nombre debe tener al menos 3 caracteres.',
-    validate: false,
-    minLength: 3,
-  },
-  {
-    id: 'lastname',
-    type: 'text',
-    name: 'lastname',
-    placeholder: 'Apellido',
-    errorMesage: 'El apellido debe tener al menos 3 caracteres.',
-    validate: false,
-    minLength: 3,
-  },
-  {
-    id: 'phone',
-    type: 'number',
-    name: 'phone',
-    placeholder: 'Teléfono',
-    errorMesage: 'El teléfono debe tener 10 caracteres.',
-    validate: false,
-  },
-  {
-    id: 'city',
-    type: 'text',
-    name: 'city',
-    placeholder: 'Ciudad',
-    errorMesage: 'La ciudad debe tener al menos 3 caracteres.',
-    validate: false,
-    minLength: 3,
-  },
-  {
-    id: 'country',
-    type: 'text',
-    name: 'country',
-    placeholder: 'País',
-    errorMesage: 'El país debe tener al menos 3 caracteres.',
-    validate: false,
-    minLength: 3,
-  },
-  {
-    id: 'image',
-    type: 'file',
-    name: 'image',
-    placeholder: 'Imagenes',
-    accept: 'image/*',
-    errorMesage: 'Seleccione un archivo válido.',
-    validate: false,
-  },
-];
+export default function UserInformation(USER) {
 
-export default function UserInformation() {
-
+  const inputs = [
+    {
+      label: 'Nombre',
+      id: 'name',
+      type: 'text',
+      name: 'name',
+      value: USER.customer.name,
+      errorMesage: 'El nombre debe tener al menos 3 caracteres.',
+      validate: false,
+      minLength: 3,
+    },
+    {
+      label: 'Apellido',
+      id: 'lastname',
+      type: 'text',
+      name: 'lastname',
+      value: USER.customer.lastname,
+      errorMesage: 'El apellido debe tener al menos 3 caracteres.',
+      validate: false,
+      minLength: 3,
+    },
+    {
+      label: 'Telefono',
+      id: 'phone',
+      type: 'number',
+      name: 'phone',
+      value: USER.customer.phone,
+      errorMesage: 'El teléfono debe tener 10 caracteres.',
+      validate: false,
+    },
+    {
+      label: 'Ciudad',
+      id: 'city',
+      type: 'text',
+      name: 'city',
+      value: USER.customer.city,
+      errorMesage: 'La ciudad debe tener al menos 3 caracteres.',
+      validate: false,
+      minLength: 3,
+    },
+    {
+      label: 'Pais',
+      id: 'country',
+      type: 'text',
+      name: 'country',
+      value: USER.customer.country,
+      errorMesage: 'El país debe tener al menos 3 caracteres.',
+      validate: false,
+      minLength: 3,
+    },
+    {
+      id: 'image',
+      type: 'file',
+      name: 'image',
+      placeholder: 'Imagenes',
+      accept: 'image/*',
+      errorMesage: 'Seleccione un archivo válido.',
+      validate: false,
+    },
+  ];
 
   const userFormContainer = document.createElement('div');
   userFormContainer.classList.add('user-information-container');
   document.body.appendChild(userFormContainer);
-
 
   const form = document.createElement('form');
   form.classList.add('form');
@@ -69,6 +72,7 @@ export default function UserInformation() {
 
   inputs.forEach((input) => {
     const label = document.createElement('label');
+    label.textContent = input.label
     label.textcontent = input.placeholder;
     label.classList.add('form__input');
     form.appendChild(label);
@@ -76,7 +80,10 @@ export default function UserInformation() {
     const userInput = document.createElement('input');
     userInput.type = input.type;
     userInput.name = input.name;
-    userInput.placeholder = input.placeholder;
+
+    if (input.type !== 'file') {
+      userInput.value = input.value;};
+
     label.appendChild(userInput);
   });
 

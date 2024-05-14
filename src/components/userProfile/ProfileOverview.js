@@ -2,11 +2,11 @@
 
 function ProfileOverview(API, USER) {
     const overviewContainer = document.createElement('div');
-    overviewContainer.classList.add('user-profile');
+    overviewContainer.classList.add('user-profile-overview');
 
 
     const userPicLabel = document.createElement('label');
-    userPicLabel.classList.add('user-profile-label')
+    userPicLabel.classList.add('user-profile-overview-pic')
 
     const userImg = document.createElement('img');
     userImg.src = API+'/'+USER.customer.image;

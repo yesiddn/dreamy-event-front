@@ -3,7 +3,7 @@ import UserOptions from "./UserOptions";
 
 export default function UserSideBar(API, USER) {
     const container = document.createElement('div');
-    container.classList.add('profile-sidebar');
+    container.classList.add('user-sidebar');
 
     const profileOverview = ProfileOverview(API, USER);
     const userOptions = UserOptions(container);
