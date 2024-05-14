@@ -1,9 +1,6 @@
-
-
 function ProfileOverview(API, USER) {
     const overviewContainer = document.createElement('div');
     overviewContainer.classList.add('user-profile-overview');
-
 
     const userPicLabel = document.createElement('label');
     userPicLabel.classList.add('user-profile-overview-pic')
@@ -23,10 +20,7 @@ function ProfileOverview(API, USER) {
     overviewContainer.appendChild(userPicLabel);
     overviewContainer.appendChild(userFirstName);
     overviewContainer.appendChild(userEmailAddress);
-    
     return overviewContainer;
-
-    console.log(API+'/'+USER.customer.image)
   }
   
   export default ProfileOverview;

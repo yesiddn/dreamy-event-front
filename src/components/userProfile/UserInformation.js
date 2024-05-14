@@ -68,6 +68,12 @@ export default function UserInformation(USER) {
   const form = document.createElement('form');
   form.classList.add('form');
   form.id = 'form';
+
+  const label = document.createElement('label');
+  const infoTitle = document.createElement('h2');
+  infoTitle.textContent = 'Información de usuario';
+  label.appendChild(infoTitle);
+  form.appendChild(label);
   userFormContainer.appendChild(form);
 
   inputs.forEach((input) => {

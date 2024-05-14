@@ -8,8 +8,8 @@ export default function UserSideBar(API, USER) {
     const profileOverview = ProfileOverview(API, USER);
     const userOptions = UserOptions(container);
 
+    // appends
     container.appendChild(profileOverview);
     container.appendChild(userOptions);
-
     return container;
 }
