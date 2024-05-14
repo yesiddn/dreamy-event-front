@@ -20,7 +20,7 @@
   color: var(--secondary);
 }
 
-input,
+.form__input input,
 select {
   margin-top: 0.5rem;
   padding: 0.5rem;
@@ -30,7 +30,7 @@ select {
   outline: none;
 }
 
-input:focus,
+.form__input input:focus,
 select:focus {
   border: 2px solid var(--black);
 }
@@ -89,12 +89,12 @@ select:focus {
   border: 2px dashed red;
 }
 
-input:invalid,
+.form__input input:invalid,
 select:invalid {
   border: 2px dashed red;
 }
 
-input:invalid:focus,
+.form__input input:invalid:focus,
 select:invalid:focus {
   border: 2px dashed red;
 }

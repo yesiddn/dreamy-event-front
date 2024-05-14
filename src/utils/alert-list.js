@@ -3,9 +3,21 @@ const alerts = {
     message: 'Bienvenido a la plataforma.',
     color: '#ADFFC7',
   },
+  'login-error': {
+    message: 'Usuario o contraseña incorrecto.',
+    color: '#F02D3A',
+  },
+  'log-out': {
+    message: 'Te esperamos pronto.',
+    color: '#ADFFC7',
+  },
   'user-exists': {
     message: 'El usuario ya existe.',
     color: '#ADBDFF',
+  },
+  'user-not-found': {
+    message: 'Usuario no encontrado.',
+    color: '#F02D3A',
   },
   'user-not-exists': {
     message: 'El usuario no existe.',
@@ -15,9 +27,9 @@ const alerts = {
     message: 'Usuario creado correctamente.',
     color: '#ADFFC7',
   },
-  'login-error': {
-    message: 'Usuario o contraseña incorrecto.',
-    color: '#F02D3A',
+  'supplier-created': {
+    message: 'Proveedor creado correctamente.',
+    color: '#ADFFC7',
   },
   'page-not-found': {
     message: 'Página no encontrada.',
@@ -74,6 +86,14 @@ const alerts = {
   },
   'event-error': {
     message: 'Error al crear el evento. Inténtalo de nuevo.',
+    color: '#F02D3A',
+  },
+  'event-edit-successfully': {
+    message: 'Evento editado',
+    color: '#ADFFC7',
+  },
+  'editEvent-error': {
+    message: 'Error al editar el evento. Inténtalo de nuevo',
     color: '#F02D3A',
   },
   'service added to event': {

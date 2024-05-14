@@ -80,7 +80,7 @@ export default function showEvents(eventDetail, typecard = 'card-user'){
 
     // event options -> editar
     const eventEdit = document.createElement('a');
-    eventEdit.href = '/edit-event';
+    eventEdit.href = 'edit-event/' + eventDetail.eventId;
     eventEdit.classList.add('event__options__edit');
     eventOptions.appendChild(eventEdit);
 
