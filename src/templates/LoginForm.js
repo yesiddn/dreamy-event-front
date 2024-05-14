@@ -42,7 +42,7 @@ export default function LoginForm(API) {
   form.appendChild(button);
 
   const anchor = document.createElement('a');
-  anchor.href = 'reset-password';
+  anchor.href = '/reset-password';
   anchor.textContent = '¿Olvidaste tu contraseña?';
   form.appendChild(anchor);
 
