@@ -1,12 +1,14 @@
 import UserInformation from './UserInformation.js';
 import PasswordUpdate from './PasswordUpdate.js';
 
-export default function UserPanel(API, USER) {
-    const panel = document.createElement('div');
-    panel.classList.add('user-panel');
+export default function UserPanel(API, USER, OPTION) {
+    if (OPTION === 'info') {
+        const userInformationContainer = UserInformation(USER);
+        return userInformationContainer;
+    }
 
-    const userInformation = PasswordUpdate(USER);
-    panel.appendChild(userInformation);
-
-    return panel;
+    if (OPTION === 'pass') {
+        const updatePasswordContainer = PasswordUpdate(USER);
+        return updatePasswordContainer;
+    }
 }

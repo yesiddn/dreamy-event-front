@@ -87,7 +87,7 @@
 
 /* user panel */
 
-.user-panel {
+.update-password-container, .user-information-container {
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -96,7 +96,7 @@
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
 }
 
-.user-panel h2 {
+.update-password-container h2, .user-information-container h2 {
     font-size: 1.5rem;
     font-weight: 500;
     margin: 30px;
@@ -104,14 +104,14 @@
 }
 
 
-.user-panel form input {
+.update-password-container form input, .user-information-container form input {
     border: none !important;
     background-color: aliceblue;
     padding-left: 20px;
     
 }
 
-.user-panel form input:focus {
+.update-password-container form input:focus, .user-information-container form input:focus {
     border: solid 1px var(--primary) !important;
 }
 
@@ -126,7 +126,7 @@
         max-width: 400px;
     }
 
-    .user-panel {
+    .update-password-container, .user-information-container {
         width: 50%;
     }
 }

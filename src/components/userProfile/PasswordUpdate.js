@@ -27,15 +27,13 @@ const inputs = [
   
   export default function PasswordUpdate() {
   
-    const userFormContainer = document.createElement('div');
-    userFormContainer.classList.add('user-information-container');
-    document.body.appendChild(userFormContainer);
-  
+    const updatePasswordContainer = document.createElement('div');
+    updatePasswordContainer.classList.add('update-password-container');
   
     const form = document.createElement('form');
     form.classList.add('form');
     form.id = 'form';
-    userFormContainer.appendChild(form);
+    updatePasswordContainer.appendChild(form);
   
     inputs.forEach((input) => {
       const label = document.createElement('label');
@@ -57,6 +55,7 @@ const inputs = [
     button.disabled = true;
     form.appendChild(button);
   
-    return form;
+    updatePasswordContainer.appendChild(form);
+    return updatePasswordContainer;
   }
   

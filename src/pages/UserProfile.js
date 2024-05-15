@@ -1,9 +1,10 @@
+// En UserProfile.js
 import Header from '../templates/Header.js';
-import PasswordUpdate from '../components/userProfile/PasswordUpdate.js' /* pendiente a cargar dinamicamente */
 import '../styles/user-profile.css'
 import UserSideBar from '../components/userProfile/UserSideBar.js';
 import UserPanel from '../components/userProfile/UserPanel.js';
 
+let OPTION = '';
 
 const UserProfile = (API, USER) => {
   const container = document.createElement('div');
@@ -11,23 +12,33 @@ const UserProfile = (API, USER) => {
 
   Header(USER);
   const sidebar = UserSideBar(API, USER);
-  const userPanel = UserPanel(API, USER);
+  container.appendChild(sidebar);  
 
-  container.appendChild(sidebar);
-  
+  const userPanel = () => UserPanel(API, USER, OPTION);
 
   document.querySelector('#app').appendChild(container);
-
+  
   const optionElementList = document.querySelectorAll('.user-options li');
-
+  
+  // Event listener para los user options
   optionElementList.forEach(element => {
     element.addEventListener('click', () => {
       if (element.id == 'pass-option') {
-        container.appendChild(userPanel);
-        
+        OPTION = 'pass';
+
+        if (!container.querySelector('.update-password-container')) {
+          container.querySelector('.user-information-container')?.remove();
+          container.appendChild(userPanel());
+        }
+
+      }else if (element.id == 'info-option') {
+        OPTION = 'info';
+        if (!container.querySelector('.user-information-container')) {
+          container.querySelector('.update-password-container')?.remove();
+          container.appendChild(userPanel());
+        }
       }
     })
-    
   });
 
 }

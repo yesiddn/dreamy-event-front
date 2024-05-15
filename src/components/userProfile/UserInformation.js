@@ -61,9 +61,8 @@ export default function UserInformation(USER) {
     },
   ];
 
-  const userFormContainer = document.createElement('div');
-  userFormContainer.classList.add('user-information-container');
-  document.body.appendChild(userFormContainer);
+  const userInformationContainer = document.createElement('div');
+  userInformationContainer.classList.add('user-information-container');
 
   const form = document.createElement('form');
   form.classList.add('form');
@@ -74,23 +73,22 @@ export default function UserInformation(USER) {
   infoTitle.textContent = 'Información de usuario';
   label.appendChild(infoTitle);
   form.appendChild(label);
-  userFormContainer.appendChild(form);
-
+  
   inputs.forEach((input) => {
     const label = document.createElement('label');
     label.textContent = input.label
     label.textcontent = input.placeholder;
     label.classList.add('form__input');
     form.appendChild(label);
-
+    
     const userInput = document.createElement('input');
     userInput.type = input.type;
     userInput.name = input.name;
 
     if (input.type !== 'file') {
       userInput.value = input.value;};
-
-    label.appendChild(userInput);
+      
+      label.appendChild(userInput);
   });
 
   const button = document.createElement('button');
@@ -99,8 +97,9 @@ export default function UserInformation(USER) {
   button.textContent = 'Guardar cambios';
   button.disabled = true;
   form.appendChild(button);
+  userInformationContainer.appendChild(form);
 
-  return form;
+  return userInformationContainer;
 }
 
 
