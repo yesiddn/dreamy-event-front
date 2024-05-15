@@ -37,10 +37,10 @@ const routes = [
   },
   { path: 'my-events', component: MyEvents, typeUser: 'customer' },
   { path: 'new-event', component: CreateEvent, typeUser: 'customer' },
-  { path: 'edit-event', component: EditEvents, typeUser: 'customer'}
-  { path: '/reset-password', component: RecoverPassword, typeUser: 'public'},
-  { path: '/verify-code', component: CodeVerification, typeUser: 'public'},
-  { path: '/change-password', component: ChangePassword, typeUser: 'public'},
+  { path: 'edit-event', component: EditEvents, typeUser: 'customer'},
+  { path: 'reset-password', component: RecoverPassword, typeUser: 'public'},
+  { path: 'verify-code', component: CodeVerification, typeUser: 'public'},
+  { path: 'change-password', component: ChangePassword, typeUser: 'public'},
 ];
 
 export default function router(API, USER) {
