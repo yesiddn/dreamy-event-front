@@ -1,18 +1,16 @@
+/* contenedor del icono "update" de la foto de perfil */
+.profile-icon-box {
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    border-radius: 100%;
+    padding: 5px 4.5px;
+    outline: 5px solid white;
+    display: flex;
+    background-color: var(--primary)
+}
+
 /* contenedor principal */
-.sidebar-link {
-    cursor: pointer;
-}
-
-.right-arrow-icon {
-    transition: .3s;
-}
-
-#info-option:hover .right-arrow-icon,
-#pass-option:hover .right-arrow-icon,
-#logout-option:hover .right-arrow-icon {
-    transform: translateX(-10px);
-}
-
 .user-profile {
     display: flex;
     flex-direction: column;
@@ -21,7 +19,6 @@
 }
 
 /* contenedor izquierdo */
-
 .user-sidebar {
     display: flex;
     flex-direction: column;
@@ -71,7 +68,6 @@
 }
 
 /* mini menu principal en la pagina de perfil */
-
 .user-options {
     border-radius: 30px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
@@ -98,6 +94,21 @@
     align-items: center;
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+/* basic animation in these links */
+.sidebar-link {
+    cursor: pointer;
+}
+
+.right-arrow-icon {
+    transition: .3s;
+}
+
+#info-option:hover .right-arrow-icon,
+#pass-option:hover .right-arrow-icon,
+#logout-option:hover .right-arrow-icon {
+    transform: translateX(-10px);
 }
 
 
