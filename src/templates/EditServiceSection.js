@@ -1,84 +1,24 @@
-import '../styles/form-section.css'
-import saveServices from '../utils/save-service.js';
-import Alert from './Alert.js';
+import '../styles/form-section.css';
 import EditServiceForm from './EditServiceForm.js';
 
 export default async function EditServiceSection(API) {
-  const createServiceContainer = document.createElement('section');
-  createServiceContainer.classList.add('form-section');
+  const editServiceSection = document.createElement('section');
+  editServiceSection.classList.add('form-section');
 
   const serviceContainer = document.createElement('div');
   serviceContainer.classList.add('form__container');
-  createServiceContainer.appendChild(serviceContainer);
-  
-    const square = document.createElement('div');
-    square.classList.add('square');
-    serviceContainer.appendChild(square);
+  editServiceSection.appendChild(serviceContainer);
+
+  const square = document.createElement('div');
+  square.classList.add('square');
+  serviceContainer.appendChild(square);
 
   const title = document.createElement('h2');
   title.innerHTML = 'Editar <span class="primary">servicio</span>';
   serviceContainer.appendChild(title);
 
-  const createService = EditServiceForm();
-  serviceContainer.appendChild(createService);
+  const editServiceForm = await EditServiceForm(API);
+  serviceContainer.appendChild(editServiceForm);
 
-  createService.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(createService);
-    const files = createService.querySelector('#file-service').files;
-    console.log(files);
-    let images = [];
-
-    for (let i = 0; i < files.length; i++) {
-      try {
-        const imageData = await saveImages(files[i]);
-        const image = { url: imageData.location };
-        images.push(image);
-      } catch (error) {
-        console.log('Error al guardar la imagen:', error);
-      }
-    }
-
-    const serviceData = {
-      name: formData.get('name-service'),
-      description: formData.get('description-service'),
-      price: Number(formData.get('price-service')),
-      address: formData.get('location-service'),
-      city: formData.get('city-service'),
-      country: formData.get('country-service'),
-      amountPeople: Number(formData.get('peopleAmount-service')),
-      characteristics: formData.get('characterisitcs-service'),
-      images,
-    };
-
-    const serviceDataString = JSON.stringify(serviceData);
-
-    try {
-      const resposne = await saveServices(API, serviceDataString);
-
-      if (!resposne) {
-        return;
-      }
-      
-      Alert('service-created', '/my-services');
-    } catch (error) {
-      console.log('Error al registrar el servicio:', error);
-    }
-  });
-
-  document.querySelector('#app').appendChild(createServiceContainer);
-}
-
-async function saveImages(image) {
-  const formData = new FormData();
-  formData.append('file', image);
-
-  const response = await fetch('http://localhost:3000/api/v1/files', {
-    method: 'POST',
-    body: formData,
-  });
-
-  const data = await response.json();
-  return data;
+  document.querySelector('#app').appendChild(editServiceSection);
 }

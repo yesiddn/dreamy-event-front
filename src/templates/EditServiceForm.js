@@ -3,8 +3,18 @@ import saveFile from '../utils/save-file';
 import saveLogin from '../utils/save-login';
 import saveSupplier from '../utils/save-supplier';
 import createForm from '../utils/create-form';
+import getServiceDetails from '../utils/get-service-details';
 
 const inputs = [
+  {
+    id: 'images',
+    type: 'file',
+    name: 'images',
+    label: 'Agregar una imagen al servicio',
+    accept: 'image/*',
+    errorMesage: 'Seleccione un archivo válido.',
+    validate: false,
+  },
   {
     id: 'name',
     type: 'text',
@@ -69,21 +79,15 @@ const inputs = [
     errorMesage: 'Las características no pueden estar vacías.',
     validate: false,
   },
-  {
-    id: 'images',
-    type: 'file',
-    name: 'images',
-    label: 'Imágenes del servicio',
-    accept: 'image/*',
-    errorMesage: 'Seleccione un archivo válido.',
-    validate: false,
-  },
 ];
 
-export default function EditServiceForm(API) {
+export default async function EditServiceForm(API) {
+  const serviceId = window.location.pathname.split('/')[2];
+  const serviceDetails = await getServiceDetails(API, serviceId);
   const form = createForm({
     API,
     inputs,
+    serviceDetails,
     buttons: ['save', 'cancel'],
     callback: handleRegistration,
   });
