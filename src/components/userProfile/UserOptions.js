@@ -19,6 +19,7 @@ function UserOptions() {
         const span = document.createElement('span');
         const iconImg = document.createElement('img');
         const arrowImg = document.createElement('img');
+        arrowImg.classList.add('right-arrow-icon');
 
         iconImg.src = linkList[key][0];
         arrowImg.src = '../public/svg/right-arrow.svg';

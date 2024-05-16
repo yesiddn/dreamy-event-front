@@ -1,4 +1,17 @@
 /* contenedor principal */
+.sidebar-link {
+    cursor: pointer;
+}
+
+.right-arrow-icon {
+    transition: .3s;
+}
+
+#info-option:hover .right-arrow-icon,
+#pass-option:hover .right-arrow-icon,
+#logout-option:hover .right-arrow-icon {
+    transform: translateX(-10px);
+}
 
 .user-profile {
     display: flex;
@@ -9,12 +22,12 @@
 
 /* contenedor izquierdo */
 
-.user-sidebar{
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   gap: 1rem;
-   
+.user-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+
 }
 
 /* solo mini contenedor con foto, nombre e email */
@@ -32,6 +45,7 @@
     font-size: 1.3rem;
     font-weight: 600;
 }
+
 .user-email {
     margin: 0;
     font-size: 0.9rem;
@@ -49,6 +63,7 @@
     margin-top: -85px;
     outline: 10px solid white;
 }
+
 .user-profile-overview-pic img {
     width: 100%;
     object-fit: cover;
@@ -88,7 +103,8 @@
 
 /* user panel */
 
-.update-password-container, .user-information-container {
+.update-password-container,
+.user-information-container {
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -97,7 +113,8 @@
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
 }
 
-.update-password-container h2, .user-information-container h2 {
+.update-password-container h2,
+.user-information-container h2 {
     font-size: 1.5rem;
     font-weight: 500;
     margin: 30px;
@@ -105,14 +122,16 @@
 }
 
 
-.update-password-container form input, .user-information-container form input {
+.update-password-container form input,
+.user-information-container form input {
     border: none !important;
     background-color: aliceblue;
     padding-left: 20px;
-    
+
 }
 
-.update-password-container form input:focus, .user-information-container form input:focus {
+.update-password-container form input:focus,
+.user-information-container form input:focus {
     border: solid 1px var(--primary) !important;
 }
 
@@ -128,7 +147,8 @@
         max-width: 400px;
     }
 
-    .update-password-container, .user-information-container {
+    .update-password-container,
+    .user-information-container {
         width: 50%;
     }
 }
