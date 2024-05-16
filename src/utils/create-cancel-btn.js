@@ -5,7 +5,7 @@ cancelBtn.classList.add('cancel');
 cancelBtn.textContent = 'Cancelar';
 
 cancelBtn.addEventListener('click', () => {
-  window.location.assign('/');
+  window.location.assign('/my-services');
 });
 
 export default cancelBtn;
