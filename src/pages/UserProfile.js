@@ -4,7 +4,7 @@ import '../styles/user-profile.css'
 import UserSideBar from '../components/userProfile/UserSideBar.js';
 import UserPanel from '../components/userProfile/UserPanel.js';
 
-let OPTION = '';
+let OPTION = 'info';
 
 const UserProfile = (API, USER) => {
   const container = document.createElement('div');
@@ -18,8 +18,9 @@ const UserProfile = (API, USER) => {
 
   document.querySelector('#app').appendChild(container);
   
-  const optionElementList = document.querySelectorAll('.user-options li');
+  container.appendChild(userPanel());
   
+  const optionElementList = document.querySelectorAll('.user-options li');
   // Event listener para los user options
   optionElementList.forEach(element => {
     element.addEventListener('click', () => {

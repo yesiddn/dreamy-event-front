@@ -1,5 +1,6 @@
 const inputs = [
     {
+      label: 'Contraseña actual',
       id: 'current-password',
       type: 'password',
       name: 'current-password',
@@ -8,6 +9,7 @@ const inputs = [
       minLength: 8,
     },
     {
+      label: 'Nueva contraseña',
       id: 'new-password',
       type: 'password',
       name: 'new-password',
@@ -16,6 +18,7 @@ const inputs = [
       minLength: 8,
     },
     {
+      label: 'Confirmar contraseña',
       id: 'confirm-password',
       type: 'password',
       name: 'confirm-password',
@@ -34,17 +37,22 @@ const inputs = [
     form.classList.add('form');
     form.id = 'form';
     updatePasswordContainer.appendChild(form);
+
+    const label = document.createElement('label');
+    const infoTitle = document.createElement('h2');
+    infoTitle.textContent = 'Actualizar contraseña';
+    label.appendChild(infoTitle);
+    form.appendChild(label);
   
     inputs.forEach((input) => {
       const label = document.createElement('label');
-      label.textcontent = input.placeholder;
+      label.textContent = input.label
       label.classList.add('form__input');
       form.appendChild(label);
   
       const userInput = document.createElement('input');
       userInput.type = input.type;
       userInput.name = input.name;
-      userInput.placeholder = input.placeholder;
       label.appendChild(userInput);
     });
   

@@ -14,6 +14,7 @@
    flex-direction: column;
    justify-content: center;
    gap: 1rem;
+   
 }
 
 /* solo mini contenedor con foto, nombre e email */
@@ -119,6 +120,7 @@
     .user-profile {
         flex-direction: row;
         justify-content: center;
+        align-items: flex-start;
     }
 
     .user-sidebar {

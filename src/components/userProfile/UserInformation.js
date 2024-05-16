@@ -51,10 +51,10 @@ export default function UserInformation(USER) {
       minLength: 3,
     },
     {
+      label: 'Imagen de perfil',
       id: 'image',
       type: 'file',
       name: 'image',
-      placeholder: 'Imagenes',
       accept: 'image/*',
       errorMesage: 'Seleccione un archivo válido.',
       validate: false,
@@ -77,7 +77,6 @@ export default function UserInformation(USER) {
   inputs.forEach((input) => {
     const label = document.createElement('label');
     label.textContent = input.label
-    label.textcontent = input.placeholder;
     label.classList.add('form__input');
     form.appendChild(label);
     
