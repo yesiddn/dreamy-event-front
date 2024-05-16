@@ -21,7 +21,8 @@
 }
 
 .form__input input,
-.form__input select, .form__input textarea {
+.form__input select,
+.form__input textarea {
   margin-top: 0.5rem;
   padding: 0.5rem;
   background-color: transparent;
@@ -36,7 +37,8 @@
 }
 
 .form__input input:focus,
-.form__input select:focus, .form__input textarea:focus {
+.form__input select:focus,
+.form__input textarea:focus {
   border: 2px solid var(--black);
 }
 
@@ -86,6 +88,23 @@
   cursor: pointer;
 }
 
+.form .form__image__delete {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  background: url('../../public/svg/trash.svg') no-repeat center/cover;
+  background-color: var(--secondary-light);
+}
+
+.form .form__image__delete:hover {
+  /* box-shadow: 0 5px 15px var(--primary-light); */
+  background-color: var(--primary-light);
+}
+
 .form button.cancel {
   background-color: var(--red);
 }
@@ -113,4 +132,21 @@ select:invalid {
 .form__input input:invalid:focus,
 select:invalid:focus {
   border: 2px dashed var(--red);
+}
+
+/* image preview */
+.form__images {
+  display: flex;
+  width: 100%;
+  gap: 1.5rem;
+  overflow-x: scroll;
+}
+
+.form__images__container {
+  position: relative;
+}
+
+.form__images__container .form__images__preview {
+  height: 150px;
+  border-radius: 1rem;
 }
