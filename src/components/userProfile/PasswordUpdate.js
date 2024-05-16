@@ -60,7 +60,6 @@ const inputs = [
     button.type = 'button';
     button.id = 'form-button';
     button.textContent = 'Guardar cambios';
-    button.disabled = true;
     form.appendChild(button);
   
     updatePasswordContainer.appendChild(form);

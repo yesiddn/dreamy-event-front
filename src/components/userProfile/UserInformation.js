@@ -94,7 +94,6 @@ export default function UserInformation(USER) {
   button.type = 'button';
   button.id = 'form-button';
   button.textContent = 'Guardar cambios';
-  button.disabled = true;
   form.appendChild(button);
   userInformationContainer.appendChild(form);
 

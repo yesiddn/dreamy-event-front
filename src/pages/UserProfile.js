@@ -5,6 +5,8 @@ import UserSideBar from '../components/userProfile/UserSideBar.js';
 import UserPanel from '../components/userProfile/UserPanel.js';
 
 let OPTION = 'info';
+let updatedUserData = {};
+
 
 const UserProfile = (API, USER) => {
   const container = document.createElement('div');
@@ -12,27 +14,40 @@ const UserProfile = (API, USER) => {
 
   Header(USER);
   const sidebar = UserSideBar(API, USER);
-  container.appendChild(sidebar);  
+  container.appendChild(sidebar);
 
   const userPanel = () => UserPanel(API, USER, OPTION);
 
   document.querySelector('#app').appendChild(container);
-  
+
   container.appendChild(userPanel());
-  
+
+  // localStorage data
+  const updateInfoBtn = document.querySelector('#form-button');
+  updateInfoBtn.addEventListener('click', function () {
+    const userInfoForm = document.querySelector('#form');
+    const formData = new FormData(userInfoForm);
+    const data = Object.fromEntries(formData.entries());
+    const updatedData = { ...USER.customer, ...data };
+
+    localStorage.setItem('userData', JSON.stringify(updatedData));
+
+  });
+
+
+
   const optionElementList = document.querySelectorAll('.user-options li');
   // Event listener para los user options
   optionElementList.forEach(element => {
     element.addEventListener('click', () => {
       if (element.id == 'pass-option') {
         OPTION = 'pass';
-
         if (!container.querySelector('.update-password-container')) {
           container.querySelector('.user-information-container')?.remove();
           container.appendChild(userPanel());
         }
 
-      }else if (element.id == 'info-option') {
+      } else if (element.id == 'info-option') {
         OPTION = 'info';
         if (!container.querySelector('.user-information-container')) {
           container.querySelector('.update-password-container')?.remove();
@@ -41,6 +56,8 @@ const UserProfile = (API, USER) => {
       }
     })
   });
+
+
 
 }
 
