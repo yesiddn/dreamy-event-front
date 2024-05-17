@@ -50,15 +50,6 @@ export default function UserInformation(USER) {
       validate: false,
       minLength: 3,
     },
-    {
-      label: 'Imagen de perfil',
-      id: 'image',
-      type: 'file',
-      name: 'image',
-      accept: 'image/*',
-      errorMesage: 'Seleccione un archivo válido.',
-      validate: false,
-    },
   ];
 
   const userInformationContainer = document.createElement('div');
@@ -73,21 +64,19 @@ export default function UserInformation(USER) {
   infoTitle.textContent = 'Información de usuario';
   label.appendChild(infoTitle);
   form.appendChild(label);
-  
+
   inputs.forEach((input) => {
     const label = document.createElement('label');
     label.textContent = input.label
     label.classList.add('form__input');
     form.appendChild(label);
-    
+
     const userInput = document.createElement('input');
     userInput.type = input.type;
     userInput.name = input.name;
+    userInput.value = input.value;
 
-    if (input.type !== 'file') {
-      userInput.value = input.value;};
-      
-      label.appendChild(userInput);
+    label.appendChild(userInput);
   });
 
   const button = document.createElement('button');

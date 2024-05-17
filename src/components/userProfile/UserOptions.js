@@ -2,6 +2,7 @@
 function UserOptions() {
 
     const linkList = {
+        resumen: ['../public/svg/info.svg', 'summary-option'],
         informacion: ['../public/svg/info.svg', 'info-option'],
         contraseña: ['../public/svg/password.svg', 'pass-option'],
         'cerrar sesion': ['../public/svg/log-out.svg', 'logout-option'],
@@ -9,7 +10,7 @@ function UserOptions() {
 
     const optionsContainer = document.createElement('div');
     optionsContainer.classList.add('user-options');
-
+    
     const ul = document.createElement('ul');
     optionsContainer.appendChild(ul);
 
