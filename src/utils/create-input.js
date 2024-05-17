@@ -1,6 +1,11 @@
-import validateProcess from "./validate-process";
+import validateProcess from './validate-process';
 
-export default function createInput({inputs, input, saveBtn}) {
+export default function createInput({
+  inputs,
+  input,
+  saveBtn,
+  serviceDetails,
+}) {
   const label = document.createElement('label');
   label.htmlFor = input.id;
   label.classList.add('form__input');
@@ -21,6 +26,7 @@ export default function createInput({inputs, input, saveBtn}) {
     inputElement.accept = input.accept;
 
     inputElement.addEventListener('change', () => {
+      input.modify = true;
       validateProcess({ inputs, input, inputElement, spanError, saveBtn });
     });
   }
@@ -30,8 +36,15 @@ export default function createInput({inputs, input, saveBtn}) {
   spanError.textContent = input.errorMesage;
 
   inputElement.addEventListener('keyup', () => {
-    validateProcess({inputs, input, inputElement, spanError, saveBtn});
+    input.modify = true;
+    validateProcess({ inputs, input, inputElement, spanError, saveBtn });
   });
+
+  if (serviceDetails) {
+    if (input.type !== 'file') {
+      inputElement.value = serviceDetails[input.name];
+    }
+  }
 
   label.appendChild(inputElement);
   label.appendChild(spanError);
