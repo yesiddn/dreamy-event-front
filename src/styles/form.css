@@ -138,12 +138,14 @@ select:invalid:focus {
 .form__images {
   display: flex;
   width: 100%;
-  gap: 1.5rem;
+  gap: 2rem;
   overflow-x: scroll;
+  scroll-snap-type: x mandatory;
 }
 
 .form__images__container {
   position: relative;
+  scroll-snap-align: center;
 }
 
 .form__images__container .form__images__preview {
