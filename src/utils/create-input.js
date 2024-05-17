@@ -1,3 +1,4 @@
+import createImagePreview from './create-image-preview';
 import validateProcess from './validate-process';
 
 export default function createInput({
@@ -28,6 +29,23 @@ export default function createInput({
     inputElement.addEventListener('change', () => {
       input.modify = true;
       validateProcess({ inputs, input, inputElement, spanError, saveBtn });
+      const imagesPreviewCointainer = document.querySelector('.form__images');
+
+      if (inputElement.files && inputElement.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          const image = {
+            url: e.target.result,
+            local: true,
+          };
+
+          const imagePreview = createImagePreview(image);
+          imagesPreviewCointainer.insertBefore(imagePreview, imagesPreviewCointainer.firstChild);
+        };
+
+        reader.readAsDataURL(inputElement.files[0]);
+      }
     });
   }
 
