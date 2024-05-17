@@ -98,6 +98,8 @@ const inputs = [
   },
 ];
 
+const imagesToUpload = [];
+
 export default async function EditServiceForm(API) {
   const serviceId = window.location.pathname.split('/')[2];
   const serviceDetails = await getServiceDetails(API, serviceId);
@@ -106,36 +108,20 @@ export default async function EditServiceForm(API) {
     inputs,
     serviceDetails,
     buttons: ['save', 'cancel'],
+    imagesToUpload,
     callback: handleRegistration,
   });
 
   return form;
 }
 
-async function handleRegistration(API, inputs) {
-  const data = JSON.parse(localStorage.getItem('user'));
-  data.supplier = {};
+async function handleRegistration(API, inputs, imagesToUpload) {
+  let imagesUploaded = [];
 
-  for (let input of inputs) {
-    const inputValue = document.getElementById(input.id).value;
-
-    if (input.type === 'file') {
-      const file = document.getElementById(input.id).files[0];
-      const image = await saveImage(API, file);
-
-      if (!image) return;
-
-      data.supplier[input.name] = image.location;
-    } else {
-      data.supplier[input.name] = inputValue;
-    }
-  }
-
-  const response = await saveSupplier(API, JSON.stringify(data));
-
-  if (response) {
-    saveLogin(response, 'supplier-created');
-  }
+  imagesToUpload.forEach(async (image) => {
+    const imageData = await saveImage(API, image);
+    imagesUploaded.push(imageData.location);
+  });
 }
 
 function saveImage(API, image) {

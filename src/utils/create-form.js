@@ -2,7 +2,7 @@ import cancelBtn from './create-cancel-btn';
 import createImagePreview from './create-image-preview';
 import createInput from './create-input';
 
-export default function createForm({ API, inputs, buttons, serviceDetails, callback }) {
+export default function createForm({ API, inputs, buttons, serviceDetails, imagesToUpload, callback }) {
   const form = document.createElement('form');
   form.classList.add('form');
   form.id = 'form';
@@ -26,11 +26,11 @@ export default function createForm({ API, inputs, buttons, serviceDetails, callb
   saveBtn.disabled = true;
 
   saveBtn.addEventListener('click', () => {
-    callback(API, inputs);
+    callback(API, inputs, imagesToUpload);
   });
 
   inputs.forEach((input) => {
-    const label = createInput({inputs, input, saveBtn, serviceDetails});
+    const label = createInput({inputs, input, saveBtn, serviceDetails, imagesToUpload});
     form.appendChild(label);
   });
 

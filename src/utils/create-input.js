@@ -6,6 +6,7 @@ export default function createInput({
   input,
   saveBtn,
   serviceDetails,
+  imagesToUpload,
 }) {
   const label = document.createElement('label');
   label.htmlFor = input.id;
@@ -45,6 +46,7 @@ export default function createInput({
         };
 
         reader.readAsDataURL(inputElement.files[0]);
+        imagesToUpload.push(inputElement.files[0]);
       }
     });
   }
