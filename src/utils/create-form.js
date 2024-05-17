@@ -30,7 +30,7 @@ export default function createForm({ API, inputs, buttons, serviceDetails, callb
   });
 
   inputs.forEach((input) => {
-    const label = createInput({inputs, input, saveBtn});
+    const label = createInput({inputs, input, saveBtn, serviceDetails});
     form.appendChild(label);
   });
 
