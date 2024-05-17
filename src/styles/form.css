@@ -139,7 +139,7 @@ select:invalid:focus {
   display: flex;
   width: 100%;
   gap: 2rem;
-  overflow-x: scroll;
+  overflow-x: auto;
   scroll-snap-type: x mandatory;
 }
 
