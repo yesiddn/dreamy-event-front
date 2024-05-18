@@ -5,7 +5,6 @@ import UserSideBar from '../components/userProfile/UserSideBar.js';
 import UserPanel from '../components/userProfile/UserPanel.js';
 
 let OPTION = 'summary';
-let updatedUserData = {};
 
 
 const UserProfile = (API, USER) => {
@@ -32,28 +31,30 @@ const UserProfile = (API, USER) => {
   });
 
 
-
-
   const optionElementList = document.querySelectorAll('.user-options li');
   // Event listener para los user options
   optionElementList.forEach(element => {
     element.addEventListener('click', () => {
-
-      if (element.id == 'pass-option') {
-        OPTION = 'pass';
-        if (!container.querySelector('.update-password-container')) {
-          container.querySelector('.user-information-container')?.remove();
-          container.appendChild(userPanel());
-        }
-
+      if (container.children[1] && (element.id !== 'logout-option')) {
+        const hola = container.children[1];
+        hola.remove();
+      }else{
+        // cargar aqui la funcion que cerrara la sesion
+        alert('Cerrando sesión');
+      }
+      
+      if (element.id == 'summary-option') {
+        OPTION = 'summary';
+        container.appendChild(userPanel());
+        console.log(OPTION);
       } else if (element.id == 'info-option') {
         OPTION = 'info';
-        if (!container.querySelector('.user-information-container')) {
-          container.querySelector('.update-password-container')?.remove();
-          container.appendChild(userPanel());
-        }
-      }else if(element.id == 'summary-option'){
-        console.log('summary clicked');
+        console.log(OPTION);
+        container.appendChild(userPanel());
+      } else if (element.id == 'pass-option') {
+        OPTION = 'pass';
+        container.appendChild(userPanel());
+        console.log(OPTION);
       }
     })
   });
