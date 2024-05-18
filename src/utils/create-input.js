@@ -26,6 +26,7 @@ export default function createInput({
   if (input.id === 'phone') inputElement.min = 1000000000;
   if (input.type === 'file') {
     inputElement.accept = input.accept;
+    inputElement.multiple = input.multiple;
 
     inputElement.addEventListener('change', () => {
       input.modify = true;
@@ -33,20 +34,22 @@ export default function createInput({
       const imagesPreviewCointainer = document.querySelector('.form__images');
 
       if (inputElement.files && inputElement.files[0]) {
-        const reader = new FileReader();
+        
+        [...inputElement.files].forEach((file) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = (e) => {
+            const image = {
+              url: e.target.result,
+              local: true,
+            };
 
-        reader.onload = function (e) {
-          const image = {
-            url: e.target.result,
-            local: true,
+            const imagePreview = createImagePreview(image);
+
+            imagesPreviewCointainer.appendChild(imagePreview);
+            imagesToUpload.push(file);
           };
-
-          const imagePreview = createImagePreview(image);
-          imagesPreviewCointainer.insertBefore(imagePreview, imagesPreviewCointainer.firstChild);
-        };
-
-        reader.readAsDataURL(inputElement.files[0]);
-        imagesToUpload.push(inputElement.files[0]);
+        });
       }
     });
   }
