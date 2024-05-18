@@ -40,8 +40,12 @@ const inputs = [
 
     const label = document.createElement('label');
     const infoTitle = document.createElement('h2');
-    infoTitle.textContent = 'Actualizar contraseña';
+    infoTitle.textContent = 'Contraseña';
+    const infoSubtittle = document.createElement('h4');
+    infoSubtittle.classList.add('form__subtittle');
+    infoSubtittle.textContent = 'Actualiza aqui tu contraseña';
     label.appendChild(infoTitle);
+    label.appendChild(infoSubtittle);
     form.appendChild(label);
   
     inputs.forEach((input) => {

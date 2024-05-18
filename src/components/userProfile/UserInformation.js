@@ -61,8 +61,12 @@ export default function UserInformation(USER) {
 
   const label = document.createElement('label');
   const infoTitle = document.createElement('h2');
-  infoTitle.textContent = 'Información de usuario';
+  infoTitle.textContent = 'Actualizar perfil';
+  const infoSubtittle = document.createElement('h4');
+  infoSubtittle.classList.add('form__subtittle');
+  infoSubtittle.textContent = 'Actualiza aqui tu detalles de contacto';
   label.appendChild(infoTitle);
+  label.appendChild(infoSubtittle);
   form.appendChild(label);
 
   inputs.forEach((input) => {

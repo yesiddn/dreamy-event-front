@@ -61,8 +61,12 @@ export default function UserSummary(USER) {
   
     const label = document.createElement('label');
     const infoTitle = document.createElement('h2');
-    infoTitle.textContent = 'Resumen';
+    infoTitle.textContent = 'Perfil de usuario';
+    const infoSubtittle = document.createElement('h4');
+    infoSubtittle.classList.add('form__subtittle');
+    infoSubtittle.textContent = 'Resumen de mi Información Personal';
     label.appendChild(infoTitle);
+    label.appendChild(infoSubtittle);
     form.appendChild(label);
   
     inputs.forEach((input) => {

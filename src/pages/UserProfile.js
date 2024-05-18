@@ -46,16 +46,14 @@ const UserProfile = (API, USER) => {
       if (element.id == 'summary-option') {
         OPTION = 'summary';
         container.appendChild(userPanel());
-        console.log(OPTION);
       } else if (element.id == 'info-option') {
         OPTION = 'info';
-        console.log(OPTION);
         container.appendChild(userPanel());
       } else if (element.id == 'pass-option') {
         OPTION = 'pass';
         container.appendChild(userPanel());
-        console.log(OPTION);
       }
+      
     })
   });
 }
