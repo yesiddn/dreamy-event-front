@@ -6,8 +6,6 @@ export default function validateForm(inputs) {
   if (modify) {
     return inputs.some((input) => input.validate);
   } else {
-    return inputs.every((input) => {
-      input.validate;
-    });
+    return inputs.every((input) => input.validate);
   }
 }
