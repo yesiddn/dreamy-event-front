@@ -1,4 +1,4 @@
-export default function createImagePreview(image) {
+export default function createImagePreview(image, callback) {
   const imageContainer = document.createElement('div');
   imageContainer.classList.add('form__images__container');
 
@@ -11,9 +11,7 @@ export default function createImagePreview(image) {
   const deleteBtn = document.createElement('button');
   deleteBtn.classList.add('form__image__delete');
 
-  deleteBtn.addEventListener('click', () => {
-    imageContainer.remove();
-  });
+  deleteBtn.addEventListener('click', () => callback(imageContainer));
 
   imageContainer.appendChild(img);
   imageContainer.appendChild(deleteBtn);
