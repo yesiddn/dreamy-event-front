@@ -1,0 +1,175 @@
+/* contenedor del icono "update" de la foto de perfil */
+.profile-icon-box {
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    border-radius: 100%;
+    padding: 5px 4.5px;
+    outline: 5px solid white;
+    display: flex;
+    background-color: var(--primary)
+}
+
+/* contenedor principal */
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6rem;
+    gap: 2rem;
+}
+
+/* contenedor izquierdo */
+.user-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+
+}
+
+/* solo mini contenedor con foto, nombre e email */
+.user-profile-overview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
+    padding-bottom: 2rem;
+}
+
+.user-first-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.user-email {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgb(164, 161, 161);
+}
+
+.user-profile-overview-pic {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    display: flex;
+    cursor: pointer;
+    margin-top: -85px;
+    outline: 10px solid white;
+}
+
+.user-profile-overview-pic img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+/* mini menu principal en la pagina de perfil */
+.user-options {
+    border-radius: 30px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
+    margin-top: 1rem;
+    background-color: #ffffff;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.user-options ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    gap: 1rem;
+    padding: 5px;
+}
+
+.user-options li {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* basic animation in these links */
+.sidebar-link {
+    cursor: pointer;
+}
+
+.right-arrow-icon {
+    transition: .3s;
+}
+
+#summary-option:hover .right-arrow-icon,
+#info-option:hover .right-arrow-icon,
+#pass-option:hover .right-arrow-icon,
+#logout-option:hover .right-arrow-icon {
+    transform: translateX(-10px);
+}
+
+
+/* user panel */
+.update-information-container,
+.update-password-container,
+.user-information-container {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 30px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
+}
+.update-information-container h2,
+.update-password-container h2,
+.user-information-container h2 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.form__subtittle {
+    font-size: 1rem;
+    font-weight: lighter;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+
+}
+
+.update-information-container form input,
+.update-password-container form input,
+.user-information-container form input {
+    border: none !important;
+    background-color: aliceblue;
+    padding-left: 20px;
+
+}
+
+.update-information-container form input:focus,
+.update-password-container form input:focus,
+.user-information-container form input:focus {
+    border: solid 1px var(--primary) !important;
+}
+
+@media (min-width: 1024px) {
+    .user-profile {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .user-sidebar {
+        width: 30%;
+        max-width: 400px;
+    }
+
+    .update-information-container,
+    .update-password-container,
+    .user-information-container {
+        width: 50%;
+    }
+}
