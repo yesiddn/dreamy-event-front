@@ -1,5 +1,6 @@
 import '../styles/header.css';
 import getUserData from '../utils/get-user-data';
+import logOut from '../utils/log-out';
 
 const links = [
   { href: 'profile', text: 'Mi perfil', typeUser: 'customer' },
@@ -103,7 +104,10 @@ function NavLinks(USER) {
   navLinks.classList.add('inactive');
 
   links.forEach((link) => {
-    if (!USER && link.typeUser === 'public') {
+    if (USER && link.href === 'log-out') {
+      const li = Button(link);
+      navLinks.appendChild(li);
+    } else if (!USER && link.typeUser === 'public') {
       const li = Link(link);
       navLinks.appendChild(li);
     } else if (USER && link.typeUser === 'customer') {
@@ -128,6 +132,18 @@ function Link(link) {
   a.textContent = link.text;
 
   li.appendChild(a);
+
+  return li;
+}
+
+function Button(link) {
+  const li = document.createElement('li');
+  const button = document.createElement('button');
+  button.textContent = link.text;
+
+  button.addEventListener('click', logOut);
+
+  li.appendChild(button);
 
   return li;
 }

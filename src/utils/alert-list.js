@@ -3,9 +3,21 @@ const alerts = {
     message: 'Bienvenido a la plataforma.',
     color: '#ADFFC7',
   },
+  'login-error': {
+    message: 'Usuario o contraseña incorrecto.',
+    color: '#F02D3A',
+  },
+  'log-out': {
+    message: 'Te esperamos pronto.',
+    color: '#ADFFC7',
+  },
   'user-exists': {
     message: 'El usuario ya existe.',
     color: '#ADBDFF',
+  },
+  'user-not-found': {
+    message: 'Usuario no encontrado.',
+    color: '#F02D3A',
   },
   'user-not-exists': {
     message: 'El usuario no existe.',
@@ -15,9 +27,9 @@ const alerts = {
     message: 'Usuario creado correctamente.',
     color: '#ADFFC7',
   },
-  'login-error': {
-    message: 'Usuario o contraseña incorrecto.',
-    color: '#F02D3A',
+  'supplier-created': {
+    message: 'Proveedor creado correctamente.',
+    color: '#ADFFC7',
   },
   'page-not-found': {
     message: 'Página no encontrada.',
@@ -137,8 +149,32 @@ const alerts = {
     message: 'Cambio de contraseña realizado.',
     color: '#ADFFC7',
   },
+  'code sent': {
+    message: 'El código de verificación ha sido enviado',
+    color: '#ADFFC7',
+  },
+  'email empty': {
+    message: 'Por favor ingrese un correo electrónico',
+    color: '#F02D3A',
+  },
+  'email not Found': {
+    message: 'El correo ingresado no esta registrado',
+    color: '#F02D3A',
+  },
+  'code correct': {
+    message: 'Código correcto',
+    color: '#ADFFC7',
+  },
+  'password not valid': {
+    message: 'La contraseña no cumple la longitud solicitada',
+    color: '#F02D3A',
+  },
+  'password empty': {
+    message: 'Por favor ingrese una contraseña.',
+    color: '#F02D3A',
+  },
   'wrong verification code': {
-    message: 'codigo incorrecto, Intentalo de nuevo.',
+    message: 'Codigo incorrecto, Intentalo de nuevo.',
     color: '#F02D3A',
   },
   'password mismatch Validator': {

@@ -2,7 +2,7 @@ export default function validateInputData(input, spanError) {
   if (
     input.value.trim() === '' ||
     input.validity.typeMismatch === true ||
-    (input.type === 'number' && input.value.length < 10) ||
+    (input.type === 'number' && input.value.length < input.min.length) ||
     (input.type === 'text' && input.value.length < 3) ||
     (input.type === 'password' && input.value.length < 8)
   ) {
