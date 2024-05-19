@@ -4,7 +4,7 @@ import deleteEvents from '../utils/delete-event.js';
 
 const MyEvents = (API, USER) => {
   Header(USER);
-  EventSection(API, deleteEvents);
+  EventSection(API, USER, deleteEvents);
 };
 
 
