@@ -3,7 +3,7 @@ import '../styles/my-events.css';
 import getEvents from '../utils/get-event.js';
 import deleteEvents from '../utils/delete-event.js';
 
-export default async function EventSection(API){
+export default async function EventSection(API,USER){
     const listEventContainer = document.createElement('section');
     listEventContainer.classList.add('my-events');
 
@@ -32,7 +32,9 @@ export default async function EventSection(API){
     return;
    }
 
-   events.forEach(eventDetail => {
+   const customerEvents = events.filter(eventDetail => eventDetail.customer && eventDetail.customer.customerId === USER.customer.customerId);
+   
+   customerEvents.forEach(eventDetail => {
     const eventCard = showEvents(eventDetail);
     showMyEvents.appendChild(eventCard);
 
