@@ -29,7 +29,7 @@ export default function createForm({ API, inputs, buttons, serviceDetails, image
   saveBtn.disabled = true;
 
   saveBtn.addEventListener('click', () => {
-    callback(API, inputs, imagesToUpload);
+    callback(API, serviceDetails, imagesToUpload);
   });
 
   inputs.forEach((input) => {

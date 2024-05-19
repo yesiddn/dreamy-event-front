@@ -31,10 +31,11 @@ export default function createInput({
     inputElement.addEventListener('change', () => {
       input.modify = true;
       validateProcess({ inputs, input, inputElement, spanError, saveBtn });
+      if (inputElement.value.trim() === '') saveBtn.disabled = true;
+
       const imagesPreviewCointainer = document.querySelector('.form__images');
 
       if (inputElement.files && inputElement.files[0]) {
-        
         [...inputElement.files].forEach((file) => {
           const reader = new FileReader();
           reader.readAsDataURL(file);
@@ -44,7 +45,9 @@ export default function createInput({
               local: true,
             };
 
-            const imagePreview = createImagePreview(image);
+            const imagePreview = createImagePreview(image, (imageContainer) =>
+              imageContainer.remove()
+            );
 
             imagesPreviewCointainer.appendChild(imagePreview);
             imagesToUpload.push(file);
@@ -61,6 +64,9 @@ export default function createInput({
   inputElement.addEventListener('keyup', () => {
     input.modify = true;
     validateProcess({ inputs, input, inputElement, spanError, saveBtn });
+
+    if (inputElement.value.trim() === '') saveBtn.disabled = true;
+    serviceDetails ? (serviceDetails[input.name] = inputElement.value) : null;
   });
 
   if (serviceDetails) {
