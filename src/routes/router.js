@@ -1,6 +1,8 @@
 import Home from '../pages/Home.js';
 import MyServices from '../pages/MyServices.js';
 import CreateServiceSection from '../pages/CreateService.js';
+import editServiceForm from '../templates/EditServices.js';
+import InfoService from '../pages/InfoService.js';
 import Login from '../pages/Login.js';
 import Signup from '../pages/Signup.js';
 import MyEvents from '../pages/MyEvents.js';
@@ -28,6 +30,7 @@ const routes = [
   { path: 'my-services', component: MyServices, typeUser: 'supplier' },
   { path: 'create-service', component: CreateServiceSection, typeUser: 'supplier', },
   { path: 'edit-service', component: EditService, typeUser: 'supplier', },
+  { path: 'service', component: InfoService, typeUser: 'public'},
   { path: 'my-events', component: MyEvents, typeUser: 'customer' },
   { path: 'new-event', component: CreateEvent, typeUser: 'customer' },
   { path: 'edit-event', component: EditEvents, typeUser: 'customer'},
