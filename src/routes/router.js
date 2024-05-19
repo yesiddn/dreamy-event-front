@@ -12,6 +12,7 @@ import Error404 from '../templates/error-404.js';
 import Error401 from '../templates/error-401.js';
 import EditEvents from '../pages/EditEvent.js';
 import SignUpSupplier from '../pages/SignUpSupplier.js';
+import EditService from '../pages/EditService.js';
 import RecoverPassword from '../pages/RecoverPassword.js';
 import CodeVerification from '../pages/CodeVerification.js';
 import ChangePassword from '../pages/ChangePassword.js';
@@ -28,7 +29,7 @@ const routes = [
   },
   { path: 'my-services', component: MyServices, typeUser: 'supplier' },
   { path: 'create-service', component: CreateServiceSection, typeUser: 'supplier', },
-  { path: 'edit-service', component: editServiceForm, typeUser: 'supplier', },
+  { path: 'edit-service', component: EditService, typeUser: 'supplier', },
   { path: 'service', component: InfoService, typeUser: 'public'},
   { path: 'my-events', component: MyEvents, typeUser: 'customer' },
   { path: 'new-event', component: CreateEvent, typeUser: 'customer' },

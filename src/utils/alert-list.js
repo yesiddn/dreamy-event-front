@@ -43,6 +43,10 @@ const alerts = {
     message: 'Algo salió mal. Inténtalo de nuevo.',
     color: '#F02D3A',
   },
+  'service-not-found': {
+    message: 'Servicio no encontrado.',
+    color: '#F02D3A',
+  },
   'file-too-large': {
     message:
       'El archivo es demasiado grande. Inténtalo de nuevo con un archivo más pequeño.',

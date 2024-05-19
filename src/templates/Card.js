@@ -6,7 +6,7 @@ export default function CardService(serviceDetails, typecard = 'card-user') {
   cardContainer.classList.add('card');
 
   // action buttons
-  const menuOptions = MenuOptions();
+  const menuOptions = MenuOptions(serviceDetails);
   cardContainer.appendChild(menuOptions);
   
   const cardButton = CardButton(typecard, menuOptions);
@@ -68,7 +68,7 @@ function CardButton(typecard, menuOptions) {
   return cardButton;
 }
 
-function MenuOptions(){
+function MenuOptions(serviceDetails){
   // service options
   const options = document.createElement('div');
   options.classList.add('service__options');
@@ -76,7 +76,7 @@ function MenuOptions(){
 
   // service options -> editar
   const serviceEdit = document.createElement('a');
-  serviceEdit.href = '/edit-service';
+  serviceEdit.href = `/edit-service/${serviceDetails.serviceId}`;
   serviceEdit.classList.add('service__options__edit');
   options.appendChild(serviceEdit);
 
