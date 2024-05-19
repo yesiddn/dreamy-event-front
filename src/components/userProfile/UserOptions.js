@@ -2,8 +2,8 @@
 function UserOptions() {
 
     const linkList = {
-        'mi perfil': ['../public/svg/info.svg', 'summary-option'],
-        informacion: ['../public/svg/info.svg', 'info-option'],
+        'mi perfil': ['../public/svg/profile.svg', 'summary-option'],
+        actualizar: ['../public/svg/info.svg', 'info-option'],
         contraseña: ['../public/svg/password.svg', 'pass-option'],
         'cerrar sesion': ['../public/svg/log-out.svg', 'logout-option'],
     };

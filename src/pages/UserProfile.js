@@ -11,6 +11,8 @@ const UserProfile = (API, USER) => {
   const container = document.createElement('div');
   container.classList.add('user-profile');
 
+  console.log(USER)
+
   Header(USER);
   const sidebar = UserSideBar(API, USER);
   container.appendChild(sidebar);
@@ -21,16 +23,6 @@ const UserProfile = (API, USER) => {
 
   container.appendChild(userPanel());
 
-  // localStorage data
-  const savingInfoForm = document.querySelector('#form');
-  savingInfoForm.addEventListener('change', function () {
-    const userInfoForm = document.querySelector('#form');
-    const formData = new FormData(userInfoForm);
-    const data = Object.fromEntries(formData.entries());
-    localStorage.setItem('updatedData', JSON.stringify(data));
-  });
-
-
   const optionElementList = document.querySelectorAll('.user-options li');
   // Event listener para los user options
   optionElementList.forEach(element => {
@@ -38,22 +30,31 @@ const UserProfile = (API, USER) => {
       if (container.children[1] && (element.id !== 'logout-option')) {
         const hola = container.children[1];
         hola.remove();
-      }else{
+      } else {
         // cargar aqui la funcion que cerrara la sesion
         alert('Cerrando sesión');
       }
-      
+
       if (element.id == 'summary-option') {
         OPTION = 'summary';
         container.appendChild(userPanel());
       } else if (element.id == 'info-option') {
         OPTION = 'info';
         container.appendChild(userPanel());
+
+        const savingInfoForm = document.querySelector('.update-information-container .form');
+        savingInfoForm.addEventListener('change', function () {
+          const userInfoForm = document.querySelector('#form');
+          const formData = new FormData(userInfoForm);
+          const data = Object.fromEntries(formData.entries());
+          localStorage.setItem('updatedData', JSON.stringify(data));
+        });
+
       } else if (element.id == 'pass-option') {
         OPTION = 'pass';
         container.appendChild(userPanel());
       }
-      
+
     })
   });
 }

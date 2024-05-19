@@ -105,6 +105,7 @@
     transition: .3s;
 }
 
+#summary-option:hover .right-arrow-icon,
 #info-option:hover .right-arrow-icon,
 #pass-option:hover .right-arrow-icon,
 #logout-option:hover .right-arrow-icon {
@@ -113,7 +114,7 @@
 
 
 /* user panel */
-
+.update-information-container,
 .update-password-container,
 .user-information-container {
     padding: 40px;
@@ -123,14 +124,14 @@
     border-radius: 30px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
 }
-
+.update-information-container h2,
 .update-password-container h2,
 .user-information-container h2 {
     font-size: 1.5rem;
     text-align: center;
 }
 
-.form__subtittle{
+.form__subtittle {
     font-size: 1rem;
     font-weight: lighter;
     margin-top: 10px;
@@ -139,7 +140,7 @@
 
 }
 
-
+.update-information-container form input,
 .update-password-container form input,
 .user-information-container form input {
     border: none !important;
@@ -148,6 +149,7 @@
 
 }
 
+.update-information-container form input:focus,
 .update-password-container form input:focus,
 .user-information-container form input:focus {
     border: solid 1px var(--primary) !important;
@@ -165,6 +167,7 @@
         max-width: 400px;
     }
 
+    .update-information-container,
     .update-password-container,
     .user-information-container {
         width: 50%;
