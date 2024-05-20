@@ -3,6 +3,7 @@ import Header from '../templates/Header.js';
 import '../styles/user-profile.css'
 import UserSideBar from '../components/userProfile/UserSideBar.js';
 import UserPanel from '../components/userProfile/UserPanel.js';
+import logOut from '../utils/log-out.js';
 
 let OPTION = 'summary';
 
@@ -10,8 +11,6 @@ let OPTION = 'summary';
 const UserProfile = (API, USER) => {
   const container = document.createElement('div');
   container.classList.add('user-profile');
-
-  console.log(USER)
 
   Header(USER);
   const sidebar = UserSideBar(API, USER);
@@ -27,12 +26,8 @@ const UserProfile = (API, USER) => {
   // Event listener para los user options
   optionElementList.forEach(element => {
     element.addEventListener('click', () => {
-      if (container.children[1] && (element.id !== 'logout-option')) {
-        const hola = container.children[1];
-        hola.remove();
-      } else {
-        // cargar aqui la funcion que cerrara la sesion
-        alert('Cerrando sesión');
+      if (element.id === 'logout-option') {
+        logOut();
       }
 
       if (element.id == 'summary-option') {

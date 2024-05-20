@@ -218,7 +218,7 @@
     display: inline-block;
     width: 32px;
     height: 32px;
-    background-image: url('arrow-down.svg');
+    background-image: url('../../public/svg/arrow-down.svg');
     background-position: center;
     background-size: cover;
     transform: rotate(180deg);
