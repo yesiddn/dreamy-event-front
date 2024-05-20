@@ -60,6 +60,14 @@ const alerts = {
     message: 'Error al crear el servicio. Inténtalo de nuevo.',
     color: '#F02D3A',
   },
+  'service-update-success': {
+    message: 'Servicio actualizado correctamente.',
+    color: '#ADFFC7',
+  },
+  'service-update-error': {
+    message: 'Error al actualizar el servidor. Inténtalo de nuevo.',
+    color: '#F02D3A',
+  },
   'favorite-added': {
     message: 'Servicio agregado a favoritos.',
     color: '#ADFFC7',

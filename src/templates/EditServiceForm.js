@@ -1,9 +1,9 @@
 import '../styles/form.css';
 import saveFile from '../utils/save-file';
-import saveLogin from '../utils/save-login';
-import saveSupplier from '../utils/save-supplier';
 import createForm from '../utils/create-form';
 import getServiceDetails from '../utils/get-service-details';
+import updateService from '../utils/update-service';
+import Alert from './Alert';
 
 const inputs = [
   {
@@ -12,9 +12,9 @@ const inputs = [
     name: 'images',
     label: 'Agregar una imagen al servicio',
     accept: 'image/*',
+    multiple: true,
     errorMesage: 'Seleccione un archivo válido.',
     validate: false,
-    modify: false,
   },
   {
     id: 'name',
@@ -115,13 +115,17 @@ export default async function EditServiceForm(API) {
   return form;
 }
 
-async function handleRegistration(API, inputs, imagesToUpload) {
-  let imagesUploaded = [];
-
+async function handleRegistration(API, serviceDetails, imagesToUpload) {
   imagesToUpload.forEach(async (image) => {
     const imageData = await saveImage(API, image);
-    imagesUploaded.push(imageData.location);
+    serviceDetails.images.push({ url: imageData.location });
   });
+
+  const response = await updateService(API, JSON.stringify(serviceDetails));
+
+  if (response) {
+    Alert('service-update-success', '/my-services');
+  }
 }
 
 function saveImage(API, image) {

@@ -26,27 +26,33 @@ export default function createInput({
   if (input.id === 'phone') inputElement.min = 1000000000;
   if (input.type === 'file') {
     inputElement.accept = input.accept;
+    inputElement.multiple = input.multiple;
 
     inputElement.addEventListener('change', () => {
       input.modify = true;
       validateProcess({ inputs, input, inputElement, spanError, saveBtn });
+      if (inputElement.value.trim() === '') saveBtn.disabled = true;
+
       const imagesPreviewCointainer = document.querySelector('.form__images');
 
       if (inputElement.files && inputElement.files[0]) {
-        const reader = new FileReader();
+        [...inputElement.files].forEach((file) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = (e) => {
+            const image = {
+              url: e.target.result,
+              local: true,
+            };
 
-        reader.onload = function (e) {
-          const image = {
-            url: e.target.result,
-            local: true,
+            const imagePreview = createImagePreview(image, (imageContainer) =>
+              imageContainer.remove()
+            );
+
+            imagesPreviewCointainer.appendChild(imagePreview);
+            imagesToUpload.push(file);
           };
-
-          const imagePreview = createImagePreview(image);
-          imagesPreviewCointainer.insertBefore(imagePreview, imagesPreviewCointainer.firstChild);
-        };
-
-        reader.readAsDataURL(inputElement.files[0]);
-        imagesToUpload.push(inputElement.files[0]);
+        });
       }
     });
   }
@@ -58,6 +64,9 @@ export default function createInput({
   inputElement.addEventListener('keyup', () => {
     input.modify = true;
     validateProcess({ inputs, input, inputElement, spanError, saveBtn });
+
+    if (inputElement.value.trim() === '') saveBtn.disabled = true;
+    serviceDetails ? (serviceDetails[input.name] = inputElement.value) : null;
   });
 
   if (serviceDetails) {

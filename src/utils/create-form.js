@@ -11,8 +11,11 @@ export default function createForm({ API, inputs, buttons, serviceDetails, image
     const imagesContainer = document.createElement('div');
     imagesContainer.classList.add('form__images');
 
-    serviceDetails.images.forEach((image) => {
-      const imagePreview = createImagePreview(image);
+    serviceDetails.images.forEach((image, index) => {
+      const imagePreview = createImagePreview(image, (imageContainer) => {
+        imageContainer.remove();
+        serviceDetails.images.splice(index, 1);
+      });
       imagesContainer.appendChild(imagePreview);
     });
 
@@ -26,7 +29,7 @@ export default function createForm({ API, inputs, buttons, serviceDetails, image
   saveBtn.disabled = true;
 
   saveBtn.addEventListener('click', () => {
-    callback(API, inputs, imagesToUpload);
+    callback(API, serviceDetails, imagesToUpload);
   });
 
   inputs.forEach((input) => {
