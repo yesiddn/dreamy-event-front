@@ -26,7 +26,10 @@ const UserProfile = (API, USER) => {
   // Event listener para los user options
   optionElementList.forEach(element => {
     element.addEventListener('click', () => {
-      if (element.id === 'logout-option') {
+      if (container.children[1] && element.id !== 'logout-option') {
+        const optionToDelete = container.children[1];
+        optionToDelete.remove();
+      } else {
         logOut();
       }
 
