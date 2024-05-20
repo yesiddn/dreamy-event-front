@@ -7,7 +7,7 @@ export default async function updateService(API, data) {
   const response = await fetchData({
     API: API + ENDPOINT,
     method: 'PUT',
-    data,
+    data: JSON.stringify(data),
   });
 
   if (response.status === 200) {

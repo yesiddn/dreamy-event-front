@@ -116,12 +116,12 @@ export default async function EditServiceForm(API) {
 }
 
 async function handleRegistration(API, serviceDetails, imagesToUpload) {
-  imagesToUpload.forEach(async (image) => {
+  for (const image of imagesToUpload) {
     const imageData = await saveImage(API, image);
     serviceDetails.images.push({ url: imageData.location });
-  });
+  }
 
-  const response = await updateService(API, JSON.stringify(serviceDetails));
+  const response = await updateService(API, serviceDetails);
 
   if (response) {
     Alert('service-update-success', '/my-services');
