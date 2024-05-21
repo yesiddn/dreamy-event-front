@@ -1,19 +1,31 @@
-export default function validateInputData(input, spanError) {
+export default function validateInputData(inputElement, spanError) {
+  if (inputElement.type === 'file') {
+    if (inputElement.files.length === 0) {
+      inputElement.classList.add('is-invalid');
+      spanError.classList.remove('inactive');
+      return false;
+    } else {
+      inputElement.classList.remove('is-invalid');
+      spanError.classList.add('inactive');
+      return true;
+    }
+  }
+  
   if (
-    input.value.trim() === '' ||
-    input.validity.typeMismatch === true ||
-    (input.type === 'number' && input.value.length < 10) ||
-    (input.type === 'text' && input.value.length < 3) ||
-    (input.type === 'password' && input.value.length < 8)
+    inputElement.value.trim() === '' ||
+    inputElement.validity.typeMismatch === true ||
+    (inputElement.type === 'number' && inputElement.value.length < inputElement.min.length) ||
+    (inputElement.type === 'text' && inputElement.value.length < inputElement.minLength) ||
+    (inputElement.type === 'password' && inputElement.value.length < inputElement.minLength)
   ) {
-    input.classList.add('is-invalid');
+    inputElement.classList.add('is-invalid');
 
     // activate the invalid feedback
     spanError.classList.remove('inactive');
 
     return false;
   } else {
-    input.classList.remove('is-invalid');
+    inputElement.classList.remove('is-invalid');
     spanError.classList.add('inactive');
     return true;
   }

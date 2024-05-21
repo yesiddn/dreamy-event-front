@@ -3,7 +3,7 @@ import Header from '../templates/Header.js';
 
 const CreateEvent = (API, USER) => {
   Header(USER);
-  CreateEventSection(API);
+  CreateEventSection(API,USER); 
 };
 
 export default CreateEvent;

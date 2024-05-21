@@ -3,7 +3,7 @@ import NewEventForm from "./CreateEventForm";
 import saveEvents from '../utils/save-event';
 import Alert from './Alert.js';
 
-export default async function CreateEventSection(API){
+export default async function CreateEventSection(API,USER){
 const formSection = document.createElement('section');
 formSection.classList.add('form-section');
 
@@ -31,14 +31,15 @@ formContainer.addEventListener('submit', async (event) =>{
         date: new Date(formData.get('event-date')).toISOString(),
         address: formData.get('event-address'),
         city: formData.get('event-city'),
-        country: formData.get('event-country')
+        country: formData.get('event-country'),
+        customer: USER.customer
     };
 
     const eventDataString = JSON.stringify(eventData);
 
     try {
         const response = await saveEvents(API, eventDataString);
-
+        
         if(!response){
             Alert('event-created-successfully', '/my-events');
         } else {

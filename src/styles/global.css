@@ -1,8 +1,11 @@
 :root {
   --primary: #7772E6;
+  --primary-light: rgba(118, 112, 230, 0.4);
   --secondary: #737380;
+  --secondary-light: rgba(115, 115, 128, 0.4);
   --black: #1B1A33;
   --white: #FFFFFF;
+  --red: #F02D3A;
 }
 
 html {

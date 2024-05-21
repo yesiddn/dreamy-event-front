@@ -1,0 +1,52 @@
+  .error-page-container {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    color: var(--black);
+  }
+
+  .error-page-container .error-header {
+    width: 40%;
+  }
+  
+  .error-page-container .error-content {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .error-page-container h2 {
+    margin: 0;
+    font-size: 4rem;
+  }
+  
+  .error-page-container img {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .error-page-container h3 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  .error-page-container p {
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    text-align: center;
+    text-wrap: pretty;
+  }
+  
+  .error-page-container a {
+    display: inline-block;
+    width: 150px;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: var(--primary);
+    text-decoration: none;
+    text-align: center;
+    color: var(--white);
+  }
