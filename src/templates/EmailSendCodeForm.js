@@ -14,11 +14,10 @@ export default function SendCode(){
     inputEmail.type = 'email';
     inputEmail.name = 'email-send-code';
     inputEmail.placeholder = 'Correo electrónico';
-    inputEmail.style.width = '21.875rem';
     inputEmail.addEventListener('keyup', function () {
         validateInputData('email-send-code');
       });
-    form.appendChild(inputEmail)
+    labelEmail.appendChild(inputEmail)
 
     const buttonSendEmail = document.createElement('button');
     buttonSendEmail.id = 'button';

@@ -15,11 +15,10 @@ export default function changePassword(){
     inputPassword.name = 'change-password';
     inputPassword.placeholder = 'Nueva contraseña';
     inputPassword.minLength = 8;
-    inputPassword.style.width = '21.875rem';
     inputPassword.addEventListener('keyup', function () {
         validateInputData('change-password');
       });
-    form.appendChild(inputPassword)
+    labelChange.appendChild(inputPassword)
 
     const buttonNewPassword = document.createElement('button');
     buttonNewPassword.id = 'button';
