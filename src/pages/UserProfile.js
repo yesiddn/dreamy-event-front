@@ -12,7 +12,7 @@ const UserProfile = (API, USER) => {
   const container = document.createElement('div');
   container.classList.add('user-profile');
 
-  Header(USER);
+  Header(API, USER);
   const sidebar = UserSideBar(API, USER);
   container.appendChild(sidebar);
 

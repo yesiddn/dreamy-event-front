@@ -3,7 +3,7 @@ import SupplierServices from '../templates/SupplierServices.js';
 import deleteService from '../utils/delete-service.js';
 
 const MyServices = (API, USER) => {
-  Header(USER);
+  Header(API, USER);
   SupplierServices(API, deleteService);
 };
 

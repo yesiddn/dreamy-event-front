@@ -3,9 +3,9 @@ import getServiceDetails from '../utils/get-service-details.js';
 import '../styles/info-service.css';
 import Footer from '../templates/Footer.js';
 
-async function infoService(API) {
+async function infoService(API, USER) {
   // header
-  Header();
+  Header(API, USER);
   // datos = getService()
   //sacar service id de la url
   const serviceId = window.location.pathname.split('/')[2];
