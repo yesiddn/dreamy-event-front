@@ -1,6 +1,12 @@
-.favorites__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
+.my-favorites {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.my-favorites__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}

@@ -15,7 +15,7 @@ import RecoverPassword from '../pages/RecoverPassword.js';
 import CodeVerification from '../pages/CodeVerification.js';
 import ChangePassword from '../pages/ChangePassword.js';
 import UserProfile from '../pages/UserProfile.js';
-import favorites from '../pages/Favorites.js';
+import favorites from '../pages/MyFavorites.js';
 
 const routes = [
   { path: '', component: Home, typeUser: 'public' },

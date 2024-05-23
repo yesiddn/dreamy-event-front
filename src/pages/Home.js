@@ -8,6 +8,7 @@ import favoritesList from '../utils/get-favorites.js';
 const Home = (API, USER) => {
 
   /* crear una condicion para verificar si existe una llave de favoritos en el localstorage */
+
   if (favoritesList(API)) {
     favoritesList(API)
       .then(result => {
@@ -18,7 +19,8 @@ const Home = (API, USER) => {
       });
   } else {
     'user without favorite data'
-  }
+  }  
+  
   Header(USER);
   Hero();
   RecommendedServices(API);
