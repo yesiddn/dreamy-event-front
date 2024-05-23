@@ -5,7 +5,7 @@ import Footer from '../templates/Footer.js';
 
 async function infoService(API, USER) {
   // header
-  Header(API, USER);
+  Header(USER);
   // datos = getService()
   //sacar service id de la url
   const serviceId = window.location.pathname.split('/')[2];
