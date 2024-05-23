@@ -23,6 +23,8 @@ const links = [
 
 export default function Header(USER) {
   const header = document.createElement('header');
+  document.body.insertBefore(header, document.body.firstChild);
+  
   const headerDiv = document.createElement('div');
   const logo = Logo();
   const searchBar = SearchBar();
@@ -33,7 +35,6 @@ export default function Header(USER) {
   headerDiv.appendChild(navBar);
 
   header.appendChild(headerDiv);
-  document.body.insertBefore(header, document.body.firstChild);
 }
 
 function Logo() {
