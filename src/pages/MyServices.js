@@ -7,5 +7,4 @@ const MyServices = (API, USER) => {
   SupplierServices(API, deleteService);
 };
 
-
 export default MyServices;

@@ -10,16 +10,12 @@ export default async function CreateServiceSection(API) {
   const serviceContainer = document.createElement('div');
   serviceContainer.classList.add('form__container');
   createServiceContainer.appendChild(serviceContainer);
-  
-    const square = document.createElement('div');
-    square.classList.add('square');
-    serviceContainer.appendChild(square);
 
   const title = document.createElement('h2');
   title.innerHTML = 'Registrar nuevo <span class="primary">servicio</span>';
   serviceContainer.appendChild(title);
 
-  const createService = CreateServiceForm();
+  const createService = await CreateServiceForm(API);
   serviceContainer.appendChild(createService);
 
   createService.addEventListener('submit', async (event) => {
@@ -50,6 +46,9 @@ export default async function CreateServiceSection(API) {
       amountPeople: Number(formData.get('peopleAmount-service')),
       characteristics: formData.get('characterisitcs-service'),
       images,
+      typeService: {
+        id : formData.get('type-service'),
+      },
     };
 
     const serviceDataString = JSON.stringify(serviceData);

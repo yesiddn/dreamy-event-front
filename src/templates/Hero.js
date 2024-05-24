@@ -3,6 +3,7 @@ import '../styles/hero.css';
 export default function Hero() {
   const heroContainer = document.createElement('div');
   heroContainer.classList.add('hero-container');
+  document.querySelector('#app').appendChild(heroContainer);
 
   const heroImage = HeroImage();
   const heroText = HeroText();
@@ -10,7 +11,6 @@ export default function Hero() {
   heroContainer.appendChild(heroImage);
   heroContainer.appendChild(heroText);
 
-  document.querySelector('#app').appendChild(heroContainer);
 }
 
 function HeroImage() {
