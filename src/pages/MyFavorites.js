@@ -4,7 +4,7 @@ import FavoriteCards from '../templates/FavoriteCards.js';
 
 const myFavorites = (API, USER) => {
     Header(USER);
-    FavoriteCards();
+    FavoriteCards(API);
 };
 
 export default myFavorites;

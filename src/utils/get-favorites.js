@@ -11,9 +11,11 @@ export default async function getFavorites(API) {
     method: 'GET'
   });
 
-  if (response.status === 200) {
-    return response.json();
-  } else {
+  if (response.status === 200) { 
+    const result = await response.json();
+    return result[1].service;
+
+}  else {
     Alert('something-went-wrong');
     return null;
   }

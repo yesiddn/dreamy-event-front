@@ -12,13 +12,13 @@ const Home = (API, USER) => {
   if (favoritesList(API)) {
     favoritesList(API)
       .then(result => {
-        console.log(result[0]);
+        console.log(result);
       })
       .catch(error => {
         console.error('Error al obtener los favoritos:', error);
       });
   } else {
-    'user without favorite data'
+    console.log('user without favorite data');
   }  
   
   Header(USER);
