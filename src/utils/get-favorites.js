@@ -13,7 +13,7 @@ export default async function getFavorites(API) {
 
   if (response.status === 200) { 
     const result = await response.json();
-    return result[1].service;
+    return result;
 
 }  else {
     Alert('something-went-wrong');

@@ -1,10 +1,10 @@
 import Header from '../templates/Header.js';
 import '../styles/favorites.css'
-import FavoriteCards from '../templates/FavoriteCards.js';
+import FavoriteSection from '../components/Favorites/FavoriteSection.js';
 
 const myFavorites = (API, USER) => {
     Header(USER);
-    FavoriteCards(API);
+    FavoriteSection(API);
 };
 
 export default myFavorites;
