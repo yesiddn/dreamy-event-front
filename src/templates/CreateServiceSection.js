@@ -3,7 +3,7 @@ import CreateServiceForm from './CreateServiceForm.js';
 import saveServices from '../utils/save-service.js';
 import Alert from './Alert.js';
 
-export default async function CreateServiceSection(API) {
+export default async function CreateServiceSection(API, USER) {
   const createServiceContainer = document.createElement('section');
   createServiceContainer.classList.add('form-section');
 
@@ -46,10 +46,12 @@ export default async function CreateServiceSection(API) {
       amountPeople: Number(formData.get('peopleAmount-service')),
       characteristics: formData.get('characterisitcs-service'),
       images,
+      supplier: USER.supplier,
       typeService: {
         id : formData.get('type-service'),
       },
     };
+    console.log(serviceData);
 
     const serviceDataString = JSON.stringify(serviceData);
 

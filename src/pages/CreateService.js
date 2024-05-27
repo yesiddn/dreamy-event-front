@@ -3,7 +3,7 @@ import Header from '../templates/Header.js';
 
 const CreateService = (API, USER) => {
   Header(USER);
-  CreateServiceSection(API);
+  CreateServiceSection(API, USER);
 };
 
 export default CreateService;
