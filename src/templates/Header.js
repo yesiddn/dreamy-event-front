@@ -24,16 +24,13 @@ const links = [
 export default function Header(USER) {
   const header = document.createElement('header');
   document.body.insertBefore(header, document.body.firstChild);
-  
+
   const headerDiv = document.createElement('div');
   const logo = Logo();
   const searchBar = SearchBar();
   const navBar = NavBar(USER);
 
-  headerDiv.appendChild(logo);
-  headerDiv.innerHTML += searchBar;
-  headerDiv.appendChild(navBar);
-
+  headerDiv.append(logo, searchBar, navBar);
   header.appendChild(headerDiv);
 }
 
@@ -48,13 +45,25 @@ function Logo() {
 }
 
 function SearchBar() {
-  const form = `
-    <form action="search" id="searchForm" class="search-bar">
-      <input type="text" name="search" id="search" placeholder="Buscar">
-      <button type="submit" id="searchButton"></button>
-    </form>
-  `;
+  const form = document.createElement('form');
+  form.action = 'search';
+  form.id = 'searchForm';
+  form.classList.add('search-bar');
 
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.name = 'search';
+  input.id = 'search';
+  input.placeholder = 'Buscar';
+  const searchQuery = window.location.search || null;
+  input.value = searchQuery ? searchQuery.split('=')[1].split('+').join(' ') : '';
+  form.appendChild(input);
+
+  const button = document.createElement('button');
+  button.type = 'submit';
+  button.id = 'searchButton';
+  form.appendChild(button);
+  
   return form;
 }
 
