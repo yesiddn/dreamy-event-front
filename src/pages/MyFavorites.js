@@ -4,7 +4,7 @@ import FavoriteSection from '../components/Favorites/FavoriteSection.js';
 
 const myFavorites = (API, USER) => {
     Header(USER);
-    FavoriteSection(API);
+    FavoriteSection(API,USER);
 };
 
 export default myFavorites;

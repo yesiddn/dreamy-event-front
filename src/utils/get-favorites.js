@@ -5,17 +5,24 @@ import fetchData from "./fetch-data";
 const ENDPOINT = "/favorites";
 
 
-export default async function getFavorites(API) {
+export default async function getFavorites(API, USER) {
+  const userId = USER.id;
   const response = await fetchData({
-    API: API + ENDPOINT,
+    API: API + ENDPOINT + '/customer/' + userId,
     method: 'GET'
   });
 
-  if (response.status === 200) { 
+  if (response.status === 200) {
     const result = await response.json();
-    return result;
 
-}  else {
+    const alejoArrayList = [];
+    for (let index = 0; index < result.length; index++) {
+      const element = result[index].service;
+      alejoArrayList.push(element)
+    }
+    return alejoArrayList;
+
+  } else {
     Alert('something-went-wrong');
     return null;
   }

@@ -1,6 +1,8 @@
 import getFavorites from '../../utils/get-favorites';
+import CardService from '../../templates/Card';
 
-export default async function FavoriteSection(API){
+
+export default function FavoriteSection(API, USER){
     /* cuerpo */ 
     const favoritesSection = document.createElement('section');
     favoritesSection.classList.add('my-favorites');
@@ -13,29 +15,25 @@ export default async function FavoriteSection(API){
 
     const favoriteListContainer = document.createElement('div');
     favoriteListContainer.classList.add('recommended-services__list');
+
+    const recommendedServicesList = document.createElement('div');
+    recommendedServicesList.classList.add('recommended-services__list');
+    favoriteListContainer.appendChild(recommendedServicesList);
   
 
     favoritesHeader.appendChild(favoritesTitle);
     favoritesSection.appendChild(favoritesHeader);
     favoritesSection.appendChild(favoriteListContainer);
 
-   
+    const favorites = JSON.parse(localStorage.getItem('favorites'));
 
-    const favorites = await getFavorites(API);
-    console.log(favorites);
-
-/*
     if (!favorites) {
-        return;
-      }
-      const array = [];
-      array.push(favorites)
-      
-      array.forEach((service) => {
-        const card = CardService(service);
-        favoriteListContainer.appendChild(card);
-      }); */
-      
+      return;
+    }
+    favorites.forEach((service) => {
+      const card = CardService(service);
+      recommendedServicesList.appendChild(card);
+    });
 
     document.querySelector('#app').appendChild(favoritesSection);
 
