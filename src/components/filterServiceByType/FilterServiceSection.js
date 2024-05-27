@@ -10,6 +10,7 @@ export default async function FilterServiceSection(API, services) {
   );
 
   const section = document.createElement('section');
+  section.classList.add('filter-service-container');
   document.querySelector('#app').appendChild(section);
 
   const listOfServices = ListOfServices(servicesFiltered);

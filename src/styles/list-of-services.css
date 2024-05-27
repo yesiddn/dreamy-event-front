@@ -1,4 +1,4 @@
-.recommended-services-container {
+.recommended-services-container, .search-container, .filter-service-container {
   max-width: 900px;
   margin: 0 auto;
   margin-top: 3rem;
