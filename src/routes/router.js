@@ -15,6 +15,7 @@ import RecoverPassword from '../pages/RecoverPassword.js';
 import CodeVerification from '../pages/CodeVerification.js';
 import ChangePassword from '../pages/ChangePassword.js';
 import UserProfile from '../pages/UserProfile.js';
+import ResumeEvent from '../pages/ResumeEvent.js';
 
 const routes = [
   { path: '', component: Home, typeUser: 'public' },
@@ -36,6 +37,7 @@ const routes = [
   { path: 'verify-code', component: CodeVerification, typeUser: 'public'},
   { path: 'change-password', component: ChangePassword, typeUser: 'public'},
   { path: 'profile', component: UserProfile, typeUser: 'customer' },
+  { path: 'resume-event', component: ResumeEvent, typeUser: 'customer' },
 ];
 
 export default function router(API, USER) {

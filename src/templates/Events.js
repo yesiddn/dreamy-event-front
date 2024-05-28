@@ -5,7 +5,7 @@ export default function showEvents(eventDetail, typecard = 'card-user'){
     // event container
     const eventContainer = document.createElement('a');
     eventContainer.classList.add('event');
-    eventContainer.href = '/events/' + eventDetail.eventId;
+    eventContainer.href = '/resume-event/' + eventDetail.eventId;
   
     // event header
     const eventHeader = document.createElement('div');
