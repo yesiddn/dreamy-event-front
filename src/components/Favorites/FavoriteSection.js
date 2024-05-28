@@ -1,4 +1,3 @@
-import getFavorites from '../../utils/get-favorites';
 import CardService from '../../templates/Card';
 
 

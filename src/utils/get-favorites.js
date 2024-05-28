@@ -6,7 +6,7 @@ const ENDPOINT = "/favorites";
 
 
 export default async function getFavorites(API, USER) {
-  const userId = USER.id;
+  const userId = USER.customer.customerId;
   const response = await fetchData({
     API: API + ENDPOINT + '/customer/' + userId,
     method: 'GET'
