@@ -1,6 +1,9 @@
 import '../styles/card.css';
+import saveFavorites from '../utils/save-favorites';
 
-export default function CardService(serviceDetails, typecard = 'card-user') {
+export default function CardService(API,serviceDetails, typecard = 'card-user') {
+
+
   const cardContainer = document.createElement('a');
   cardContainer.href = '/service/' + serviceDetails.serviceId;
   cardContainer.classList.add('card');
@@ -9,7 +12,7 @@ export default function CardService(serviceDetails, typecard = 'card-user') {
   const menuOptions = MenuOptions(serviceDetails);
   cardContainer.appendChild(menuOptions);
   
-  const cardButton = CardButton(typecard, menuOptions);
+  const cardButton = CardButton(API,serviceDetails, typecard, menuOptions);
   cardContainer.appendChild(cardButton);
 
   // card content
@@ -46,7 +49,8 @@ export default function CardService(serviceDetails, typecard = 'card-user') {
   return cardContainer;
 }
 
-function CardButton(typecard, menuOptions) {
+function CardButton(API, serviceDetails, typecard, menuOptions) { 
+
   const cardButton = document.createElement('button');
   cardButton.type = 'button';
   if (typecard == 'card-supplier') {
@@ -60,8 +64,19 @@ function CardButton(typecard, menuOptions) {
   } else {
     cardButton.classList.add('icon-heart');
     
-    cardButton.addEventListener('click', () => {
+    cardButton.addEventListener('click', (e) => {
       e.preventDefault();
+      cardButton.classList.toggle('favorite--active');
+
+      saveFavorites(API,serviceDetails).then(favorites => {
+
+      }).catch(error => {
+        console.error('Error al intentar obtener favoritos:', error);
+      });
+
+
+      
+
       // TODO: Implementar lógica para agregar a favoritos
     });
   }

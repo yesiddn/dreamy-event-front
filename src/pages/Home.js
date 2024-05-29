@@ -5,6 +5,7 @@ import FilterBar from '../templates/filter-bar.js';
 import Footer from '../templates/Footer.js';
 import getFavorites from '../utils/get-favorites.js';
 
+
 const Home = (API, USER) => {
 
   getFavorites(API, USER).then(favorites => {
@@ -16,7 +17,6 @@ const Home = (API, USER) => {
   }).catch(error => {
     console.error('Error al intentar obtener favoritos:', error);
   });
-
 
   Header(USER);
   Hero();
