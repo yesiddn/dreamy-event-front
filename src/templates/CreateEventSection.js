@@ -40,8 +40,9 @@ formContainer.addEventListener('submit', async (event) =>{
     try {
         const response = await saveEvents(API, eventDataString);
         
-        if(!response){
-            Alert('event-created-successfully', '/my-events');
+        if (response) {
+            console.log(response);
+            Alert('event-created-successfully', `/event-resume/${response.eventId}`);
         } else {
             Alert('event-error');
         }

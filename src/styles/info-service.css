@@ -252,7 +252,7 @@
     border-bottom: transparent 10px solid;
   }
   
-  .info-service__details__price-card__events li {
+  .info-service__details__price-card__events li, .info-service__details__price-card__events a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -262,19 +262,21 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-decoration: none;
     list-style: none;
     cursor: pointer;
+    color: var(--black);
   }
   
-  .info-service__details__price-card__events li:hover {
+  .info-service__details__price-card__events li:hover, .info-service__details__price-card__events a:hover {
     background-color: rgba(118, 112, 230, 0.4);
   }
   
-  .info-service__details__price-card__events li span {
+  .info-service__details__price-card__events li span, .info-service__details__price-card__events a span {
     display: inline-block;
     width: 24px;
     height: 24px;
-    background: url('plus.svg') no-repeat center/cover;
+    background: url('../../public/svg/plus.svg') no-repeat center/cover;
   }
   
   @media (min-width: 768px) {
