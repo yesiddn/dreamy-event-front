@@ -3,9 +3,9 @@ import fetchData from "./fetch-data";
 
 const ENDPOINT = '/events'
 
-export default async function getEvents(API) {
+export default async function getEvents(API, customerId) {
   const response = await fetchData({
-    API: API + ENDPOINT,
+    API: `${API}${ENDPOINT}/${customerId}`,
     method: 'GET'
   });
 
