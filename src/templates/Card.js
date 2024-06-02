@@ -68,8 +68,11 @@ function CardButton(API, serviceDetails, typecard, menuOptions) {
       e.preventDefault();
       cardButton.classList.toggle('favorite--active');
 
-      saveFavorites(API,serviceDetails).then(favorites => {
+      console.log(API),
+      console.log(serviceDetails);
 
+
+      saveFavorites(API,serviceDetails).then(favorites => {
       }).catch(error => {
         console.error('Error al intentar obtener favoritos:', error);
       });

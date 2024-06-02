@@ -2,7 +2,7 @@ import CardService from '../../templates/Card';
 
 
 export default function FavoriteSection(API, USER){
-    /* cuerpo */ 
+    
     const favoritesSection = document.createElement('section');
     favoritesSection.classList.add('my-favorites');
 
@@ -30,7 +30,7 @@ export default function FavoriteSection(API, USER){
       return;
     }
     favorites.forEach((service) => {
-      const card = CardService(service);
+      const card = CardService(API,service);
       recommendedServicesList.appendChild(card);
     });
 
@@ -38,3 +38,4 @@ export default function FavoriteSection(API, USER){
 
 
 }
+

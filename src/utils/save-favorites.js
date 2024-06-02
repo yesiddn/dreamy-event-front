@@ -10,12 +10,12 @@ export default async function saveFavorites(API, service) {
   const rBody = {
     service,
     customer
-  }
-  console.log(rBody);
+  };
+  
   const response = await fetchData({
     API: API + ENDPOINT,
     method: 'POST',
-    rBody
+    data: JSON.stringify(rBody)
   });
 
   if (response.status === 201) {
@@ -27,6 +27,4 @@ export default async function saveFavorites(API, service) {
     Alert('something-went-wrong');
     return null;
   }
-
-  
 }
