@@ -1,7 +1,8 @@
 import '../styles/card.css';
 import saveFavorites from '../utils/save-favorites';
+import Alert from './Alert';
 
-export default function CardService(API,serviceDetails, typecard = 'card-user') {
+export default function CardService(API, serviceDetails, typecard = 'card-user') {
 
 
   const cardContainer = document.createElement('a');
@@ -11,8 +12,8 @@ export default function CardService(API,serviceDetails, typecard = 'card-user') 
   // action buttons
   const menuOptions = MenuOptions(serviceDetails);
   cardContainer.appendChild(menuOptions);
-  
-  const cardButton = CardButton(API,serviceDetails, typecard, menuOptions);
+
+  const cardButton = CardButton(API, serviceDetails, typecard, menuOptions);
   cardContainer.appendChild(cardButton);
 
   // card content
@@ -49,7 +50,7 @@ export default function CardService(API,serviceDetails, typecard = 'card-user') 
   return cardContainer;
 }
 
-function CardButton(API, serviceDetails, typecard, menuOptions) { 
+function CardButton(API, serviceDetails, typecard, menuOptions) {
 
   const cardButton = document.createElement('button');
   cardButton.type = 'button';
@@ -63,30 +64,43 @@ function CardButton(API, serviceDetails, typecard, menuOptions) {
     });
   } else {
     cardButton.classList.add('icon-heart');
-    
+
     cardButton.addEventListener('click', (e) => {
       e.preventDefault();
       cardButton.classList.toggle('favorite--active');
 
-      console.log(API),
-      console.log(serviceDetails);
+      let duplicateFavoriteStatus = false;
+      let targetServiceId = serviceDetails.serviceId
+      let storageServicelist = JSON.parse(localStorage.getItem('favorites'))
+
+      if (storageServicelist) {
+        for (let item of storageServicelist) {
+          let StorageServiceId = item.serviceId;
+          if (StorageServiceId === targetServiceId) {
+            duplicateFavoriteStatus = true;
+            break;
+          }
+        }
+      }
 
 
-      saveFavorites(API,serviceDetails).then(favorites => {
-      }).catch(error => {
-        console.error('Error al intentar obtener favoritos:', error);
-      });
-
+      if (cardButton.classList.contains('favorite--active') && duplicateFavoriteStatus == false) {
+        saveFavorites(API, serviceDetails).then(favorites => {
+          Alert('favorite-added');
+        }).catch(error => {
+          console.error('Error al intentar obtener favoritos:', error);
+        });
+      } else {
+        Alert('favorite-exists')
+      }
 
       
-
-      // TODO: Implementar lógica para agregar a favoritos
     });
   }
   return cardButton;
 }
 
-function MenuOptions(serviceDetails){
+function MenuOptions(serviceDetails) {
   // service options
   const options = document.createElement('div');
   options.classList.add('service__options');
