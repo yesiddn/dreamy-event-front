@@ -71,10 +71,10 @@ function CardButton(API, serviceDetails, typecard, menuOptions) {
 
       let duplicateFavoriteStatus = false;
       let targetServiceId = serviceDetails.serviceId
-      let storageServicelist = JSON.parse(localStorage.getItem('favorites'))
+      let storageFServicelist = JSON.parse(localStorage.getItem('favorites'))
 
-      if (storageServicelist) {
-        for (let item of storageServicelist) {
+      if (storageFServicelist) {
+        for (let item of storageFServicelist) {
           let StorageServiceId = item.serviceId;
           if (StorageServiceId === targetServiceId) {
             duplicateFavoriteStatus = true;
@@ -94,7 +94,7 @@ function CardButton(API, serviceDetails, typecard, menuOptions) {
         Alert('favorite-exists')
       }
 
-      
+
     });
   }
   return cardButton;
