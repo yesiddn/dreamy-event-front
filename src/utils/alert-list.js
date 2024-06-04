@@ -201,6 +201,27 @@ const alerts = {
     message: 'Servicio editado correctamente.',
     color: '#ADFFC7',
   },
+  //comments
+  'comment-error': {
+    message: 'Error al agregar comentario',
+    color: '#F02D3A',
+  },
+  'error-getComment': {
+    message: 'Error al cargar comentarios.',
+    color: '#F02D3A',
+  },
+  'comment-add':{
+    message: 'Gracias por tu comentario',
+    color: '#ADFFC7',
+  },
+  'empty-comment':{
+    message: 'Por favor digite un comentario o realice una calificación',
+    color: '#F02D3A',
+  },
+  'user-not-login':{
+    message: 'Por favor inicie sesión o registrese para registrar su comentario',
+    color: '#F02D3A',
+  }
 };
 
 export default alerts;
