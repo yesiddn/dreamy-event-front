@@ -1,4 +1,5 @@
 import '../styles/card.css';
+import favoriteServiceValidator from '../utils/favorite-services-validator.js';
 import saveFavorites from '../utils/save-favorites';
 import Alert from './Alert';
 
@@ -62,17 +63,27 @@ function CardButton(API, serviceDetails, typecard, menuOptions) {
       e.preventDefault();
       menuOptions.classList.toggle('inactive')
     });
+
   } else {
-    cardButton.classList.add('icon-heart');
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
+    
+    if (favorites && favoriteServiceValidator(favorites, serviceDetails.serviceId)) {
+      cardButton.classList.add('icon-heart');
+      cardButton.classList.add('favorite--active');
+    } else {
+      cardButton.classList.add('icon-heart');
+    }
+
+
 
     cardButton.addEventListener('click', (e) => {
       e.preventDefault();
-      cardButton.classList.toggle('favorite--active');
-
+      
       let duplicateFavoriteStatus = false;
+      let storageFServicelist = JSON.parse(localStorage.getItem('favorites'));
       let targetServiceId = serviceDetails.serviceId
-      let storageFServicelist = JSON.parse(localStorage.getItem('favorites'))
-
+      
+      //favorite duplication checker
       if (storageFServicelist) {
         for (let item of storageFServicelist) {
           let StorageServiceId = item.serviceId;
@@ -83,9 +94,9 @@ function CardButton(API, serviceDetails, typecard, menuOptions) {
         }
       }
 
-
-      if (cardButton.classList.contains('favorite--active') && duplicateFavoriteStatus == false) {
+      if (duplicateFavoriteStatus == false) {
         saveFavorites(API, serviceDetails).then(favorites => {
+          cardButton.classList.add('favorite--active');
           Alert('favorite-added');
         }).catch(error => {
           console.error('Error al intentar obtener favoritos:', error);
@@ -135,5 +146,3 @@ function MenuOptions(serviceDetails) {
 
   return options;
 }
-
-

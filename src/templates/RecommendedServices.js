@@ -23,7 +23,6 @@ export default async function RecommendedServices(API) {
   }
 
   services.forEach((service) => {
-    const hola = 'hola';
     const card = CardService(API,service);
     recommendedServicesList.appendChild(card);
   });

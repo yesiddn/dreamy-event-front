@@ -18,7 +18,9 @@ export default async function getFavorites(API, USER) {
     const alejoArrayList = [];
     for (let index = 0; index < result.length; index++) {
       const element = result[index].service;
-      alejoArrayList.push(element)
+      const favortieId = result[index].id;
+      alejoArrayList.push(element),
+      alejoArrayList.push(favortieId);
     }
     return alejoArrayList;
 

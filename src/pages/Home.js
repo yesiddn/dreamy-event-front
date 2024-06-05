@@ -11,6 +11,7 @@ const Home = (API, USER) => {
   getFavorites(API, USER).then(favorites => {
     if (favorites.length > 0) {
       localStorage.setItem('favorites', JSON.stringify(favorites));
+      console.log(favorites)
     } else {
       console.log('usuario sin listado de favoritos encontrado');
     }
