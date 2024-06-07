@@ -37,7 +37,7 @@ const routes = [
   { path: 'verify-code', component: CodeVerification, typeUser: 'public'},
   { path: 'change-password', component: ChangePassword, typeUser: 'public'},
   { path: 'profile', component: UserProfile, typeUser: 'customer' },
-  { path: 'resume-event', component: ResumeEvent, typeUser: 'customer' },
+  { path: 'event-summary', component: ResumeEvent, typeUser: 'customer' },
 ];
 
 export default function router(API, USER) {

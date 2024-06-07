@@ -2,6 +2,8 @@ import Header from '../templates/Header.js';
 import getServiceDetails from '../utils/get-service-details.js';
 import '../styles/info-service.css';
 import getEvents from '../utils/get-events.js';
+import saveEventSummary from '../utils/save-event-summary.js';
+import Alert from '../templates/Alert.js';
 
 async function infoService(API, USER) {
   // header
@@ -91,6 +93,18 @@ async function infoService(API, USER) {
   eventList.forEach((event) => {
     const eventLi = document.createElement('li');
     eventLi.textContent = event.name;
+    eventLi.addEventListener('click', async () => {
+      event.eventSummary.push({
+        "service": datos,
+      });
+      const eventSummary = event;
+      const response = await saveEventSummary(API, JSON.stringify(eventSummary));
+
+      if (response) {
+        Alert('service-added-to-event', '/event-summary/' + response.eventId);
+      }
+    });
+
     eventsUl.appendChild(eventLi);
   })
 
