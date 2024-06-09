@@ -12,7 +12,7 @@ export default async function CreateEventSection(API, USER) {
   formSection.appendChild(formContainer);
 
   const h2 = document.createElement('h2');
-  h2.innerHTML = 'Crear <span class="primary">Evento</span>';
+  h2.innerHTML = 'Crear un nuevo <span class="primary">evento</span>';
   formContainer.appendChild(h2);
 
   const square = document.createElement('div');
