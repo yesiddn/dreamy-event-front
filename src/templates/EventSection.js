@@ -50,5 +50,5 @@ export default async function EventSection(API, USER) {
     });
   });
 
-  document.body.appendChild(listEventContainer);
+  document.querySelector('#app').appendChild(listEventContainer);
 }
