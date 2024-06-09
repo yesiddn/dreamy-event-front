@@ -1,5 +1,5 @@
 import '../styles/form-section.css';
-import NewEventForm from './CreateEventForm';
+import EventForm from './CreateEventForm';
 import saveEvents from '../utils/save-event';
 import Alert from './Alert.js';
 
@@ -19,7 +19,7 @@ export default async function CreateEventSection(API, USER) {
   square.classList.add('square');
   formContainer.appendChild(square);
 
-  const createEvent = NewEventForm();
+  const createEvent = EventForm(API);
   formContainer.appendChild(createEvent);
 
   formContainer.addEventListener('submit', async (event) => {
@@ -52,7 +52,7 @@ export default async function CreateEventSection(API, USER) {
         console.log(response);
         Alert(
           'event-created-successfully',
-          `/event-resume/${response.eventId}`
+          `/event-summary/${response.eventId}`
         );
       } else {
         Alert('event-error');
