@@ -1,6 +1,7 @@
 import '../styles/form.css';
+import getTypeService from '../utils/get-type-service';
 
-export default function CreateServiceForm() {
+export default async function CreateServiceForm(API) {
   const form = document.createElement('form');
   form.classList.add('form');
   form.id = 'new-Service-Form';
@@ -147,20 +148,18 @@ export default function CreateServiceForm() {
   selectTypeService.name = 'type-service';
   labelTypeService.appendChild(selectTypeService);
 
-  const optionValues = [
-    { value: '1', text: 'Lugar' },
-    { value: '2', text: 'Pastelería' },
-    { value: '3', text: 'Transporte' },
-    { value: '4', text: 'Comida' },
-    { value: '5', text: 'Ambientación' },
-    { value: '6', text: 'Decoración' },
-    { value: '7', text: 'Fotografía y video' },
-  ];
+  const optionValues = await getTypeService(API);
+
+  const defaultOption = document.createElement('option');
+  defaultOption.value = '';
+  defaultOption.hidden = true;
+  defaultOption.textContent = 'Selecciona un tipo de servicio';
+  selectTypeService.appendChild(defaultOption);
 
   optionValues.forEach((optionData) => {
     const option = document.createElement('option');
-    option.value = optionData.value;
-    option.textContent = optionData.text;
+    option.value = optionData.id;
+    option.textContent = optionData.type;
     selectTypeService.appendChild(option);
   });
 

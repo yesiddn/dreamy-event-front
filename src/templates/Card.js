@@ -40,7 +40,11 @@ export default function CardService(serviceDetails, typecard = 'card-user') {
   cardContent.appendChild(location);
 
   const price = document.createElement('p');
-  price.innerHTML = `$ ${serviceDetails.price}`;
+  price.innerHTML = serviceDetails.price.toLocaleString('es-CO', {
+      style: 'currency',
+      currency: 'COP',
+      maximumFractionDigits: 0,
+    });
   cardContent.appendChild(price);
 
   return cardContainer;
