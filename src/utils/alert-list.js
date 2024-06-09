@@ -108,7 +108,11 @@ const alerts = {
     message: 'Error al editar el evento. Inténtalo de nuevo',
     color: '#F02D3A',
   },
-  'service added to event': {
+  'event-not-found': {
+    message: 'Evento no encontrado.',
+    color: '#F02D3A',
+  },
+  'service-added-to-event': {
     message: 'Servicio agregado al evento.',
     color: '#ADFFC7',
   },

@@ -1,6 +1,8 @@
 import Header from '../templates/Header.js';
 import getServiceDetails from '../utils/get-service-details.js';
 import '../styles/info-service.css';
+import getEvents from '../utils/get-events.js';
+import saveEventSummary from '../utils/save-event-summary.js';
 import Footer from '../templates/Footer.js';
 import saveComment from '../utils/save-comment.js';
 import getComment from '../utils/get-comment.js';
@@ -101,6 +103,9 @@ async function infoService(API, USER) {
 
   const button = document.createElement('button');
   button.textContent = 'Agregar a un evento';
+  button.addEventListener('click', () => {
+    eventsUl.classList.toggle('inactive')
+  })
 
   const span = document.createElement('span');
   button.appendChild(span);
@@ -108,16 +113,33 @@ async function infoService(API, USER) {
   const eventsUl = document.createElement('ul');
   eventsUl.className = 'info-service__details__price-card__events inactive';
 
-  const event1Li = document.createElement('li');
-  event1Li.textContent = 'Mi cumpleaños';
+  const eventList = await getEvents(API, USER.customer.customerId);
+  eventList.forEach((event) => {
+    const eventLi = document.createElement('li');
+    eventLi.textContent = event.name;
+    eventLi.addEventListener('click', async () => {
+      event.eventSummary.push({
+        "service": datos,
+      });
+      const eventSummary = event;
+      const response = await saveEventSummary(API, JSON.stringify(eventSummary));
 
-  const event2Li = document.createElement('li');
+      if (response) {
+        Alert('service-added-to-event', '/event-summary/' + response.eventId);
+      }
+    });
+
+    eventsUl.appendChild(eventLi);
+  })
+
+  const createEvent = document.createElement('a');
+  createEvent.href = '/new-event?serviceId=' + serviceId;
+  
   const event2Span = document.createElement('span');
-  event2Li.appendChild(event2Span);
-  event2Li.appendChild(document.createTextNode('Crear evento'));
+  createEvent.appendChild(event2Span);
+  createEvent.appendChild(document.createTextNode('Crear evento'));
 
-  eventsUl.appendChild(event1Li);
-  eventsUl.appendChild(event2Li);
+  eventsUl.appendChild(createEvent);
 
   priceCardDiv.appendChild(priceP);
   priceCardDiv.appendChild(button);

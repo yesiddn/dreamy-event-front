@@ -83,6 +83,22 @@ export default function NewEventForm(API) {
       const input = document.createElement('input');
       input.setAttribute('id', element.name);
       input.setAttribute('type', element.type);
+      
+      if (element.name === 'event-date') {
+        var currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() + 30);
+
+        // Formatear la fecha en el formato adecuado para datetime-local (YYYY-MM-DDTHH:MM)
+        var year = currentDate.getFullYear();
+        var month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+        var day = ('0' + currentDate.getDate()).slice(-2);
+        var hours = ('0' + currentDate.getHours()).slice(-2);
+        var minutes = ('0' + currentDate.getMinutes()).slice(-2);
+
+        var minDateFormatted = `${year}-${month}-${day}T${hours}:${minutes}`;
+        input.setAttribute('min', minDateFormatted);
+      }
+
       input.setAttribute('name', element.name);
       input.setAttribute('placeholder', element.placeholder);
       input.setAttribute('onkeyup', `validateInputData('${element.name}')`);
