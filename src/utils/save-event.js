@@ -1,7 +1,7 @@
 import Alert from '../templates/Alert';
 import fetchData from './fetch-data';
 
-const ENDPOINT = '/events/save';
+const ENDPOINT = '/events';
 
 export default async function saveEvents(API, data) {
   const response = await fetchData({
