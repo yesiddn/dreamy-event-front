@@ -69,7 +69,7 @@ export default function EventForm(API) {
 
       options.forEach((optionText) => {
         const option = document.createElement('option');
-        option.value = optionText.type;
+        option.value = optionText.id;
         option.textContent = optionText.type;
         
         select.appendChild(option);

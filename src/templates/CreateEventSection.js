@@ -24,7 +24,9 @@ export default async function CreateEventSection(API, USER) {
 
   formContainer.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const serviceId = window.location.search?.split('?')[1].split('=')[1] || null;
+    const serviceId = window.location.search
+      ? window.location.search.split('=')[1]
+      : null;
 
     const formData = new FormData(createEvent);
     const eventData = {
@@ -34,13 +36,16 @@ export default async function CreateEventSection(API, USER) {
       city: formData.get('event-city'),
       country: formData.get('event-country'),
       customer: USER.customer,
-      eventSummary: serviceId ? [
-        {
-          "service": {
-            serviceId
-          }
-        }
-      ] : [],
+      typeEvent: { id: formData.get('event-type') },
+      eventSummary: serviceId
+        ? [
+            {
+              service: {
+                serviceId,
+              },
+            },
+          ]
+        : [],
     };
 
     const eventDataString = JSON.stringify(eventData);
