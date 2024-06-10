@@ -18,10 +18,12 @@ export default async function getFavorites(API, USER) {
     const alejoArrayList = [];
     for (let index = 0; index < result.length; index++) {
       const element = result[index].service;
-      const favortieId = result[index].id;
-      alejoArrayList.push(element),
-      alejoArrayList.push(favortieId);
+      //const favortieId = result[index].id;
+      alejoArrayList.push(element);
+      alejoArrayList[index]['favoriteId'] = result[index].id;
+      //alejoArrayList.push(favortieId);
     }
+    console.log(alejoArrayList);
     return alejoArrayList;
 
   } else {
@@ -29,3 +31,4 @@ export default async function getFavorites(API, USER) {
     return null;
   }
 }
+

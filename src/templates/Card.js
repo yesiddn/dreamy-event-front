@@ -2,6 +2,7 @@ import '../styles/card.css';
 import favoriteServiceValidator from '../utils/favorite-services-validator.js';
 import saveFavorites from '../utils/save-favorites';
 import Alert from './Alert';
+import deleteFavorite from '../utils/delete-favorites.js';
 
 export default function CardService(API, serviceDetails, typecard = 'card-user') {
 
@@ -65,8 +66,9 @@ function CardButton(API, serviceDetails, typecard, menuOptions) {
     });
 
   } else {
+
     let favorites = JSON.parse(localStorage.getItem('favorites'));
-    
+
     if (favorites && favoriteServiceValidator(favorites, serviceDetails.serviceId)) {
       cardButton.classList.add('icon-heart');
       cardButton.classList.add('favorite--active');
@@ -78,11 +80,11 @@ function CardButton(API, serviceDetails, typecard, menuOptions) {
 
     cardButton.addEventListener('click', (e) => {
       e.preventDefault();
-      
+
       let duplicateFavoriteStatus = false;
       let storageFServicelist = JSON.parse(localStorage.getItem('favorites'));
       let targetServiceId = serviceDetails.serviceId
-      
+
       //favorite duplication checker
       if (storageFServicelist) {
         for (let item of storageFServicelist) {
@@ -95,14 +97,31 @@ function CardButton(API, serviceDetails, typecard, menuOptions) {
       }
 
       if (duplicateFavoriteStatus == false) {
+        /* saving section ------------------------> */
         saveFavorites(API, serviceDetails).then(favorites => {
+
+          localStorage.setItem('favorites', JSON.stringify(favorites));
           cardButton.classList.add('favorite--active');
+          
           Alert('favorite-added');
         }).catch(error => {
           console.error('Error al intentar obtener favoritos:', error);
         });
       } else {
-        Alert('favorite-exists')
+        /* deleting section ------------------------> */
+        let favoriteId = null;
+        // search for the favorite id corresponding to the targeted service
+        for (const service of storageFServicelist) {
+          if (service.serviceId === targetServiceId) {
+            favoriteId = service.favoriteId;
+            break;
+          }
+        }
+        console.log(favoriteId);
+        cardButton.classList.remove('favorite--active');
+        deleteFavorite(API, favoriteId);
+        favorites = favorites.filter(service => service.favoriteId !== favoriteId);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
       }
 
 

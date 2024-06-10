@@ -1,9 +1,9 @@
 import Alert from '../templates/Alert';
 import fetchData from './fetch-data';
 
-const ENDPOINT = '/events/delete/';
+const ENDPOINT = '/favorites/';
 
-export default async function deleteEvents(API, id) {
+export default async function deleteFavorite(API, id) {
   const response = await fetchData({
     API: API + ENDPOINT + id,
     method: 'DELETE',

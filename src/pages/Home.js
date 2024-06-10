@@ -8,16 +8,17 @@ import getFavorites from '../utils/get-favorites.js';
 
 const Home = (API, USER) => {
 
-  getFavorites(API, USER).then(favorites => {
-    if (favorites.length > 0) {
-      localStorage.setItem('favorites', JSON.stringify(favorites));
-      console.log(favorites)
-    } else {
-      console.log('usuario sin listado de favoritos encontrado');
-    }
-  }).catch(error => {
-    console.error('Error al intentar obtener favoritos:', error);
-  });
+  if (USER) {
+    getFavorites(API, USER).then(favorites => {
+      if (favorites.length > 0) {
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+      } else {
+        console.log('usuario sin listado de favoritos encontrado');
+      }
+    }).catch(error => {
+      console.error('Error al intentar obtener favoritos:', error);
+    })
+  };
 
   Header(USER);
   Hero();
