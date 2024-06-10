@@ -1,9 +1,9 @@
 import Header from '../templates/Header.js';
 import EditEventSection from '../templates/EditEventSection.js';
 
-const EditEvents = (API) => {
+const EditEvents = (API, USER) => {
   Header();
-  EditEventSection(API);
+  EditEventSection(API, USER);
 };
 
 export default EditEvents;
