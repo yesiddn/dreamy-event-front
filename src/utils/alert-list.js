@@ -197,7 +197,7 @@ const alerts = {
     message: 'Las contraseñas ingresadas no coinciden.',
     color: '#F02D3A',
   },
-  'service deleted': {
+  'service-deleted': {
     message: 'Servicio eliminado correctamente.',
     color: '#ADFFC7',
   },
