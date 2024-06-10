@@ -254,8 +254,7 @@
   border-bottom: transparent 10px solid;
 }
 
-.info-service__details__price-card__events li,
-.info-service__details__price-card__events a {
+.info-service__details__price-card__events li, .info-service__details__price-card__events a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -269,6 +268,14 @@
   list-style: none;
   cursor: pointer;
   color: var(--black);
+}
+
+.info-service__details__price-card__events li {
+  display: inline-block;
+}
+
+.info-service__details__price-card__events a {
+  white-space: wrap;
 }
 
 .info-service__details__price-card__events li:hover,

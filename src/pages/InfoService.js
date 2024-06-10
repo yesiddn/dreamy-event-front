@@ -14,9 +14,8 @@ async function infoService(API, USER) {
   // datos = getService()
   //sacar service id de la url
   const serviceId = window.location.pathname.split('/')[2];
-  console.log(window.location.pathname.split('/')[2]);
-  var datos = await getServiceDetails(API, serviceId);
-  console.log(datos);
+
+  const datos = await getServiceDetails(API, serviceId);
 
   // obtener los datos de los comentarios
   const comments = await getComment(API, datos.serviceId);
@@ -136,36 +135,47 @@ async function infoService(API, USER) {
   const eventsUl = document.createElement('ul');
   eventsUl.className = 'info-service__details__price-card__events inactive';
 
-  const eventList = await getEvents(API, USER.customer.customerId);
-  eventList.forEach((event) => {
-    const eventLi = document.createElement('li');
-    eventLi.textContent = event.name;
-    eventLi.addEventListener('click', async () => {
-      event.eventSummary.push({
-        service: datos,
-      });
-      const eventSummary = event;
-      const response = await saveEventSummary(
-        API,
-        JSON.stringify(eventSummary)
-      );
+  if (USER) {
+    const eventList = await getEvents(API, USER.customer.customerId);
+    eventList.forEach((event) => {
+      const eventLi = document.createElement('li');
+      eventsUl.appendChild(eventLi);
+      eventLi.addEventListener('click', async () => {
+        event.eventSummary.push({
+          service: datos,
+        });
+        const eventSummary = event;
+        const response = await saveEventSummary(
+          API,
+          JSON.stringify(eventSummary)
+        );
 
-      if (response) {
-        Alert('service-added-to-event', '/event-summary/' + response.eventId);
-      }
+        if (response) {
+          Alert('service-added-to-event', '/event-summary/' + response.eventId);
+        }
+      });
+
+      eventLi.textContent = event.name;
     });
 
-    eventsUl.appendChild(eventLi);
-  });
+    const createEventA = document.createElement('a');
+    const event2Span = document.createElement('span');
+    createEventA.appendChild(event2Span);
 
-  const createEvent = document.createElement('a');
-  createEvent.href = '/new-event?serviceId=' + serviceId;
+    createEventA.href = '/new-event?serviceId=' + serviceId;
+    createEventA.appendChild(document.createTextNode('Crear un evento'));
 
-  const event2Span = document.createElement('span');
-  createEvent.appendChild(event2Span);
-  createEvent.appendChild(document.createTextNode('Crear evento'));
+    eventsUl.appendChild(createEventA);
+  } else {
+    const login = document.createElement('a');
+    const event2Span = document.createElement('span');
+    login.appendChild(event2Span);
 
-  eventsUl.appendChild(createEvent);
+    login.href = '/log-in';
+    login.appendChild(document.createTextNode('Inicia sesión o registrate'));
+
+    eventsUl.appendChild(login);
+  }
 
   priceCardDiv.appendChild(priceP);
   priceCardDiv.appendChild(button);
@@ -194,7 +204,7 @@ async function infoService(API, USER) {
 
   const characteristicsTitle = document.createElement('h3');
   characteristicsTitle.textContent = 'Características';
-  characteristicsDiv.appendChild(characteristicsTitle); 
+  characteristicsDiv.appendChild(characteristicsTitle);
 
   const characteristicsDetails = document.createElement('p');
   characteristicsDetails.textContent = datos.characteristics;
