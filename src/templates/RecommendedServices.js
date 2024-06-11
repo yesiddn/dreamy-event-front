@@ -15,6 +15,8 @@ export default async function RecommendedServices(API) {
   recommendedServicesList.classList.add('recommended-services__list');
   recommendedServicesContainer.appendChild(recommendedServicesList);
 
+  
+
   const services = await getServices(API);
 
   if (!services) {
@@ -22,7 +24,7 @@ export default async function RecommendedServices(API) {
   }
 
   services.forEach((service) => {
-    const card = CardService(service);
+    const card = CardService(API,service);
     recommendedServicesList.appendChild(card);
   });
 

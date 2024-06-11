@@ -1,4 +1,9 @@
 import '../styles/card.css';
+
+import favoriteServiceValidator from '../utils/favorite-services-validator.js';
+import saveFavorites from '../utils/save-favorites';
+import Alert from './Alert';
+import deleteFavorite from '../utils/delete-favorites.js';
 import deleteEventSummary from '../utils/delete-event-summary.js';
 import Alert from './Alert.js';
 
@@ -16,11 +21,13 @@ export default function CardService(
   cardContainer.appendChild(menuOptions);
 
   const cardButton = CardButton(
+    serviceDetails,
     typecard,
     menuOptions,
     API,
     serviceDetails.summaryId
   );
+
   cardContainer.appendChild(cardButton);
 
   // card content
@@ -61,7 +68,8 @@ export default function CardService(
   return cardContainer;
 }
 
-function CardButton(typecard, menuOptions, API, summaryId) {
+function CardButton(serviceDetails, typecard, menuOptions, API, summaryId) {
+
   const cardButton = document.createElement('button');
   cardButton.type = 'button';
   if (typecard == 'card-supplier') {
@@ -83,12 +91,67 @@ function CardButton(typecard, menuOptions, API, summaryId) {
         Alert('service-deleted', `/event-summary/${window.location.pathname.split('/')[2]}`);
       }
     });
-  } else {
-    cardButton.classList.add('icon-heart');
 
-    cardButton.addEventListener('click', () => {
+  } else {
+
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
+
+    if (favorites && favoriteServiceValidator(favorites, serviceDetails.serviceId)) {
+      cardButton.classList.add('icon-heart');
+      cardButton.classList.add('favorite--active');
+    } else {
+      cardButton.classList.add('icon-heart');
+    }
+
+
+
+    cardButton.addEventListener('click', (e) => {
       e.preventDefault();
-      // TODO: Implementar lógica para agregar a favoritos
+
+      let duplicateFavoriteStatus = false;
+      let storageFServicelist = JSON.parse(localStorage.getItem('favorites'));
+      let targetServiceId = serviceDetails.serviceId
+
+      //favorite duplication checker
+      if (storageFServicelist) {
+        for (let item of storageFServicelist) {
+          let StorageServiceId = item.serviceId;
+          if (StorageServiceId === targetServiceId) {
+            duplicateFavoriteStatus = true;
+            break;
+          }
+        }
+      }
+
+      if (duplicateFavoriteStatus == false) {
+        /* saving section ------------------------> */
+        saveFavorites(API, serviceDetails).then(favorites => {
+
+          localStorage.setItem('favorites', JSON.stringify(favorites));
+          cardButton.classList.add('favorite--active');
+          
+          Alert('favorite-added');
+        }).catch(error => {
+          console.error('Error al intentar obtener favoritos:', error);
+        });
+      } else {
+        /* deleting section ------------------------> */
+        let favoriteId = null;
+        // search for the favorite id corresponding to the targeted service
+        for (const service of storageFServicelist) {
+          if (service.serviceId === targetServiceId) {
+            favoriteId = service.favoriteId;
+            break;
+          }
+        }
+        console.log(favoriteId);
+        cardButton.classList.remove('favorite--active');
+        deleteFavorite(API, favoriteId);
+        favorites = favorites.filter(service => service.favoriteId !== favoriteId);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+      }
+
+
     });
   }
   return cardButton;
