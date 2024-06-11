@@ -9,12 +9,12 @@ export default function UserPanel(API, USER, OPTION) {
         return userSummaryContainer;
     }
     if (OPTION === 'info') {
-        const userInformationContainer = UserInformation(USER);
+        const userInformationContainer = UserInformation(API,USER);
         return userInformationContainer;
     }
 
     if (OPTION === 'pass') {
-        const updatePasswordContainer = PasswordUpdate(USER);
+        const updatePasswordContainer = PasswordUpdate(API,USER);
         return updatePasswordContainer;
     }
 }

@@ -2,10 +2,10 @@
 function UserOptions() {
 
     const linkList = {
-        'mi perfil': ['../public/svg/profile.svg', 'summary-option'],
-        actualizar: ['../public/svg/info.svg', 'info-option'],
-        contraseña: ['../public/svg/password.svg', 'pass-option'],
-        'cerrar sesion': ['../public/svg/log-out.svg', 'logout-option'],
+        'Mi perfil': ['../public/svg/profile.svg', 'summary-option'],
+        Actualizar: ['../public/svg/info.svg', 'info-option'],
+        Contraseña: ['../public/svg/password.svg', 'pass-option'],
+        'Cerrar sesion': ['../public/svg/log-out.svg', 'logout-option'],
     };
 
     const optionsContainer = document.createElement('div');
