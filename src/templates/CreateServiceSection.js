@@ -3,23 +3,19 @@ import CreateServiceForm from './CreateServiceForm.js';
 import saveServices from '../utils/save-service.js';
 import Alert from './Alert.js';
 
-export default async function CreateServiceSection(API) {
+export default async function CreateServiceSection(API, USER) {
   const createServiceContainer = document.createElement('section');
   createServiceContainer.classList.add('form-section');
 
   const serviceContainer = document.createElement('div');
   serviceContainer.classList.add('form__container');
   createServiceContainer.appendChild(serviceContainer);
-  
-    const square = document.createElement('div');
-    square.classList.add('square');
-    serviceContainer.appendChild(square);
 
   const title = document.createElement('h2');
   title.innerHTML = 'Registrar nuevo <span class="primary">servicio</span>';
   serviceContainer.appendChild(title);
 
-  const createService = CreateServiceForm();
+  const createService = await CreateServiceForm(API);
   serviceContainer.appendChild(createService);
 
   createService.addEventListener('submit', async (event) => {
@@ -50,7 +46,12 @@ export default async function CreateServiceSection(API) {
       amountPeople: Number(formData.get('peopleAmount-service')),
       characteristics: formData.get('characterisitcs-service'),
       images,
+      supplier: USER.supplier,
+      typeService: {
+        id : formData.get('type-service'),
+      },
     };
+    console.log(serviceData);
 
     const serviceDataString = JSON.stringify(serviceData);
 

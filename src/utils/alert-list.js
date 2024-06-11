@@ -108,7 +108,11 @@ const alerts = {
     message: 'Error al editar el evento. Inténtalo de nuevo',
     color: '#F02D3A',
   },
-  'service added to event': {
+  'event-not-found': {
+    message: 'Evento no encontrado.',
+    color: '#F02D3A',
+  },
+  'service-added-to-event': {
     message: 'Servicio agregado al evento.',
     color: '#ADFFC7',
   },
@@ -161,6 +165,14 @@ const alerts = {
     message: 'Cambio de contraseña realizado.',
     color: '#ADFFC7',
   },
+  'error-password': {
+    message: 'Ha ocurrido un error al editar la contraseña',
+    color: '#F02D3A',
+  },
+  'equals-password':{
+    message: 'Las contraseñas no coinciden',
+    color: '#F02D3A',
+  },
   'code sent': {
     message: 'El código de verificación ha sido enviado',
     color: '#ADFFC7',
@@ -193,7 +205,7 @@ const alerts = {
     message: 'Las contraseñas ingresadas no coinciden.',
     color: '#F02D3A',
   },
-  'service deleted': {
+  'service-deleted': {
     message: 'Servicio eliminado correctamente.',
     color: '#ADFFC7',
   },
@@ -201,6 +213,35 @@ const alerts = {
     message: 'Servicio editado correctamente.',
     color: '#ADFFC7',
   },
+  //comments
+  'comment-error': {
+    message: 'Error al agregar comentario',
+    color: '#F02D3A',
+  },
+  'error-getComment': {
+    message: 'Error al cargar comentarios.',
+    color: '#F02D3A',
+  },
+  'comment-add':{
+    message: 'Gracias por tu comentario',
+    color: '#ADFFC7',
+  },
+  'empty-comment':{
+    message: 'Por favor digite un comentario o realice una calificación',
+    color: '#F02D3A',
+  },
+  'user-not-login':{
+    message: 'Por favor inicie sesión o registrese para registrar su comentario',
+    color: '#F02D3A',
+  },
+  'user-edit-successfully':{
+    message: 'Tu datos personales han sido actualizados',
+    color: '#ADFFC7',
+  },
+  'editUser-error':{
+    message: 'A ocurido un error al actualizar tu datos',
+    color: '#F02D3A',
+  }
 };
 
 export default alerts;

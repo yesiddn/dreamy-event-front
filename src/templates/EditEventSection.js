@@ -1,9 +1,9 @@
 import '../styles/form-section.css';
-import editEventForm from './EditEventForm.js';
-import getEventsById from '../utils/get-idEvent.js';
+import EditEventForm from './EditEventForm.js';
+import getEventById from '../utils/get-idEvent.js';
 import editEvents from '../utils/edit-event.js';
 
-export default async function EditEventSection(API, eventId) {
+export default async function EditEventSection(API, USER) {
     const editEventSection = document.createElement('section');
     editEventSection.classList.add('form-section');
 
@@ -19,14 +19,10 @@ export default async function EditEventSection(API, eventId) {
     squareDiv.classList.add('square');
     eventContainerE.appendChild(squareDiv);
 
-    if (eventId === null || eventId === undefined) {
-        const eventIdIndex = window.location.href.lastIndexOf('/');
-        eventId = window.location.href.substring(eventIdIndex + 1);
-    }
+    const eventId = window.location.pathname.split('/')[2];
+    const eventDetail = await getEventById(API, eventId);
 
-    const eventDetail = await getEventsById(API, eventId);
-
-    const editEvent = editEventForm(eventDetail);
+    const editEvent = await EditEventForm(API, eventDetail);
     eventContainerE.appendChild(editEvent);
 
     editEvent.addEventListener('submit', async (event) =>{
@@ -38,10 +34,12 @@ export default async function EditEventSection(API, eventId) {
             date: editEvent.elements['event-date'].value,
             address: editEvent.elements['event-address'].value,
             city: editEvent.elements['event-city'].value,
-            country: editEvent.elements['event-country'].value
+            country: editEvent.elements['event-country'].value,
+            typeEvent: { id: editEvent.elements['event-type'].value },
+            customer: USER.customer,
         }
 
-        const response = await editEvents(API, eventId, JSON.stringify(updateInformation));
+        const response = await editEvents(API, JSON.stringify(updateInformation));
 
         if (response) {
             console.log('Evento editado')

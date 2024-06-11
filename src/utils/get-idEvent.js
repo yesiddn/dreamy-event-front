@@ -1,11 +1,11 @@
 import Alert from "../templates/Alert.js";
 import fetchData from "./fetch-data.js";
 
-const ENDPOINT = '/events/'
+const ENDPOINT = '/events/summary'
 
-export default async function getEventsById(API, eventId) {
+export default async function getEventById(API, eventId) {
   const response = await fetchData({
-    API: API + ENDPOINT + eventId,
+    API: `${API}${ENDPOINT}/${eventId}`,
     method: 'GET'
   });
   

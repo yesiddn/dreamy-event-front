@@ -1,12 +1,17 @@
 import '../styles/card.css';
+
 import favoriteServiceValidator from '../utils/favorite-services-validator.js';
 import saveFavorites from '../utils/save-favorites';
 import Alert from './Alert';
 import deleteFavorite from '../utils/delete-favorites.js';
+import deleteEventSummary from '../utils/delete-event-summary.js';
+import Alert from './Alert.js';
 
-export default function CardService(API, serviceDetails, typecard = 'card-user') {
-
-
+export default function CardService(
+  serviceDetails,
+  typecard = 'card-user',
+  API
+) {
   const cardContainer = document.createElement('a');
   cardContainer.href = '/service/' + serviceDetails.serviceId;
   cardContainer.classList.add('card');
@@ -15,7 +20,14 @@ export default function CardService(API, serviceDetails, typecard = 'card-user')
   const menuOptions = MenuOptions(serviceDetails);
   cardContainer.appendChild(menuOptions);
 
-  const cardButton = CardButton(API, serviceDetails, typecard, menuOptions);
+  const cardButton = CardButton(
+    serviceDetails,
+    typecard,
+    menuOptions,
+    API,
+    serviceDetails.summaryId
+  );
+
   cardContainer.appendChild(cardButton);
 
   // card content
@@ -36,9 +48,9 @@ export default function CardService(API, serviceDetails, typecard = 'card-user')
   title.innerHTML = serviceDetails.name;
   cardTitle.appendChild(title);
 
-  const rating = document.createElement('span');
-  rating.innerHTML = '★4.5';
-  cardTitle.appendChild(rating);
+  // const rating = document.createElement('span');
+  // rating.innerHTML = '★4.5';
+  // cardTitle.appendChild(rating);
 
   const location = document.createElement('p');
   location.innerHTML =
@@ -46,23 +58,38 @@ export default function CardService(API, serviceDetails, typecard = 'card-user')
   cardContent.appendChild(location);
 
   const price = document.createElement('p');
-  price.innerHTML = `$ ${serviceDetails.price}`;
+  price.innerHTML = serviceDetails.price.toLocaleString('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    maximumFractionDigits: 0,
+  });
   cardContent.appendChild(price);
 
   return cardContainer;
 }
 
-function CardButton(API, serviceDetails, typecard, menuOptions) {
+function CardButton(serviceDetails, typecard, menuOptions, API, summaryId) {
 
   const cardButton = document.createElement('button');
   cardButton.type = 'button';
   if (typecard == 'card-supplier') {
     cardButton.classList.add('icon-ellipsis');
-    cardButton.classList.add('icon-ellipsis--bg-white')
+    cardButton.classList.add('icon-ellipsis--bg-white');
 
     cardButton.addEventListener('click', (e) => {
       e.preventDefault();
-      menuOptions.classList.toggle('inactive')
+      menuOptions.classList.toggle('inactive');
+    });
+  } else if (typecard === 'card-event-summary') {
+    cardButton.classList.add('icon-trash');
+
+    cardButton.addEventListener('click', async (e) => {
+      e.preventDefault();
+      
+      const response = await deleteEventSummary(API, summaryId);
+      if (response) {
+        Alert('service-deleted', `/event-summary/${window.location.pathname.split('/')[2]}`);
+      }
     });
 
   } else {
@@ -152,7 +179,7 @@ function MenuOptions(serviceDetails) {
   const serviceDelete = document.createElement('button');
   serviceDelete.setAttribute('type', 'button');
   serviceDelete.classList.add('service__options__delete');
-  serviceDelete.textContent = 'Eliminar'
+  serviceDelete.textContent = 'Eliminar';
   options.appendChild(serviceDelete);
 
   const serviceDeleteIcon = document.createElement('span');

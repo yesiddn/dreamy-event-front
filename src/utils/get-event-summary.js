@@ -1,21 +1,18 @@
 import Alert from '../templates/Alert';
 import fetchData from './fetch-data';
 
-const ENDPOINT = '/services/';
+const ENDPOINT = '/events/summary';
 
-export default async function deleteService(API, id) {
+export default async function getEventSummary(API, eventId) {
   const response = await fetchData({
-    API: API + ENDPOINT + id,
-    method: 'DELETE',
+    API: `${API}${ENDPOINT}/${eventId}`,
+    method: 'GET',
   });
 
   if (response.status === 200) {
-    Alert('service-deleted');
-    return true;
+    return response.json();
   } else {
     Alert('something-went-wrong');
-    return false;
+    return null;
   }
 }
-
-

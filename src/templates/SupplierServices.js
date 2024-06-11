@@ -1,9 +1,9 @@
-import getServices from '../utils/get-services.js';
 import CardService from './Card.js';
 import deleteService from '../utils/delete-service.js';
 import '../styles/my-services.css';
+import getServicesBySupplier from '../utils/get-services-by-supplier.js';
 
-export default async function SupplierServices(API) {
+export default async function SupplierServices(API, USER) {
   const recommendedServicesContainer = document.createElement('section');
   recommendedServicesContainer.classList.add('my-services-container');
 
@@ -26,9 +26,8 @@ export default async function SupplierServices(API) {
   recommendedServicesList.classList.add('my-services__list');
   recommendedServicesContainer.appendChild(recommendedServicesList);
 
-  const services = await getServices(API);
+  const services = await getServicesBySupplier(API, USER.supplier.supplierId);
 
-  console.log(services);
   services.forEach((service) => {
     const card = CardService(service, 'card-supplier');
     recommendedServicesList.appendChild(card);

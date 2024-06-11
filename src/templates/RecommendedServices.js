@@ -5,6 +5,7 @@ import '../styles/list-of-services.css';
 export default async function RecommendedServices(API) {
   const recommendedServicesContainer = document.createElement('section');
   recommendedServicesContainer.classList.add('recommended-services-container');
+  document.querySelector('#app').appendChild(recommendedServicesContainer);
 
   const recommendedServicesTitle = document.createElement('h2');
   recommendedServicesTitle.innerHTML = 'Servicios recomendados';
@@ -27,5 +28,4 @@ export default async function RecommendedServices(API) {
     recommendedServicesList.appendChild(card);
   });
 
-  document.querySelector('#app').appendChild(recommendedServicesContainer);
 }

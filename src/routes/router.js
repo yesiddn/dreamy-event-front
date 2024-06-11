@@ -16,6 +16,8 @@ import CodeVerification from '../pages/CodeVerification.js';
 import ChangePassword from '../pages/ChangePassword.js';
 import UserProfile from '../pages/UserProfile.js';
 import favorites from '../pages/MyFavorites.js';
+import EventSummary from '../pages/EventSummary.js';
+import Search from '../pages/Search.js';
 
 const routes = [
   { path: '', component: Home, typeUser: 'public' },
@@ -33,7 +35,9 @@ const routes = [
   { path: 'verify-code', component: CodeVerification, typeUser: 'public' },
   { path: 'change-password', component: ChangePassword, typeUser: 'public' },
   { path: 'profile', component: UserProfile, typeUser: 'customer' },
-  { path: 'my-favorites', component: favorites, typeUser: 'public'}
+  { path: 'my-favorites', component: favorites, typeUser: 'public'},
+  { path: 'event-summary', component: EventSummary, typeUser: 'customer' },
+  { path: 'search', component: Search, typeUser: 'public'},
 ];
 
 export default function router(API, USER) {
