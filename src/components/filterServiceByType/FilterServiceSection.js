@@ -13,7 +13,7 @@ export default async function FilterServiceSection(API, services) {
   section.classList.add('filter-service-container');
   document.querySelector('#app').appendChild(section);
 
-  const listOfServices = ListOfServices(servicesFiltered);
+  const listOfServices = ListOfServices(servicesFiltered, 'card-user', API);
   const filterBar = await FilterBar({API, services, section, callback: insertServicesFiltered});
   
   section.appendChild(filterBar);

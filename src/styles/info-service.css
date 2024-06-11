@@ -272,6 +272,7 @@
 
 .info-service__details__price-card__events li {
   display: inline-block;
+  text-align: center;
 }
 
 .info-service__details__price-card__events a {

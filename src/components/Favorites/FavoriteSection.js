@@ -31,7 +31,7 @@ export default function FavoriteSection(API, USER){
       return;
     }
     favorites.forEach((service) => {
-      const card = CardService(API,service);
+      const card = CardService(service, 'card-user', API);
       recommendedServicesList.appendChild(card);
     });
 

@@ -5,7 +5,6 @@ import saveFavorites from '../utils/save-favorites';
 import Alert from './Alert';
 import deleteFavorite from '../utils/delete-favorites.js';
 import deleteEventSummary from '../utils/delete-event-summary.js';
-import Alert from './Alert.js';
 
 export default function CardService(
   serviceDetails,
