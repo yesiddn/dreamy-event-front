@@ -161,6 +161,14 @@ const alerts = {
     message: 'Cambio de contraseña realizado.',
     color: '#ADFFC7',
   },
+  'error-password': {
+    message: 'Ha ocurrido un error al editar la contraseña',
+    color: '#F02D3A',
+  },
+  'equals-password':{
+    message: 'Las contraseñas no coinciden',
+    color: '#F02D3A',
+  },
   'code sent': {
     message: 'El código de verificación ha sido enviado',
     color: '#ADFFC7',
@@ -220,6 +228,14 @@ const alerts = {
   },
   'user-not-login':{
     message: 'Por favor inicie sesión o registrese para registrar su comentario',
+    color: '#F02D3A',
+  },
+  'user-edit-successfully':{
+    message: 'Tu datos personales han sido actualizados',
+    color: '#ADFFC7',
+  },
+  'editUser-error':{
+    message: 'A ocurido un error al actualizar tu datos',
     color: '#F02D3A',
   }
 };
