@@ -1,5 +1,5 @@
 import '../styles/form-section.css';
-import NewEventForm from './CreateEventForm';
+import EventForm from './CreateEventForm';
 import saveEvents from '../utils/save-event';
 import Alert from './Alert.js';
 
@@ -12,19 +12,21 @@ export default async function CreateEventSection(API, USER) {
   formSection.appendChild(formContainer);
 
   const h2 = document.createElement('h2');
-  h2.innerHTML = 'Crear <span class="primary">Evento</span>';
+  h2.innerHTML = 'Crear un nuevo <span class="primary">evento</span>';
   formContainer.appendChild(h2);
 
   const square = document.createElement('div');
   square.classList.add('square');
   formContainer.appendChild(square);
 
-  const createEvent = NewEventForm();
+  const createEvent = EventForm(API);
   formContainer.appendChild(createEvent);
 
   formContainer.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const serviceId = window.location.search?.split('?')[1].split('=')[1] || null;
+    const serviceId = window.location.search
+      ? window.location.search.split('=')[1]
+      : null;
 
     const formData = new FormData(createEvent);
     const eventData = {
@@ -34,13 +36,16 @@ export default async function CreateEventSection(API, USER) {
       city: formData.get('event-city'),
       country: formData.get('event-country'),
       customer: USER.customer,
-      eventSummary: serviceId ? [
-        {
-          "service": {
-            serviceId
-          }
-        }
-      ] : [],
+      typeEvent: { id: formData.get('event-type') },
+      eventSummary: serviceId
+        ? [
+            {
+              service: {
+                serviceId,
+              },
+            },
+          ]
+        : [],
     };
 
     const eventDataString = JSON.stringify(eventData);
@@ -52,7 +57,7 @@ export default async function CreateEventSection(API, USER) {
         console.log(response);
         Alert(
           'event-created-successfully',
-          `/event-resume/${response.eventId}`
+          `/event-summary/${response.eventId}`
         );
       } else {
         Alert('event-error');

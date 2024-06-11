@@ -38,13 +38,25 @@
 
 .icon-heart {
   background-color: transparent;
-  background-image:url('../svg/heart.svg');
+  background-image: url('../svg/heart.svg');
 }
 
 .icon-heart:hover {
-  background-image:url('../svg/heart-fill.svg');
+  background-image: url('../svg/heart-fill.svg');
 }
 
+.icon-trash {
+  background-image: url('../svg/trash.svg');
+  background-color: var(--white);
+  box-shadow: none;
+  border-radius: 50%;
+}
+
+.icon-trash:hover {
+  background-image: url('../svg/trash-white.svg');
+  box-shadow: 0 5px 15px var(--primary);
+  background-color: var(--primary);
+}
 
 .card .favorite--active {
   background-image: url('../svg/heart-fill.svg');

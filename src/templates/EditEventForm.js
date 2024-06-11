@@ -1,6 +1,7 @@
 import '../styles/form.css';
+import getTypeEvents from '../utils/get-type-events';
 
-export default function editEventForm(eventDetail) {
+export default async function EditEventForm(API, eventDetail) {
   const formEvent = document.createElement('form');
   formEvent.classList.add('form');
   formEvent.id = 'form';
@@ -86,25 +87,21 @@ export default function editEventForm(eventDetail) {
   selectEventType.name = 'event-type';
   labelEventType.appendChild(selectEventType);
 
-  const eventTypes = [
-    { value: '1', text: 'Boda' },
-    { value: '2', text: 'Fiesta de cumpleaños' },
-    { value: '3', text: 'Baby showers' },
-    { value: '4', text: 'Conferencia/Seminario' },
-    { value: '5', text: 'Quince años' },
-    { value: '6', text: 'Reunión corporativa' },
-    { value: '7', text: 'Feria/Exposición' },
-    { value: '8', text: 'Celebración familiar' },
-    { value: '9', text: 'Bautizo' },
-    { value: '10', text: 'Comunión' },
-    { value: '11', text: 'Confirmación' },
-    { value: '12', text: 'Graduación' },
-  ];
+  const eventTypes = await getTypeEvents(API);
+
+  const optionDefault = document.createElement('option');
+  optionDefault.value = '';
+  optionDefault.hidden = true;
+  optionDefault.textContent = 'Seleccione un tipo de evento';
+  selectEventType.appendChild(optionDefault);
 
   eventTypes.forEach((eventType) => {
     const option = document.createElement('option');
-    option.value = eventType.value;
-    option.textContent = eventType.text;
+    option.value = eventType.id;
+    option.textContent = eventType.type;
+    if (eventType.id === eventDetail.typeEvent.id) {
+      option.selected = true;
+    }
     selectEventType.appendChild(option);
   });
 

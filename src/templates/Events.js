@@ -1,4 +1,5 @@
 import '../styles/my-events.css';
+import toLocalDateTime from '../utils/to-local-date';
 
 export default function showEvents(eventDetails, typecard = 'card-user') {
   // event container
@@ -37,9 +38,7 @@ export default function showEvents(eventDetails, typecard = 'card-user') {
 
   const spanDate = document.createElement('span');
   spanDate.classList.add('highlight-text');
-  const eventDateTime = new Date(eventDetails.date);
-  const eventDateOnly = eventDateTime.toISOString().split('T')[0];
-  spanDate.textContent = eventDateOnly;
+  spanDate.textContent = toLocalDateTime(eventDetails.date);
   eventDate.appendChild(spanDate);
 
   // event price

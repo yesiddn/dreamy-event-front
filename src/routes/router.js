@@ -15,7 +15,7 @@ import RecoverPassword from '../pages/RecoverPassword.js';
 import CodeVerification from '../pages/CodeVerification.js';
 import ChangePassword from '../pages/ChangePassword.js';
 import UserProfile from '../pages/UserProfile.js';
-import ResumeEvent from '../pages/ResumeEvent.js';
+import EventSummary from '../pages/EventSummary.js';
 import Search from '../pages/Search.js';
 
 const routes = [
@@ -38,7 +38,7 @@ const routes = [
   { path: 'verify-code', component: CodeVerification, typeUser: 'public'},
   { path: 'change-password', component: ChangePassword, typeUser: 'public'},
   { path: 'profile', component: UserProfile, typeUser: 'customer' },
-  { path: 'event-summary', component: ResumeEvent, typeUser: 'customer' },
+  { path: 'event-summary', component: EventSummary, typeUser: 'customer' },
   { path: 'search', component: Search, typeUser: 'public'},
 ];
 
