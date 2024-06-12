@@ -23,7 +23,6 @@ export default async function getFavorites(API, USER) {
       alejoArrayList[index]['favoriteId'] = result[index].id;
       //alejoArrayList.push(favortieId);
     }
-    console.log(alejoArrayList);
     return alejoArrayList;
 
   } else {
