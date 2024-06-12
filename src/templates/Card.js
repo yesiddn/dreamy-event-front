@@ -5,6 +5,8 @@ import saveFavorites from '../utils/save-favorites';
 import Alert from './Alert';
 import deleteFavorite from '../utils/delete-favorites.js';
 import deleteEventSummary from '../utils/delete-event-summary.js';
+import getFavorites from '../utils/get-favorites.js';
+import getUserData from '../utils/get-user-data.js';
 
 export default function CardService(
   serviceDetails,
@@ -84,7 +86,7 @@ function CardButton(serviceDetails, typecard, menuOptions, API, summaryId) {
 
     cardButton.addEventListener('click', async (e) => {
       e.preventDefault();
-      
+
       const response = await deleteEventSummary(API, summaryId);
       if (response) {
         Alert('service-deleted', `/event-summary/${window.location.pathname.split('/')[2]}`);
@@ -125,13 +127,14 @@ function CardButton(serviceDetails, typecard, menuOptions, API, summaryId) {
       if (duplicateFavoriteStatus == false) {
         /* saving section ------------------------> */
         saveFavorites(API, serviceDetails).then(favorites => {
-
-          localStorage.setItem('favorites', JSON.stringify(favorites));
-          cardButton.classList.add('favorite--active');
-          
+          const USER = getUserData();
+          getFavorites(API, USER).then(favorites => {
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            cardButton.classList.add('favorite--active');
+          });
           Alert('favorite-added');
         }).catch(error => {
-          console.error('Error al intentar obtener favoritos:', error);
+          console.error('Error al intentar guardar un favorito:', error);
         });
       } else {
         /* deleting section ------------------------> */
@@ -143,14 +146,15 @@ function CardButton(serviceDetails, typecard, menuOptions, API, summaryId) {
             break;
           }
         }
-        console.log(favoriteId);
         cardButton.classList.remove('favorite--active');
         deleteFavorite(API, favoriteId);
         favorites = favorites.filter(service => service.favoriteId !== favoriteId);
         localStorage.setItem('favorites', JSON.stringify(favorites));
+        const currentPath = window.location.pathname;
+        if (currentPath === '/my-favorites') {
+          window.location.reload();
+        }
       }
-
-
     });
   }
   return cardButton;

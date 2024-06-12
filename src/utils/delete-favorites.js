@@ -10,7 +10,7 @@ export default async function deleteFavorite(API, id) {
   });
 
   if (response.status === 200) {
-    Alert('event deleted');
+    Alert('favorite-removed');
     return true;
   } else {
     Alert('something-went-wrong');
