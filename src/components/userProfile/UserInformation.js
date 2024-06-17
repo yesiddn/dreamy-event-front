@@ -6,7 +6,7 @@ export default function UserInformation(API,USER) {
 
   if (localStorage.getItem('updatedData')) {
     let gettingData = JSON.parse(localStorage.getItem('updatedData'));
-    userObjProp = gettingData;
+    userObjProp = gettingData.customer;
   } else {
     userObjProp = USER.customer;
   };
@@ -116,9 +116,11 @@ export default function UserInformation(API,USER) {
     
     try {
       const response = await editUser(API, USER.customer.customerId, updateUser);
-  
+      
       if (response) {
         console.log('usuario editado')
+        let newUserData = JSON.parse(localStorage.getItem('updatedData'));
+        localStorage.setItem('user', JSON.stringify(newUserData));
       }else{
         console.log('no editado')
       }
