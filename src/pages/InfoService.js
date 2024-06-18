@@ -46,7 +46,7 @@ async function infoService(API, USER) {
 
   const locationP = document.createElement('p');
   locationP.className = 'info-service__details__header__title';
-  locationP.textContent = datos.location;
+  locationP.textContent = `${datos.address} | ${datos.city} - ${datos.country}`;
 
   titleDiv.appendChild(titleH2);
   titleDiv.appendChild(locationP);
