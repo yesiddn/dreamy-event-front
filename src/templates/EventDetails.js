@@ -1,7 +1,8 @@
 import '../styles/event-summary.css';
-import toLocalDateTime from "../utils/to-local-date";
+import getPaymentURL from '../utils/get-payment';
+import toLocalDateTime from '../utils/to-local-date';
 
-export default function EventDetails(eventDetails) {
+export default async function EventDetails(API, eventDetails) {
   const eventDetailsSection = document.createElement('section');
   eventDetailsSection.className = 'event-details';
 
@@ -61,24 +62,38 @@ export default function EventDetails(eventDetails) {
   totalContainer.appendChild(totalTitle);
 
   const totalPrice = document.createElement('p');
-  totalPrice.textContent = eventDetails.eventSummary.reduce(
-    (acc, service) => acc + service.service.price,
-    0
-  ).toLocaleString('es-CO', {
-    style: 'currency',
-    currency: 'COP',
-    maximumFractionDigits: 0,
-  });
+  totalPrice.textContent = eventDetails.eventSummary
+    .reduce((acc, service) => acc + service.service.price, 0)
+    .toLocaleString('es-CO', {
+      style: 'currency',
+      currency: 'COP',
+      maximumFractionDigits: 0,
+    });
   totalContainer.appendChild(totalPrice);
 
   resumeEventBody.appendChild(totalContainer);
 
-  const reserveButton = document.createElement('button');
-  reserveButton.type = 'button';
+  const reserveButton = document.createElement('a');
   reserveButton.className = 'event-details__body__button';
   reserveButton.id = 'reserve';
   reserveButton.textContent = 'Reservar servicios';
+  
+  const reserveLoading = document.createElement('span');
+  reserveLoading.classList.add('loading');
+  reserveButton.appendChild(reserveLoading);
+
+  if (eventDetails.eventSummary.length > 0) {
+    setPaymentUrl(API, eventDetails, reserveButton);
+  }
+
   resumeEventBody.appendChild(reserveButton);
 
   return eventDetailsSection;
+}
+
+async function setPaymentUrl(API, eventDetails, reserveButton) {
+  const response = await getPaymentURL(API, eventDetails.eventId);
+
+  reserveButton.href = await response.url;
+  reserveButton.lastChild.remove();
 }

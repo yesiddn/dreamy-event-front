@@ -11,7 +11,7 @@ const EventSummary = async (API, User) => {
   eventSummaryContainer.className = 'event-summary';
   document.querySelector('#app').appendChild(eventSummaryContainer);
 
-  const eventDetails = EventDetails(eventSummaryDetails);
+  const eventDetails = await EventDetails(API, eventSummaryDetails);
   eventSummaryContainer.appendChild(eventDetails);
 
   const services = eventSummaryDetails.eventSummary.map((service) => {
