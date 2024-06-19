@@ -3,7 +3,6 @@ import getServiceDetails from '../utils/get-service-details.js';
 import '../styles/info-service.css';
 import getEvents from '../utils/get-events.js';
 import saveEventSummary from '../utils/save-event-summary.js';
-import Footer from '../templates/Footer.js';
 import saveComment from '../utils/save-comment.js';
 import getComment from '../utils/get-comment.js';
 import Alert from '../templates/Alert.js';
