@@ -5,6 +5,7 @@ import '../styles/list-of-services.css';
 export default async function RecommendedServices(API) {
   const recommendedServicesContainer = document.createElement('section');
   recommendedServicesContainer.classList.add('recommended-services-container');
+  document.querySelector('#app').appendChild(recommendedServicesContainer);
 
   const recommendedServicesTitle = document.createElement('h2');
   recommendedServicesTitle.innerHTML = 'Servicios recomendados';
@@ -14,6 +15,8 @@ export default async function RecommendedServices(API) {
   recommendedServicesList.classList.add('recommended-services__list');
   recommendedServicesContainer.appendChild(recommendedServicesList);
 
+  
+
   const services = await getServices(API);
 
   if (!services) {
@@ -21,9 +24,8 @@ export default async function RecommendedServices(API) {
   }
 
   services.forEach((service) => {
-    const card = CardService(service);
+    const card = CardService(service, 'card-user', API);
     recommendedServicesList.appendChild(card);
   });
 
-  document.querySelector('#app').appendChild(recommendedServicesContainer);
 }

@@ -10,7 +10,7 @@ export default async function deleteService(API, id) {
   });
 
   if (response.status === 200) {
-    Alert('service deleted');
+    Alert('service-deleted');
     return true;
   } else {
     Alert('something-went-wrong');

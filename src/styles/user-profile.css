@@ -16,6 +16,7 @@
     flex-direction: column;
     margin-top: 6rem;
     gap: 2rem;
+
 }
 
 /* contenedor izquierdo */
@@ -159,6 +160,7 @@
     .user-profile {
         flex-direction: row;
         justify-content: center;
+        align-items: flex-start;
     }
 
     .user-sidebar {

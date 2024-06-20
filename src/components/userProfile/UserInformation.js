@@ -1,10 +1,12 @@
-export default function UserInformation(USER) {
+import editUser from "../../utils/edit-user";
+
+export default function UserInformation(API,USER) {
 
   let userObjProp = {}
 
   if (localStorage.getItem('updatedData')) {
     let gettingData = JSON.parse(localStorage.getItem('updatedData'));
-    userObjProp = gettingData;
+    userObjProp = gettingData.customer;
   } else {
     userObjProp = USER.customer;
   };
@@ -28,7 +30,7 @@ export default function UserInformation(USER) {
       value: userObjProp.lastname,
       errorMesage: 'El apellido debe tener al menos 3 caracteres.',
       validate: false,
-      minLength: 3,
+      minLength: 3, 
     },
     {
       label: 'Telefono',
@@ -87,17 +89,46 @@ export default function UserInformation(USER) {
     const userInput = document.createElement('input');
     userInput.type = input.type;
     userInput.name = input.name;
+    userInput.id = input.id;
     userInput.value = input.value;
 
     label.appendChild(userInput);
   });
 
   const button = document.createElement('button');
-  button.type = 'button';
+  button.type = 'submit';
   button.id = 'form-button';
   button.textContent = 'Guardar cambios';
   form.appendChild(button);
   userInformationContainer.appendChild(form);
+
+
+  form.addEventListener('submit',async (event) => {
+    event.preventDefault();
+
+      const updateUser = {
+        name: document.getElementById('name').value,
+        lastname: document.getElementById('lastname').value,
+        phone: document.getElementById('phone').value,
+        city: document.getElementById('city').value,
+        country: document.getElementById('country').value
+      }
+    
+    try {
+      const response = await editUser(API, USER.customer.customerId, updateUser);
+      
+      if (response) {
+        console.log('usuario editado')
+        let newUserData = JSON.parse(localStorage.getItem('updatedData'));
+        localStorage.setItem('user', JSON.stringify(newUserData));
+      }else{
+        console.log('no editado')
+      }
+    } catch (error) {
+      console.log('error:', error)
+    }
+  
+  })
 
   return userInformationContainer;
 }

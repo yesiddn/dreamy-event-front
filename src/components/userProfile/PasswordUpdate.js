@@ -1,3 +1,6 @@
+import Alert from "../../templates/Alert";
+import NewPassword from "../../utils/new-password";
+
 const inputs = [
     {
       label: 'Contraseña actual',
@@ -28,8 +31,8 @@ const inputs = [
     },
   ];
   
-  export default function PasswordUpdate() {
-  
+  export default function PasswordUpdate(API,USER) {
+
     const updatePasswordContainer = document.createElement('div');
     updatePasswordContainer.classList.add('update-password-container');
   
@@ -57,15 +60,33 @@ const inputs = [
       const userInput = document.createElement('input');
       userInput.type = input.type;
       userInput.name = input.name;
+      userInput.id = input.id;
       label.appendChild(userInput);
     });
-  
+
     const button = document.createElement('button');
-    button.type = 'button';
+    button.type = 'submit';
     button.id = 'form-button';
     button.textContent = 'Guardar cambios';
     form.appendChild(button);
+
+    form.addEventListener('submit', async (event) =>{
+      event.preventDefault();
+
+      const password = document.getElementById('current-password').value;
+      const newPassword = document.getElementById('new-password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (newPassword !== confirmPassword) {
+        Alert('equals-password');
+        return;
+      }
+      
+      const result = await NewPassword(API, USER.id, password,newPassword);
+    })
   
+
+
     updatePasswordContainer.appendChild(form);
     return updatePasswordContainer;
   }

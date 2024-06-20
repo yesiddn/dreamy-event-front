@@ -1,11 +1,11 @@
 import Alert from '../templates/Alert';
 import fetchData from './fetch-data';
 
-const ENDPOINT = '/events/update/';
+const ENDPOINT = '/events';
 
-export default async function editEvents(API, id, updateData) {
+export default async function editEvents(API, updateData) {
   const response = await fetchData({
-    API: API + ENDPOINT + id,
+    API: API + ENDPOINT,
     method: 'PUT',
     data: updateData,
   });
