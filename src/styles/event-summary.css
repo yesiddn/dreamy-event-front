@@ -77,7 +77,7 @@
 .event-details__body__service,
 .event-details__body__total {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   gap: 1rem;
   width: 100%;
@@ -86,8 +86,21 @@
 }
 
 .event-details__body__service h4 {
+  width: 45%;
   margin: 0;
   font-weight: 500;
+}
+
+.event-details__body__service label {
+  width: 15%;
+}
+
+.event-details__body__service input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--primary);
+  border-radius: 0.5rem;
+  text-align: center;
 }
 
 .event-details__body__total {

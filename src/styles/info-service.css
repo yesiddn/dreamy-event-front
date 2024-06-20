@@ -156,6 +156,16 @@
   animation-delay: .1s;
 }
 
+.paid {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.message {
+  font-weight: bold;
+  color: var(--secondary);
+}
+
 .info-service__details__price-card {
   position: fixed;
   left: 0;
