@@ -44,27 +44,6 @@ const UserProfile = (API, USER) => {
         );
         savingInfoForm.addEventListener('change', function () {
           const userInfoForm = document.querySelector('#form');
-<<<<<<< Updated upstream
-=======
-
-          const formData = new FormData(userInfoForm);
-          const formDataObject = Object.fromEntries(formData.entries());
-          console.log(USER.customer.customerId);
-
-          const completeData = {
-            id: USER.id,
-            email: USER.email,
-            customer: {
-              customerId: USER.customer.customerId,
-              ...formDataObject,
-              image: USER.customer.image
-            },
-            supplier: USER.supplier
-          };
-
-          localStorage.setItem('updatedData', JSON.stringify(completeData));
-          /*
->>>>>>> Stashed changes
           const formData = new FormData(userInfoForm);
           const data = Object.fromEntries(formData.entries());
           localStorage.setItem('updatedData', JSON.stringify(data));
