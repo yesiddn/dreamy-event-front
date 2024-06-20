@@ -203,6 +203,22 @@
   color: var(--black);
 }
 
+.info-service__details__price-card__quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.info-service__details__price-card__quantity input {
+  width: 30%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
 .info-service__details__price-card button {
   display: flex;
   align-items: center;
@@ -486,7 +502,6 @@
     justify-content: center;
     align-items: center;
     width: 30%;
-    height: 150px;
     margin: 0 auto;
     padding: 1rem;
     border-radius: 15px;

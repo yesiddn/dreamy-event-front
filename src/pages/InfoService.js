@@ -106,21 +106,15 @@ async function infoService(API, USER) {
     maximumFractionDigits: 0,
   })}`;
 
-  if (datos.typeService.type === 'Lugares') {
-    priceP.textContent += ' por día';
-  } else if (datos.typeService.type === 'Pastelería') {
-    priceP.textContent += ' por pieza';
-  } else if (datos.typeService.type === 'Transporte') {
-    priceP.textContent += ' por persona';
-  } else if (datos.typeService.type === 'Comida') {
-    priceP.textContent += ' por plato';
-  } else if (datos.typeService.type === 'Ambientación') {
-    priceP.textContent += ' por hora';
-  } else if (datos.typeService.type === 'Decoración') {
-    priceP.textContent += ' por metro cuadrado';
-  } else if (datos.typeService.type === 'Fotografía y video') {
-    priceP.textContent += ' por hora';
-  }
+  const quantityLabel = document.createElement('label');
+  quantityLabel.className = 'info-service__details__price-card__quantity';
+  quantityLabel.textContent = 'Cantidad: '
+  const quantityInput = document.createElement('input');
+  quantityInput.type = 'number';
+  quantityInput.min = 1;
+  quantityInput.value = 1;
+  quantityLabel.appendChild(quantityInput);
+  
 
   const button = document.createElement('button');
   button.textContent = 'Agregar a un evento';
@@ -142,6 +136,7 @@ async function infoService(API, USER) {
       eventLi.addEventListener('click', async () => {
         event.eventSummary.push({
           service: datos,
+          quantity: parseInt(quantityInput.value),
         });
         const eventSummary = event;
         const response = await saveEventSummary(
@@ -177,6 +172,7 @@ async function infoService(API, USER) {
   }
 
   priceCardDiv.appendChild(priceP);
+  priceCardDiv.appendChild(quantityLabel);
   priceCardDiv.appendChild(button);
   priceCardDiv.appendChild(eventsUl);
 
