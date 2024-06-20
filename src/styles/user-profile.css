@@ -154,7 +154,7 @@
 .update-password-container form input:focus,
 .user-information-container form input:focus {
     border: solid 1px var(--primary) !important;
-}
+}  
 
 @media (min-width: 1024px) {
     .user-profile {
@@ -173,4 +173,16 @@
     .user-information-container {
         width: 50%;
     }
+}
+
+.validDiv{
+    color: green;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+.invalidDiv{
+    color: red;
+}
+.invalidBorder{
+    border: solid 1px red !important;
 }
