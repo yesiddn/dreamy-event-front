@@ -62,20 +62,13 @@ export default function PasswordUpdate(API, USER) {
     userInput.name = input.name;
     userInput.id = input.id;
     label.appendChild(userInput);
-
-    /*  divs validadores  */
-
- 
   });
-
-
 
   const button = document.createElement('button');
   button.type = 'submit';
   button.id = 'form-button';
   button.textContent = 'Guardar cambios';
   form.appendChild(button);
-
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -84,12 +77,21 @@ export default function PasswordUpdate(API, USER) {
     const newPassword = document.getElementById('new-password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
 
-    if (newPassword !== confirmPassword) {
-      Alert('equals-password');
+    if (password === '' || newPassword === '' || confirmPassword === '') {
+      Alert('password empty');
       return;
     }
 
-    const result = await NewPassword(API, USER.id, password, newPassword);
+    if (newPassword !== confirmPassword) {
+      Alert('password mismatch Validator');
+      return;
+    }
+
+    if (newPassword.length < 8) {
+      Alert('password length not valid');
+      return;
+    }
+      const result = await NewPassword(API, USER.id, password, newPassword);
   })
 
   updatePasswordContainer.appendChild(form);

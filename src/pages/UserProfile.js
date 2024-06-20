@@ -75,6 +75,7 @@ const UserProfile = (API, USER) => {
           } else {
             newPasswordInput.style.removeProperty('border');
             newPasLabel.removeChild(invalidDiv);
+            newPasLabel.removeChild(validDiv);
           }
         })
 

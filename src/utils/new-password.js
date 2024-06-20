@@ -14,7 +14,7 @@ export default async function NewPassword(API, id, password,newPassword) {
     Alert('password changed', '/profile')
   return  true;
   } else {
-    alert('error-password');
+    Alert('error-password');
     return null;
   }
 }

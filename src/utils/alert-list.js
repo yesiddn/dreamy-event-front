@@ -189,8 +189,12 @@ const alerts = {
     message: 'Código correcto',
     color: '#ADFFC7',
   },
+  'password length not valid': {
+    message: 'La nueva contraseña no cumple la longitud solicitada',
+    color: '#F02D3A',
+  },
   'password not valid': {
-    message: 'La contraseña no cumple la longitud solicitada',
+    message: 'La contraseña no es valida',
     color: '#F02D3A',
   },
   'password empty': {
