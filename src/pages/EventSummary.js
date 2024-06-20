@@ -2,10 +2,16 @@ import EventDetails from '../templates/EventDetails.js';
 import Header from '../templates/Header.js';
 import ListOfServices from '../templates/list-of-services.js';
 import getEventSummary from '../utils/get-event-summary.js';
+import saveEventSummary from '../utils/save-event-summary.js';
 const EventSummary = async (API, User) => {
   Header(User);
 
-  const eventSummaryDetails = await getEventSummary(API, window.location.pathname.split('/')[2]);
+  const eventId = window.location.pathname.split('/')[2];
+  let eventSummaryDetails = await getEventSummary(API, eventId);
+  if (window.location.search === '?success=true') {
+    eventSummaryDetails.transactionState = 1;
+    eventSummaryDetails = await saveEventSummary(API, JSON.stringify(eventSummaryDetails));
+  }
 
   const eventSummaryContainer = document.createElement('div');
   eventSummaryContainer.className = 'event-summary';
