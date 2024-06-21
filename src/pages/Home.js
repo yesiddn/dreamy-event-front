@@ -24,8 +24,8 @@ const Home = async (API, USER) => {
 
   Header(USER);
   Hero();
-  RecommendedServices(API);
   FilterServiceSection(API, services);
+  RecommendedServices(API);
   Footer();
 };
 
