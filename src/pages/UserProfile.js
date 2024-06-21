@@ -69,6 +69,49 @@ const UserProfile = (API, USER) => {
       } else if (element.id == 'pass-option') {
         OPTION = 'pass';
         container.appendChild(userPanel());
+
+        const validDiv = document.createElement('div');
+        validDiv.classList.add('validDiv');
+        const invalidDiv = document.createElement('div');
+        invalidDiv.classList.add('invalidDiv');
+        /* invalidDiv.textContent = 'Wrong'; */
+
+        const newPasswordInput = document.getElementById('new-password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+
+        const confirmLabel = confirmPasswordInput.parentNode
+        const newPasLabel = newPasswordInput.parentNode;
+
+        newPasswordInput.addEventListener('input', () => {
+          const inputLength = document.getElementById('new-password').value.length
+
+          if (inputLength < 8) {
+            console.log('faltan caracteres');
+            newPasswordInput.style.setProperty('border', 'solid 1px red', 'important');
+            newPasLabel.appendChild(invalidDiv);
+            invalidDiv.textContent = 'contraseña debe tener al menos 8 caracteres';
+          } else {
+            newPasswordInput.style.removeProperty('border');
+            newPasLabel.removeChild(invalidDiv);
+            newPasLabel.removeChild(validDiv);
+          }
+        })
+
+        confirmPasswordInput.addEventListener('input', () => {
+
+          var passInputLengthM = (newPasswordInput.value.length === confirmPasswordInput.value.length);
+          if (confirmPasswordInput.value !== newPasswordInput.value && passInputLengthM !== true) {
+            confirmPasswordInput.style.setProperty('border', 'solid 1px red', 'important');
+            confirmLabel.appendChild(invalidDiv);
+            confirmLabel.removeChild(validDiv);
+            invalidDiv.textContent = 'las contraseñas no coincide';
+          } else {
+            confirmPasswordInput.style.removeProperty('border');
+            confirmLabel.removeChild(invalidDiv);
+            confirmLabel.appendChild(validDiv);
+            validDiv.textContent = '¡perfecto!';
+          }
+        })
       }
     });
   });
