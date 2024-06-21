@@ -512,6 +512,7 @@
     justify-content: center;
     align-items: center;
     width: 30%;
+    height: fit-content;
     margin: 0 auto;
     padding: 1rem;
     border-radius: 15px;
