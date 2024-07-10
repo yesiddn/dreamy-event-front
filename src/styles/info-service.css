@@ -156,6 +156,16 @@
   animation-delay: .1s;
 }
 
+.paid {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.message {
+  font-weight: bold;
+  color: var(--secondary);
+}
+
 .info-service__details__price-card {
   position: fixed;
   left: 0;
@@ -201,6 +211,22 @@
   font-size: 1.3rem;
   font-weight: bold;
   color: var(--black);
+}
+
+.info-service__details__price-card__quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.info-service__details__price-card__quantity input {
+  width: 30%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.2rem;
 }
 
 .info-service__details__price-card button {
@@ -486,7 +512,7 @@
     justify-content: center;
     align-items: center;
     width: 30%;
-    height: 150px;
+    height: fit-content;
     margin: 0 auto;
     padding: 1rem;
     border-radius: 15px;

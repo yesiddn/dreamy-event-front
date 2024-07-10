@@ -30,7 +30,7 @@ const inputs = [
     id: 'description',
     element: 'textarea',
     name: 'description',
-    label: 'Description',
+    label: 'Descripción',
     placeholder: 'Gran variedad de platos y bebidas.',
     errorMesage: 'La descripción no puede estar vacía.',
     validate: false,

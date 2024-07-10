@@ -1,7 +1,9 @@
 import '../styles/event-summary.css';
-import toLocalDateTime from "../utils/to-local-date";
+import getPaymentURL from '../utils/get-payment';
+import saveEventSummary from '../utils/save-event-summary';
+import toLocalDateTime from '../utils/to-local-date';
 
-export default function EventDetails(eventDetails) {
+export default async function EventDetails(API, eventDetails) {
   const eventDetailsSection = document.createElement('section');
   eventDetailsSection.className = 'event-details';
 
@@ -35,24 +37,6 @@ export default function EventDetails(eventDetails) {
   summaryTitle.textContent = 'Resumen';
   resumeEventBody.appendChild(summaryTitle);
 
-  eventDetails.eventSummary.forEach((service) => {
-    const serviceContainer = document.createElement('div');
-    serviceContainer.classList.add('event-details__body__service');
-
-    const serviceTitle = document.createElement('h4');
-    serviceTitle.textContent = service.service.name;
-    serviceContainer.appendChild(serviceTitle);
-
-    const servicePrice = document.createElement('p');
-    servicePrice.textContent = service.service.price.toLocaleString('es-CO', {
-      style: 'currency',
-      currency: 'COP',
-      maximumFractionDigits: 0,
-    });
-    serviceContainer.appendChild(servicePrice);
-    resumeEventBody.appendChild(serviceContainer);
-  });
-
   const totalContainer = document.createElement('div');
   totalContainer.className = 'event-details__body__total';
 
@@ -61,24 +45,115 @@ export default function EventDetails(eventDetails) {
   totalContainer.appendChild(totalTitle);
 
   const totalPrice = document.createElement('p');
-  totalPrice.textContent = eventDetails.eventSummary.reduce(
-    (acc, service) => acc + service.service.price,
-    0
-  ).toLocaleString('es-CO', {
-    style: 'currency',
-    currency: 'COP',
-    maximumFractionDigits: 0,
+  totalPrice.textContent = eventDetails.eventSummary
+    .reduce((acc, service) => acc + service.service.price * service.quantity, 0)
+    .toLocaleString('es-CO', {
+      style: 'currency',
+      currency: 'COP',
+      maximumFractionDigits: 0,
+    });
+
+  eventDetails.eventSummary.forEach((service) => {
+    const serviceContainer = document.createElement('div');
+    serviceContainer.classList.add('event-details__body__service');
+
+    const serviceTitle = document.createElement('h4');
+    serviceTitle.textContent = service.service.name;
+    serviceContainer.appendChild(serviceTitle);
+
+    const quantityLabel = document.createElement('label');
+    quantityLabel.htmlFor = 'quantity';
+    // quantityLabel.textContent = 'Cantidad: ';
+    quantityLabel.classList.add('event-details__body__quantity');
+
+    const quantity = document.createElement('input');
+    quantity.type = 'number';
+    quantity.value = service.quantity;
+    // quantity.disabled = true;
+    quantityLabel.appendChild(quantity);
+    serviceContainer.appendChild(quantityLabel);
+
+    const servicePrice = document.createElement('p');
+    let price = service.service.price * service.quantity;
+    servicePrice.textContent = price.toLocaleString('es-CO', {
+      style: 'currency',
+      currency: 'COP',
+      maximumFractionDigits: 0,
+    });
+    serviceContainer.appendChild(servicePrice);
+    resumeEventBody.appendChild(serviceContainer);
+
+    quantity.addEventListener('change', async () => {
+      service.quantity = quantity.value;
+      price = service.service.price * service.quantity;
+      servicePrice.textContent = price.toLocaleString('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        maximumFractionDigits: 0,
+      });
+
+      totalPrice.textContent = eventDetails.eventSummary
+        .reduce(
+          (acc, service) => acc + service.service.price * service.quantity,
+          0
+        )
+        .toLocaleString('es-CO', {
+          style: 'currency',
+          currency: 'COP',
+          maximumFractionDigits: 0,
+        });
+
+      const response = await saveEventSummary(
+        API,
+        JSON.stringify(eventDetails)
+      );
+      if (!response) {
+        alert('No se pudo guardar el resumen del evento');
+      }
+    });
   });
+
   totalContainer.appendChild(totalPrice);
 
   resumeEventBody.appendChild(totalContainer);
 
-  const reserveButton = document.createElement('button');
-  reserveButton.type = 'button';
-  reserveButton.className = 'event-details__body__button';
-  reserveButton.id = 'reserve';
-  reserveButton.textContent = 'Reservar servicios';
-  resumeEventBody.appendChild(reserveButton);
+  if (eventDetails.transactionState === 0) {
+    const reserveButton = document.createElement('a');
+    reserveButton.className = 'event-details__body__button';
+    reserveButton.id = 'reserve';
+    reserveButton.textContent = 'Reservar servicios';
+
+    const reserveLoading = document.createElement('span');
+    reserveLoading.classList.add('loading');
+    reserveButton.appendChild(reserveLoading);
+
+    if (eventDetails.eventSummary.length > 0) {
+      setPaymentUrl(API, eventDetails, reserveButton);
+    }
+
+    resumeEventBody.appendChild(reserveButton);
+  } else {
+    const transactionState = document.createElement('p');
+    transactionState.textContent = 'Estado de la transacción: ';
+    const state = document.createElement('span');
+    state.classList.add('paid');
+    state.textContent = 'Pagado';
+    transactionState.appendChild(state);
+    // Nuestros proveedores se pondran en contacto contigo para coordinar los detalles de tu evento.
+    const message = document.createElement('p');
+    message.classList.add('message');
+    message.textContent =
+      'Nuestros proveedores se pondran en contacto contigo para coordinar los detalles de tu evento.';
+    transactionState.appendChild(message);
+    resumeEventBody.appendChild(transactionState);
+  }
 
   return eventDetailsSection;
+}
+
+async function setPaymentUrl(API, eventDetails, reserveButton) {
+  const response = await getPaymentURL(API, eventDetails.eventId);
+
+  reserveButton.href = await response.url;
+  reserveButton.lastChild.remove();
 }
